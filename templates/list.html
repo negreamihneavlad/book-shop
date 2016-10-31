@@ -1,0 +1,34 @@
+<div>
+    <table>
+        <thead style="font-size: 20px">
+            <tr>
+                <th>Book---</th>
+                <th>Author---</th>
+                <th>Category---</th>
+                <th>Release Date---</th>
+                <th>Description</th>
+                <th>Price</th>
+
+            </tr>
+        </thead>
+
+        <tbody style="font-size: 14px">
+            <tr ng-repeat="element in vm.bookList">
+                <td>{{element.name}}</td>
+                <td>{{element.author}}</td>
+                <td>{{element.category}}</td>
+                <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
+                <td>{{element.description | shortenText }}</td>
+                <td>{{element.price}}$</td>
+                <td>
+                    <button ui-sref='addEdit({id: element.id})' ng-click=''>Edit</button>
+                </td>
+                <td>
+                    <button type="button" ng-click='vm.removeBook(element.id)'>Remove</button> 
+
+                </td>
+            </tr>
+            <span ng-show="vm.showMessage " style="font-size: 14px; color: red">{{vm.removeMessage}}</span>
+        </tbody>
+        <table>
+</div>

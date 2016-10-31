@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="BookShop">
+
+<head>
+    <title></title>
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="route-config.js"></script>
+    <script src="controllers/main-controller.js"></script>
+    <script src="controllers/list-controller.js"></script>
+    <script src="controllers/add-edit-controller.js"></script>
+    <script src="controllers/find-google-controller.js"></script>
+    <script src="filters/shorten-text.js"></script>
+    <script src="services/books-google.js"></script>
+    <script src="services/books.js"></script>
+</head>
+
+<body ng-controller="MainController as vm">
+    <h1>{{vm.message}}<h1>
+<button type="button" ui-sref='list'>See List</button>
+<button type="button" ui-sref='addEdit'>Add Book</button>
+<button type="button" ui-sref='findGoogle'>Find Book (Google)</button>
+
+<ui-view></ui-view>
+
+</body>
+</html>
