@@ -1,0 +1,23 @@
+<div class="table-look">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search Book" ng-model='firstPage.toFind'>
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="firstPage.searchBooks()" ui-sref='searchBooks({toFind: firstPage.toFind})'>Search</button>
+      </span>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="books" ng-repeat="book in firstPage.bookList">
+            <a ui-sref="details({id: book.id})">
+                <img class="table-look" ng-src="{{book.picture}}" alt="" /> </a>
+            </br>
+            <a ui-sref="details({id: book.id})">
+                <span class="text">{{book.name}}</span>
+                </br>
+                <span class="text">by {{book.author}}</span> </a>
+        </div>
+    </div>
+</div>

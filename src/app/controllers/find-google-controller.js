@@ -1,7 +1,7 @@
 (function() {
 
     angular
-        .module("BookShop")
+        .module("bookShop")
         .controller("FindCtrl", FindCtrl);
 
     function FindCtrl(BooksGoogle) {
@@ -26,5 +26,5 @@
         }
 
 
-    };
+    }
 }());

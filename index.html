@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html ng-app="BookShop">
+<html ng-app="bookShop">
 
 <head>
     <title></title>
-    <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="route-config.js"></script>
-    <script src="controllers/main-controller.js"></script>
-    <script src="controllers/list-controller.js"></script>
-    <script src="controllers/add-edit-controller.js"></script>
-    <script src="controllers/find-google-controller.js"></script>
-    <script src="filters/shorten-text.js"></script>
-    <script src="services/books-google.js"></script>
-    <script src="services/books.js"></script>
+    <script src="build/assets/js/frameworks.js"></script>
+    <script src="build/assets/js/templates.js"></script>
+    <script src="build/assets/js/app.js"></script>
+    <link href="build/assets/css/app.css" rel="stylesheet">
 </head>
 
-<body ng-controller="MainController as vm">
-    <h1>{{vm.message}}<h1>
-<button type="button" ui-sref='list'>See List</button>
-<button type="button" ui-sref='addEdit'>Add Book</button>
-<button type="button" ui-sref='findGoogle'>Find Book (Google)</button>
-
-<ui-view></ui-view>
-
+<body ng-controller="MainController as main">
+    <div class="header">
+        <a ui-sref='/'><img class="resize" src="build/assets/img/book-shop-logo.png" alt="" /></a>
+    </div>
+    <div class="content">
+        <button type="button" ui-sref='list'>See List</button>
+        <button type="button" ui-sref='addEdit'>Add Book</button>
+        <button type="button" ui-sref='findGoogle'>Find Book (Google)</button>
+        <ui-view></ui-view>
+    </div>
+    <div class="footer">
+        Contact: ...
+    </div>
 </body>
+
 </html>

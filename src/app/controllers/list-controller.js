@@ -1,30 +1,27 @@
 (function() {
 
     angular
-        .module("BookShop")
+        .module("bookShop")
         .controller("ListCtrl", ListCtrl);
 
-    function ListCtrl($timeout, Books,bookList) {
+    function ListCtrl($timeout, Books, getBookList) {
         var vm = this;
 
-        vm.bookList = bookList;
+        vm.bookList = getBookList;
         vm.removeBook = removeBook;
         vm.removed = removed;
         vm.showMessage = false;
 
         function removeBook(id) {
+            console.log(vm.bookList);
             Books.destroy(id)
-                .success(function(response) {
+                .then(function(response) {
                     console.log('deleted:', response);
-                    angular.forEach(vm.bookList, function(book, index) {
-                        if (book.id == id) {
-                            vm.bookList.splice(index, 1);
-
-                        }
-                    })
+                    _.remove(vm.bookList, {id:id});
+                 
                     vm.removed('Book removed');
                 })
-                .error(function() {
+                .catch(function() {
                     vm.removed('Book not removed');
 
                 });
@@ -32,11 +29,11 @@
         }
 
         function removed(message) {
-            vm.removeMessage = message;
+            vm.removedMessage = message;
             vm.showMessage = true;
             $timeout(function() {
                 vm.showMessage = false;
             }, 3000);
-        };
-    };
+        }
+    }
 }());

@@ -1,8 +1,4 @@
 <div>
-    <form name='vm.findBook' ng-submit="vm.submit()">
-        <input type="search" name="find" placeholder="Keyword" ng-model='vm.toFind' />
-        <input type="submit" value='Search'>
-    </form>
     <table>
         <thead style="font-size: 20px">
             <tr>
@@ -10,26 +6,29 @@
                 <th>Author---</th>
                 <th>Category---</th>
                 <th>Release Date---</th>
-                <th>Description--</th>
+                <th>Description</th>
                 <th>Price</th>
             </tr>
         </thead>
         <tbody style="font-size: 14px">
-            <tr ng-repeat="element in vm.googleList">
-                <button ng-show='vm.googleList' ng-click='vm.addAllBooks(vm.googleList)'>ADD ALL BOOKS</button>
+            <tr ng-repeat="element in listBooks.bookList">
                 <td>{{element.name}}</td>
                 <td>{{element.author}}</td>
                 <td>{{element.category}}</td>
                 <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
                 <td>{{element.description | shortenText }}</td>
                 <td>{{element.price}}$</td>
-                <td>
-                    <button ng-click='vm.addBook(element)'>ADD BOOK</button>
-                </td>
-                <td>
-                </td>
+                <!-->
+                <td><img ng-src="{{element.picture}}" alt="" class="img-responsive" /></td>
+                <-->
+                    <td>
+                        <button ui-sref='addEdit({id: element.id})' ng-click=''>Edit</button>
+                    </td>
+                    <td>
+                        <button type="button" ng-click='listBooks.removeBook(element.id)'>Remove</button>
+                    </td>
             </tr>
-            <span ng-show="vm.showMessage " style="font-size: 14px; color: red">{{vm.addMessage}}</span>
+            <span ng-show="listBooks.showMessage " style="font-size: 14px; color: red">{{listBooks.removedMessage}}</span>
         </tbody>
         <table>
 </div>

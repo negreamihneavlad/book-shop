@@ -1,0 +1,14 @@
+<div>
+    <img ng-src="{{details.book.picture}}" alt="" class="img-responsive" />
+    <span>Book: {{details.book.name}}</span>
+    </br>
+    <span>Author: {{details.book.author}}</span>
+    </br>
+    <span>Release Date: {{details.book.releaseDate | date : 'yyyy-MM-dd'}}</span>
+    </br>
+    <span>Genre: {{details.book.category}}</span>
+    </br>
+	<span>Description: {{details.book.description}}</span>
+	</br>
+	<span>Price: {{details.book.price}}$</span>
+</div>

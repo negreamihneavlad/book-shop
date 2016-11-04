@@ -1,0 +1,43 @@
+.columns {
+    columns: 4;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-look {
+    margin-top: 30px;
+}
+
+.books {
+    margin-top: 0px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 300px;
+}
+
+.text {
+    color: black;
+}
+
+.input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #808080;
+    width: 88%
+}
+
+.border {
+    border: 1px solid #ccc!important
+}
+
+.round-large {
+    border-radius: 8px!important
+}
+
+.btn {
+
+}

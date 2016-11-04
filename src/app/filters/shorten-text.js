@@ -1,7 +1,7 @@
 (function() {
 
     angular
-        .module("BookShop")
+        .module("bookShop")
         .filter("shortenText", shortenText);
 
     function shortenText() {
@@ -12,7 +12,7 @@
                 return text.slice(0, nrLetters) + '...';
              }
             return text;
-        }
+        };
      }
 
 }());

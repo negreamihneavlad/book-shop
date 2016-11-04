@@ -1,4 +1,8 @@
 <div>
+    <form name='findGoogle.findBook' ng-submit="findGoogle.submit()">
+        <input type="search" name="find" placeholder="Keyword" ng-model='findGoogle.toFind' />
+        <input type="submit" value='Search'>
+    </form>
     <table>
         <thead style="font-size: 20px">
             <tr>
@@ -6,14 +10,13 @@
                 <th>Author---</th>
                 <th>Category---</th>
                 <th>Release Date---</th>
-                <th>Description</th>
+                <th>Description--</th>
                 <th>Price</th>
-
             </tr>
         </thead>
-
         <tbody style="font-size: 14px">
-            <tr ng-repeat="element in vm.bookList">
+            <tr ng-repeat="element in findGoogle.googleList">
+                <button ng-show='findGoogle.googleList' ng-click='findGoogle.addAllBooks(findGoogle.googleList)'>ADD ALL BOOKS</button>
                 <td>{{element.name}}</td>
                 <td>{{element.author}}</td>
                 <td>{{element.category}}</td>
@@ -21,14 +24,12 @@
                 <td>{{element.description | shortenText }}</td>
                 <td>{{element.price}}$</td>
                 <td>
-                    <button ui-sref='addEdit({id: element.id})' ng-click=''>Edit</button>
+                    <button ng-click='findGoogle.addBook(element)'>ADD BOOK</button>
                 </td>
                 <td>
-                    <button type="button" ng-click='vm.removeBook(element.id)'>Remove</button> 
-
                 </td>
             </tr>
-            <span ng-show="vm.showMessage " style="font-size: 14px; color: red">{{vm.removeMessage}}</span>
+            <span ng-show="findGoogle.showMessage " style="font-size: 14px; color: red">{{findGoogle.addMessage}}</span>
         </tbody>
         <table>
 </div>
