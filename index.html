@@ -1,27 +1,16 @@
 <!DOCTYPE html>
-<html ng-app="bookShop">
+<html ng-app="app">
 
 <head>
-    <title></title>
+    <title>Book Shop</title>
     <script src="build/assets/js/frameworks.js"></script>
     <script src="build/assets/js/templates.js"></script>
     <script src="build/assets/js/app.js"></script>
     <link href="build/assets/css/app.css" rel="stylesheet">
 </head>
 
-<body ng-controller="MainController as main">
-    <div class="header">
-        <a ui-sref='/'><img class="resize" src="build/assets/img/book-shop-logo.png" alt="" /></a>
-    </div>
-    <div class="content">
-        <button type="button" ui-sref='list'>See List</button>
-        <button type="button" ui-sref='addEdit'>Add Book</button>
-        <button type="button" ui-sref='findGoogle'>Find Book (Google)</button>
-        <ui-view></ui-view>
-    </div>
-    <div class="footer">
-        Contact: ...
-    </div>
+<body>
+   <ui-view></ui-view>
 </body>
 
 </html>

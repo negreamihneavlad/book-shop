@@ -41,7 +41,8 @@ var CONFIG = {
                 "bower_components/sifter/sifter.min.js",
                 "bower_components/microplugin/src/microplugin.js",
                 "bower_components/angular-selectize2/dist/angular-selectize.js",
-                "bower_components/selectize/dist/js/standalone/selectize.min.js"
+                "bower_components/selectize/dist/js/standalone/selectize.min.js",
+                "bower_components/cookies-js/dist/cookies.js"
 
 
             ],
@@ -49,17 +50,29 @@ var CONFIG = {
         },
         app: {
             src: [
-                "src/app/route-config.js",
-                "src/app/controllers/main-controller.js",
-                "src/app/controllers/list-controller.js",
-                "src/app/controllers/add-edit-controller.js",
-                "src/app/controllers/find-google-controller.js",
-                "src/app/controllers/first-page-controller.js",
-                "src/app/controllers/book-details-controller.js",
-                "src/app/controllers/search-books-controller.js",
-                "src/app/filters/shorten-text.js",
-                "src/app/services/books-google.js",
-                "src/app/services/books.js"
+                "src/app/app.js",
+                "src/app/app-controller.js",
+                "src/app/authentication/auth.js",
+                "src/app/book/bookShop.js",
+                "src/app/book/controllers/main-controller.js",
+                "src/app/book/controllers/list-controller.js",
+                "src/app/book/controllers/add-edit-controller.js",
+                "src/app/book/controllers/find-google-controller.js",
+                "src/app/book/controllers/first-page-controller.js",
+                "src/app/book/controllers/book-details-controller.js",
+                "src/app/book/controllers/search-books-controller.js",
+                "src/app/authentication/controllers/login-controller.js",
+                "src/app/authentication/controllers/logout-controller.js",
+                "src/app/book/filters/shorten-text.js",
+                "src/app/book/services/books-google.js",
+                "src/app/book/services/books.js",
+                "src/app/authentication/services/authentication.js",
+                "src/app/authentication/services/session.js",
+                "src/app/authentication/services/auth-interceptor.js",
+                "src/app/authentication/services/auth-guard.js",
+                "src/app/authentication/constants/auth-events.js",
+                "src/app/layout/layout.js"
+
 
 
 

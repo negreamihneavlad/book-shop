@@ -1,6 +1,6 @@
 .header {
     height: 80px;
-    margin-top:10px;
+    margin-top: 10px;
     margin-left: 200px;
     margin-right: 200px;
     border-bottom: 1px solid;
@@ -23,4 +23,20 @@
     margin-left: 200px;
     margin-right: 200px;
     border-top: 1px solid;
+}
+
+.button {
+	margin-top: 10px;
+    margin-right: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.loggedin {
+    margin-top: 10px;
+    
+    position: absolute;
+    top: 0;
+    right: 270px;
 }

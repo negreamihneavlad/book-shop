@@ -1,0 +1,34 @@
+<div class="header">
+   
+    <a ui-sref='/'><img class="resize" src="build/assets/img/book-shop-logo.png" alt="" /></a>
+    
+    <div ng-controller="LogInCtrl as login">
+        
+
+        <span ng-if='login.isActive()'  >
+        
+        <span class='loggedin'>{{login.data.email}}</span>
+        <button ng-controller='LogoutCtrl as logout' type='button' class='button' ng-click='logout.logout()'>Log out</button>
+        
+        </span>
+
+        <span ng-if='!login.isActive()'>
+        
+        <button type='button' class='button' ui-sref='login'>Log in</button>
+        
+        </span>
+    </div>
+</div>
+<div class="content">
+  
+    <button type="button" ui-sref='list'>See List</button>
+  
+    <button type="button" ui-sref='addEdit'>Add Book</button>
+  
+    <button type="button" ui-sref='findGoogle'>Find Book (Google)</button>
+  
+    <ui-view></ui-view>
+</div>
+<div class="footer">
+    Contact: ...
+</div>
