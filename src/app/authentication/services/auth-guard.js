@@ -43,7 +43,7 @@ function AuthGuard($state, Authentication) {
    * @param toParams
    */
   function onStateChangeStart(event, toState, toParams) {
-    if (toState.authGuard && !Auth.isAuthenticated()) {
+    if (toState.authGuard && !Authentication.isAuthenticated()) {
       event.preventDefault();
 
       blockedTransition = {
