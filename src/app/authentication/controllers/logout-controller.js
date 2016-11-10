@@ -1,11 +1,12 @@
 function LogoutCtrl($state, Authentication) {
     var vm = this;
 
-    vm.logout = logout;
+    vm.logout = logout;	
 
     function logout() {
         Authentication.logout();
-        $state.go("/");
+        $state.go("/",{},{reload: true});
+        
 
     }
     

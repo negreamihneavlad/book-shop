@@ -13,6 +13,9 @@
         vm.isActive = isActive;
         vm.ui = buildUI();
 
+        vm.isAdmin = Authentication.isAdmin();
+
+
 
         vm.data = Session.getData();
 
@@ -30,7 +33,7 @@
                         if (AuthGuard.hasBlockedTransition()) {
                             AuthGuard.allowBlockedTransition();
                         } else {
-                            $state.go("/");
+                           $state.go("/",{},{reload: true});
                         }
                     })
 
