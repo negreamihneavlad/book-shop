@@ -25,7 +25,7 @@ function AuthInterceptor($rootScope, $q, Session, AUTH_EVENTS) {
      */
     function request(config) {
         var authToken = Session.getAuthToken();
-        if (authToken) {
+        if (authToken && config.url.substring(0, 22) == "http://localhost:3000/") {
             config.headers = config.headers || {};
             config.headers["Authorization"] = 'bearer '+authToken;
         }
