@@ -70,7 +70,9 @@ var CONFIG = {
                 "src/app/authentication/services/session.js",
                 "src/app/authentication/services/auth-interceptor.js",
                 "src/app/authentication/services/auth-guard.js",
+                "src/app/authentication/services/admin-guard.js",
                 "src/app/authentication/constants/auth-events.js",
+                "src/app/authentication/directives/show-only-for-admins.js",
                 "src/app/layout/layout.js"
 
 
