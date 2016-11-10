@@ -19,11 +19,9 @@
 
         vm.data = Session.getData();
 
-
-
         function login() {
             if (vm.log.$valid) {
-                
+
                 vm.ui.isSubmitting = true;
                 vm.ui.showLoginError = false;
 
@@ -33,7 +31,7 @@
                         if (AuthGuard.hasBlockedTransition()) {
                             AuthGuard.allowBlockedTransition();
                         } else {
-                           $state.go("/",{},{reload: true});
+                            $state.go("home", {}, { reload: true });
                         }
                     })
 

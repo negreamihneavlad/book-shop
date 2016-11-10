@@ -5,7 +5,7 @@ function LogoutCtrl($state, Authentication) {
 
     function logout() {
         Authentication.logout();
-        $state.go("/",{},{reload: true});
+        $state.go("home",{},{reload: true});
         
 
     }
