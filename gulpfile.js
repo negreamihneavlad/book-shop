@@ -42,7 +42,8 @@ var CONFIG = {
                 "bower_components/microplugin/src/microplugin.js",
                 "bower_components/angular-selectize2/dist/angular-selectize.js",
                 "bower_components/selectize/dist/js/standalone/selectize.min.js",
-                "bower_components/cookies-js/dist/cookies.js"
+                "bower_components/cookies-js/dist/cookies.js",
+                "bower_components/angular-filter/dist/angular-filter.min.js"
 
 
             ],

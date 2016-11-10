@@ -13,6 +13,7 @@
     "angular-ui-router": "0.2.13",
     "angular-ui-bootstrap": "0.12.1",
     "angular-selectize2": "^3.0.1",
-    "cookies-js": "^1.2.3"
+    "cookies-js": "^1.2.3",
+    "angular-filter": "^0.5.11"
   }
 }
