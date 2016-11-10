@@ -1,14 +1,14 @@
 (function() {
 
     angular
-        .module("bookShop", ["ui.router", "templates"])
+        .module("bookShop", ["ui.router", "templates",'angular.filter'])
         .config(config)
         .run(run);
 
     function config($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('/', {
+            .state('home', {
                 url: '/',
                 parent: 'app',
                 templateUrl: 'book/templates/first-page.html',
