@@ -18,11 +18,10 @@
 
             .then(function(response) {
 
-
                 _.forEach(response.data.items, function(element) {
                     var price = Math.floor((Math.random() * 50) + 9);
 
-                    if (isBook(element.volumeInfo.authors, element.volumeInfo.categories,element.volumeInfo.description, element.volumeInfo.publishedDate)) {
+                    if (isBook(element.volumeInfo.authors, element.volumeInfo.categories, element.volumeInfo.description, element.volumeInfo.publishedDate)) {
                         googleList.push({
                             name: element.volumeInfo.title,
                             author: element.volumeInfo.authors[0],
@@ -32,6 +31,7 @@
                             releaseDate: element.volumeInfo.publishedDate,
                             price: price
                         });
+
                     }
                 });
 

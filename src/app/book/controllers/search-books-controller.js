@@ -8,8 +8,5 @@
 
         var vm = this;
         vm.searchedBooks = getSearchedBooks;
-
-
-
     }
 }());

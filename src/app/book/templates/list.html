@@ -18,15 +18,12 @@
                 <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
                 <td>{{element.description | shortenText }}</td>
                 <td>{{element.price}}$</td>
-                <!-->
-                <td><img ng-src="{{element.picture}}" alt="" class="img-responsive" /></td>
-                <-->
-                    <td>
-                        <button ui-sref='addEdit({id: element.id})' ng-click=''>Edit</button>
-                    </td>
-                    <td>
-                        <button type="button" ng-click='listBooks.removeBook(element.id)'>Remove</button>
-                    </td>
+                <td>
+                    <button ui-sref='addEdit({id: element.id})' ng-click=''>Edit</button>
+                </td>
+                <td>
+                    <button type="button" ng-click='listBooks.removeBook(element.id)'> Remove</button>
+                </td>
             </tr>
             <span ng-show="listBooks.showMessage " style="font-size: 14px; color: red">{{listBooks.removedMessage}}</span>
         </tbody>
