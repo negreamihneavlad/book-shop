@@ -2,8 +2,9 @@ function Authentication($http, Session) {
     return {
         login: login,
         isAuthenticated: isAuthenticated,
-        logout:logout,
-        isActive
+        logout: logout,
+        isActive : isActive,
+        isAdmin : isAdmin
     };
 
     function login(email, password) {
@@ -27,10 +28,13 @@ function Authentication($http, Session) {
         Session.destroy();
     }
 
-    function isActive(){
-    	return Session.isActive();
+    function isActive() {
+        return Session.isActive();
     }
 
+    function isAdmin() {
+        return Session.get("isAdmin");
+    }
 }
 
 angular
