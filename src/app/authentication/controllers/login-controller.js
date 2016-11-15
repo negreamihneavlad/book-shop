@@ -1,64 +1,41 @@
-(function() {
+function LogInCtrl($state, Authentication, AuthGuard, Session) {
 
-    angular
-        .module("auth")
-        .controller("LogInCtrl", LogInCtrl);
+    var vm = this;
+    vm.credentials = {};
 
-    function LogInCtrl($state, Authentication, AuthGuard, Session) {
+    vm.login = login;
+    vm.ui = buildUI();
 
-        var vm = this;
-        vm.credentials = {};
+    function login() {
+        if (vm.log.$valid) {
 
-        vm.login = login;
-        vm.isActive = isActive;
-        vm.ui = buildUI();
+            vm.ui.isSubmitting = true;
+            vm.ui.showLoginError = false;
 
-        vm.isAdmin = Authentication.isAdmin();
-
-
-
-        vm.data = Session.getData();
-
-        function login() {
-            if (vm.log.$valid) {
-
-                vm.ui.isSubmitting = true;
-                vm.ui.showLoginError = false;
-
-
-                Authentication.login(vm.credentials.email, vm.credentials.password)
-                    .then(function() {
-                        if (AuthGuard.hasBlockedTransition()) {
-                            AuthGuard.allowBlockedTransition();
-                        } else {
-                            $state.go("home", {}, { reload: true });
-                        }
-                    })
-
+            Authentication.login(vm.credentials.email, vm.credentials.password)
+                .then(function() {
+                    if (AuthGuard.hasBlockedTransition()) {
+                        AuthGuard.allowBlockedTransition();
+                    } else {
+                        $state.go("home", {}, { reload: true });
+                    }
+                })
                 .catch(function() {
                     vm.ui.showLoginError = true;
                 })
-
                 .finally(function() {
                     vm.ui.isSubmitting = false;
                 });
-            }
         }
-
-        function buildUI() {
-            return {
-                isSubmitting: false,
-                showLoginError: false
-            };
-        }
-
-        function isActive() {
-            return Authentication.isActive();
-        }
-
     }
 
-
-
-
-}());
+    function buildUI() {
+        return {
+            isSubmitting: false,
+            showLoginError: false
+        };
+    }
+}
+angular
+    .module("auth")
+    .controller("LogInCtrl", LogInCtrl);
