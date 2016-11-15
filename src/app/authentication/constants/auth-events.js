@@ -1,3 +1,7 @@
+/**
+ *
+ * @type {{loggedIn: string, loggedOut: string, notAuthenticated: string, notAuthorized: string}}
+ */
 var AUTH_EVENTS = {
   loggedIn: "auth:loggedIn",	
   loggedOut: "auth:loggedOut",

@@ -1,3 +1,11 @@
+/**
+ *
+ * @param $state
+ * @param Authentication
+ * @param AuthGuard
+ * @param Session
+ * @constructor
+ */
 function LogInCtrl($state, Authentication, AuthGuard, Session) {
 
     var vm = this;
@@ -29,6 +37,10 @@ function LogInCtrl($state, Authentication, AuthGuard, Session) {
         }
     }
 
+    /**
+     *
+     * @returns {{isSubmitting: boolean, showLoginError: boolean}}
+     */
     function buildUI() {
         return {
             isSubmitting: false,

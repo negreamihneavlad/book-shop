@@ -1,3 +1,8 @@
+/**
+ *
+ * @param getOneBook
+ * @constructor
+ */
 function BookDetailsCtrl(getOneBook) {
 
     var vm = this;

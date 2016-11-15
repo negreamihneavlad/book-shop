@@ -1,3 +1,8 @@
+/**
+ *
+ * @param getSearchedBooks
+ * @constructor
+ */
 function SearchCtrl(getSearchedBooks) {
 
     var vm = this;

@@ -1,3 +1,9 @@
+/**
+ *
+ * @param $animate
+ * @param Authentication
+ * @returns {{transclude: string, priority: number, link: link}}
+ */
 function showOnlyForAdmins($animate, Authentication) {
     return {
     transclude: "element",

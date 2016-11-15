@@ -1,3 +1,10 @@
+/**
+ *
+ * @param $timeout
+ * @param Book
+ * @param getBookList
+ * @constructor
+ */
 function ListCtrl($timeout, Book, getBookList) {
     var vm = this;
 
@@ -5,7 +12,10 @@ function ListCtrl($timeout, Book, getBookList) {
     vm.removeBook = removeBook;
     vm.removed = removed;
     vm.showMessage = false;
-
+    /**
+     *
+     * @param id
+     */
     function removeBook(id) {
         console.log(vm.bookList);
         Book.destroy(id)
@@ -20,6 +30,10 @@ function ListCtrl($timeout, Book, getBookList) {
             });
     }
 
+    /**
+     *
+     * @param message
+     */
     function removed(message) {
         vm.removedMessage = message;
         vm.showMessage = true;

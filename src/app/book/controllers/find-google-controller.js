@@ -1,3 +1,8 @@
+/**
+ *
+ * @param BooksGoogle
+ * @constructor
+ */
 function FindCtrl(BooksGoogle) {
 
     var vm = this;
@@ -10,10 +15,18 @@ function FindCtrl(BooksGoogle) {
         vm.googleList = BooksGoogle.getListGoogle(vm.toFind);
     }
 
+    /**
+     *
+     * @param bookData
+     */
     function addBook(bookData) {
         BooksGoogle.addBook(bookData);
     }
 
+    /**
+     *
+     * @param googleList
+     */
     function addAllBooks(googleList) {
         BooksGoogle.addAllBooks(googleList);
     }

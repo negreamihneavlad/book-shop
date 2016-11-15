@@ -1,3 +1,12 @@
+/**
+ *
+ * @param $http
+ * @param $rootScope
+ * @param Session
+ * @param AUTH_EVENTS
+ * @returns {{login: login, isAuthenticated: isAuthenticated, logout: logout, isActive: isActive, isAdmin: isAdmin, signUp: signUp}}
+ * @constructor
+ */
 function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
     return {
         login: login,
@@ -7,7 +16,12 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
         isAdmin: isAdmin,
         signUp: signUp
     };
-
+    /**
+     *
+     * @param email
+     * @param password
+     * @returns {*}
+     */
     function login(email, password) {
         var promise = $http.post("http://localhost:3000/login", {
             email: email,
@@ -21,6 +35,11 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
         });
     }
 
+    /**
+     *
+     * @param email
+     * @param password
+     */
     function signUp(email, password) {
         var promise = $http.post("http://localhost:3000/sign-up", {
             email: email,

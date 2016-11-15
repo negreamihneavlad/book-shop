@@ -1,3 +1,10 @@
+/**
+ *
+ * @param $http
+ * @param Book
+ * @returns {{getListGoogle: getListGoogle, addBook: addBook, addAllBooks: addAllBooks}}
+ * @constructor
+ */
 function BooksGoogle($http, Book) {
     return {
         getListGoogle: getListGoogle,
@@ -7,6 +14,11 @@ function BooksGoogle($http, Book) {
     }
     var checkDate = checkDate;
 
+    /**
+     *
+     * @param toFind
+     * @returns {Array}
+     */
     function getListGoogle(toFind) {
         var googleList = [];
         $http.get("https://www.googleapis.com/books/v1/volumes?q=" + toFind)
@@ -30,16 +42,32 @@ function BooksGoogle($http, Book) {
         return googleList;
     }
 
+    /**
+     *
+     * @param bookData
+     */
     function addBook(bookData) {
         Book.create(bookData);
     }
 
+    /**
+     *
+     * @param googleList
+     */
     function addAllBooks(googleList) {
         _.forEach(googleList, function(element) {
             Book.create(element);
         });
     }
 
+    /**
+     *
+     * @param authors
+     * @param categories
+     * @param description
+     * @param date
+     * @returns {boolean}
+     */
     function isBook(authors, categories, description, date) {
         if (authors && categories && description && checkDate(date)) {
             return true;
@@ -47,6 +75,11 @@ function BooksGoogle($http, Book) {
         return false;
     }
 
+    /**
+     *
+     * @param dateToCheck
+     * @returns {boolean}
+     */
     function checkDate(dateToCheck) {
         var regEx = /^\d{4}-\d{2}-\d{2}$/;
         return dateToCheck.match(regEx) !== null;

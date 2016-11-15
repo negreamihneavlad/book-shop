@@ -1,3 +1,7 @@
+/**
+ *
+ * @returns {Function}
+ */
 function shortenText() {
     return function(text, customNrLetters) {
         var nrLetters = customNrLetters || 15;

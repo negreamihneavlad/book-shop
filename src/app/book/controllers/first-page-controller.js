@@ -1,3 +1,8 @@
+/**
+ *
+ * @param getBookList
+ * @constructor
+ */
 function FirstPageCtrl(getBookList) {
 
     var vm = this;

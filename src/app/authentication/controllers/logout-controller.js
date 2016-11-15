@@ -1,3 +1,9 @@
+/**
+ *
+ * @param $state
+ * @param Authentication
+ * @constructor
+ */
 function LogoutCtrl($state, Authentication) {
     var vm = this;
 

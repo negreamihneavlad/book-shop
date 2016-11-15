@@ -1,3 +1,10 @@
+/**
+ *
+ * @param $filter
+ * @param Book
+ * @param getOneBook
+ * @constructor
+ */
 function AddEditCtrl($filter, Book, getOneBook) {
 
     var vm = this;

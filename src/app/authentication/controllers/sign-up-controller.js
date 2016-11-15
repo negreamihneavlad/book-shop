@@ -1,3 +1,10 @@
+/**
+ *
+ * @param $state
+ * @param Authentication
+ * @param AuthGuard
+ * @constructor
+ */
 function SignUpCtrl($state, Authentication, AuthGuard) {
     var vm = this;
     vm.credentials = {};
