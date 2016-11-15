@@ -1,7 +1,7 @@
 (function() {
 
     angular
-        .module("bookShop", ["ui.router", "templates",'angular.filter'])
+        .module("bookShop", ["ui.router", "templates", 'angular-loading-bar'])
         .config(config)
         .run(run);
 
@@ -10,9 +10,9 @@
         $stateProvider
             .state('home', {
                 url: '/',
-                parent: 'app',
-                templateUrl: 'book/templates/first-page.html',
-                controller: 'FirstPageCtrl as firstPage',
+                parent: 'main',
+                templateUrl: 'app/book/templates/first-page.html',
+                controller: 'FirstPageCtrl as firstPage',   
                 resolve: {
                     getBookList: getBookList
                 }
@@ -20,8 +20,8 @@
             })
             .state('list', {
                 url: '/list',
-                parent: 'app',
-                templateUrl: 'book/templates/list.html',
+                parent: 'main',
+                templateUrl: 'app/book/templates/list.html',
                 controller: 'ListCtrl as listBooks',
                 resolve: {
                     getBookList: getBookList
@@ -31,8 +31,8 @@
             })
             .state('addEdit', {
                 url: '/add-edit/:id',
-                parent: 'app',
-                templateUrl: 'book/templates/add-edit.html',
+                parent: 'main',
+                templateUrl: 'app/book/templates/add-edit.html',
                 controller: 'AddEditCtrl as addEdit',
                 resolve: {
                     getOneBook: getOneBook
@@ -42,16 +42,16 @@
             })
             .state('findGoogle', {
                 url: '/find-google',
-                parent: 'app',
-                templateUrl: 'book/templates/find-google.html',
+                parent: 'main',
+                templateUrl: 'app/book/templates/find-google.html',
                 controller: 'FindCtrl as findGoogle',
                 adminGuard: true
 
             })
             .state('details', {
                 url: '/details/:id',
-                parent: 'app',
-                templateUrl: 'book/templates/book-details.html',
+                parent: 'main',
+                templateUrl: 'app/book/templates/book-details.html',
                 controller: 'BookDetailsCtrl as details',
                 resolve: {
                     getOneBook: getOneBook
@@ -60,8 +60,8 @@
             })
             .state('searchBooks', {
                 url: '/search/:toFind',
-                parent: 'app',
-                templateUrl: 'book/templates/search-result.html',
+                parent: 'main',
+                templateUrl: 'app/book/templates/search-result.html',
                 controller: 'SearchCtrl as search',
                 resolve: {
                     getSearchedBooks: getSearchedBooks
@@ -71,17 +71,17 @@
             });
     }
 
-    function getBookList(Books) {
-        return Books.getList();
+    function getBookList(Book) {
+        return Book.getList();
     }
 
-    function getSearchedBooks($stateParams, Books) {
-        return Books.getSearchList($stateParams.toFind);
+    function getSearchedBooks($stateParams, Book) {
+        return Book.getSearchList($stateParams.toFind);
     }
 
-    function getOneBook($stateParams, Books) {
+    function getOneBook($stateParams, Book) {
         if ($stateParams.id) {
-            return Books.getOne($stateParams.id);
+            return Book.getOne($stateParams.id);
         }
         return undefined;
     }
