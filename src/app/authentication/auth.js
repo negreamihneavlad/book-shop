@@ -1,18 +1,22 @@
 (function() {
 
-    function config($httpProvider,$stateProvider) {
+    function config($httpProvider, $stateProvider) {
 
         $httpProvider.interceptors.push("AuthInterceptor");
 
         $stateProvider
-
             .state('login', {
-            url: '/login',
-            parent: 'app',
-            templateUrl: 'authentication/templates/login.html',
-            controller: 'LogInCtrl as login'
-
-        });
+                url: '/login',
+                parent: 'main',
+                templateUrl: 'app/authentication/templates/login.html',
+                controller: 'LogInCtrl as login'
+            })
+            .state('sign', {
+                url: '/sign-up',
+                parent: 'main',
+                templateUrl: 'app/authentication/templates/sign-up.html',
+                controller: 'SignUpCtrl as sign'
+            });
     }
 
     angular

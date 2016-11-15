@@ -1,16 +1,11 @@
- <div class="table-look">
-  <div class="row">
-        <div ng-repeat="book in search.searchedBooks">
-            <div class="clearfix" ng-if="$index % 3 == 0"></div>
-            <div class="col-sm-4">
-                <a ui-sref="details({id: book.id})">
-                    <img class="table-look" ng-src="{{book.picture}}" alt="" /> </a>
-                </br>
-                <a ui-sref="details({id: book.id})">
-                    <span class="text">{{book.name}}</span>
-                    </br>
-                    <span class="text">by {{book.author}}</span> </a>
-            </div>
-        </div>
-    </div>
+<div class="table-look">
+    <ul class='flex-container wrap'>
+        <li class='flex-item' ng-repeat='book in firstPage.bookList'>
+            <a ui-sref="details({id: book.id})">
+                <img class="table-look" ng-src="{{book.picture}}" alt="" />
+                <p class="text-book">{{book.name}}</p>
+                <p class="text-book">by {{book.author}}</p>
+            </a>
+        </li>
+    </ul>
 </div>
