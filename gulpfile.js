@@ -43,9 +43,8 @@ var CONFIG = {
                 "bower_components/angular-selectize2/dist/angular-selectize.js",
                 "bower_components/selectize/dist/js/standalone/selectize.min.js",
                 "bower_components/cookies-js/dist/cookies.js",
-                "bower_components/angular-filter/dist/angular-filter.min.js"
-
-
+                "bower_components/angular-filter/dist/angular-filter.min.js",
+                "bower_components/angular-loading-bar/build/loading-bar.js"
             ],
             compiled: "frameworks.js"
         },
@@ -55,7 +54,6 @@ var CONFIG = {
                 "src/app/app-controller.js",
                 "src/app/authentication/auth.js",
                 "src/app/book/bookShop.js",
-                "src/app/book/controllers/main-controller.js",
                 "src/app/book/controllers/list-controller.js",
                 "src/app/book/controllers/add-edit-controller.js",
                 "src/app/book/controllers/find-google-controller.js",
@@ -64,6 +62,7 @@ var CONFIG = {
                 "src/app/book/controllers/search-books-controller.js",
                 "src/app/authentication/controllers/login-controller.js",
                 "src/app/authentication/controllers/logout-controller.js",
+                "src/app/authentication/controllers/sign-up-controller.js",
                 "src/app/book/filters/shorten-text.js",
                 "src/app/book/services/books-google.js",
                 "src/app/book/services/books.js",
@@ -74,11 +73,8 @@ var CONFIG = {
                 "src/app/authentication/services/admin-guard.js",
                 "src/app/authentication/constants/auth-events.js",
                 "src/app/authentication/directives/show-only-for-admins.js",
-                "src/app/layout/layout.js"
-
-
-
-
+                "src/app/layout/layout.js",
+                "src/app/layout/controllers/main-controller.js"
             ],
             compiled: "app.js"
         },
@@ -86,9 +82,6 @@ var CONFIG = {
             src: "src/app/**/*.html",
             options: {
                 base: "src"
-            },
-            replacePaths: {
-                "/Users/lateraluser/Documents/book-shop/src/app/": ""
             },
             compiled: "templates.js"
         },
@@ -169,20 +162,13 @@ gulp.task("minifyFrameworksJs", ["buildFrameworksJs"], function() {
  */
 gulp.task("buildTemplatesJs", function() {
     function renamePath(path, base) {
-        // path = slash(path);
-        // base = slash(base);
+        path = slash(path);
+        base = slash(base);        
 
-        // var dirName = slash(__dirname);
-        // var relativePath = path.replace(dirName + "/" + base + "/", "");
-        var replacePaths = CONFIG.js.templates.replacePaths;
+        var dirName = slash(__dirname);
+        var relativePath = path.replace(dirName + "/" + base + "/", "");        
 
-        for (var replacePath in replacePaths) {
-            if (path.indexOf(replacePath) > -1) {
-                return path.replace(replacePath, replacePaths[replacePath]);
-            }
-        }
-
-        return path;
+        return relativePath;
     }
 
     return gulp.src(CONFIG.js.templates.src, CONFIG.js.templates.options)
