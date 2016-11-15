@@ -1,4 +1,6 @@
 var AUTH_EVENTS = {
+  loggedIn: "auth:loggedIn",	
+  loggedOut: "auth:loggedOut",
   notAuthenticated: "auth:notAuthenticated",
   notAuthorized: "auth:notAuthorized"
 };
