@@ -6,5 +6,12 @@
 @import "books/index";
 @import "books/first-page";
 @import "books/images";
-@import "books/selectize";
 @import "authentication/login";
+@import "books/footer";
+@import "books/header";
+
+
+
+// import ngProgress.css
+
+@import "../../../bower_components/angular-loading-bar/build/loading-bar.css"
