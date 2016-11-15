@@ -1,17 +1,8 @@
-(function() {
+function BookDetailsCtrl(getOneBook) {
 
-    angular
-        .module("bookShop")
-        .controller("BookDetailsCtrl", BookDetailsCtrl);
-
-    function BookDetailsCtrl(getOneBook) {
-
-        var vm = this;
-
-        vm.book=getOneBook;
-
-        
-        
-
-    }
-}());
+    var vm = this;
+	vm.book = getOneBook;
+}
+angular
+    .module("bookShop")
+    .controller("BookDetailsCtrl", BookDetailsCtrl);
