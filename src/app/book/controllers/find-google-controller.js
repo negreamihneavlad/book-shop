@@ -1,30 +1,23 @@
-(function() {
+function FindCtrl(BooksGoogle) {
 
-    angular
-        .module("bookShop")
-        .controller("FindCtrl", FindCtrl);
+    var vm = this;
 
-    function FindCtrl(BooksGoogle) {
+    vm.submit = submit;
+    vm.addBook = addBook;
+    vm.addAllBooks = addAllBooks;
 
-        var vm = this;
-
-        vm.submit = submit;
-        vm.addBook = addBook;
-        vm.addAllBooks = addAllBooks;
-
-        function submit() {
-            vm.googleList = BooksGoogle.getListGoogle(vm.toFind);
-        }
-
-        function addBook(bookData) {
-            BooksGoogle.addBook(bookData);
-
-        }
-
-        function addAllBooks(googleList) {
-            BooksGoogle.addAllBooks(googleList);
-        }
-
-
+    function submit() {
+        vm.googleList = BooksGoogle.getListGoogle(vm.toFind);
     }
-}());
+
+    function addBook(bookData) {
+        BooksGoogle.addBook(bookData);
+    }
+
+    function addAllBooks(googleList) {
+        BooksGoogle.addAllBooks(googleList);
+    }
+}
+angular
+    .module("bookShop")
+    .controller("FindCtrl", FindCtrl);
