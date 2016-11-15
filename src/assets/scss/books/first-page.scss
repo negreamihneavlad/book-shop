@@ -1,39 +1,15 @@
-.columns {
-    columns: 4;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-
 .table-look {
     margin-top: 30px;
 }
 
-.form-control{
-    width:100%;
+.form-control {
+    width: 100%;
 }
 
-.books {
-    margin-top: 0px;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 300px;
-
-}
-
-.text {
+.text-book {
     color: black;
-}
-
-.input {
-    padding: 8px;
-    display: block;
-    border: none;
-    border-bottom: 1px solid #808080;
-    width: 88%
+    width: 150px;
+    margin: 0px;
 }
 
 .border {
@@ -44,3 +20,28 @@
     border-radius: 8px!important
 }
 
+.wrap {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+
+}
+
+.flex-item {
+    padding: 5px;
+    width: 220px;
+    height: 260px;
+    margin: 20px;
+}
