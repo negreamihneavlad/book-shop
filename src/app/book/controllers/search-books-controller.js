@@ -1,12 +1,9 @@
-(function() {
+function SearchCtrl(getSearchedBooks) {
 
-    angular
-        .module("bookShop")
-        .controller("SearchCtrl", SearchCtrl);
+    var vm = this;
+    vm.searchedBooks = getSearchedBooks;
+}
 
-    function SearchCtrl(getSearchedBooks) {
-
-        var vm = this;
-        vm.searchedBooks = getSearchedBooks;
-    }
-}());
+angular
+    .module("bookShop")
+    .controller("SearchCtrl", SearchCtrl);

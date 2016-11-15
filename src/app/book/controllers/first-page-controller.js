@@ -1,15 +1,8 @@
-(function() {
+function FirstPageCtrl(getBookList) {
 
-    angular
-        .module("bookShop")
-        .controller("FirstPageCtrl", FirstPageCtrl);
-
-    function FirstPageCtrl(getBookList) {
-
-        var vm = this;
-        vm.bookList = getBookList;
-
-
-
-    }
-}());
+    var vm = this;
+    vm.bookList = getBookList;
+}
+angular
+    .module("bookShop")
+    .controller("FirstPageCtrl", FirstPageCtrl);
