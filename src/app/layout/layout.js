@@ -4,10 +4,11 @@ function config($stateProvider) {
 
     // App state
         .state({
-            name: "app",
-            abstract: true,
-            templateUrl: "layout/templates/app.html"
-        });
+        name: "main",
+        abstract: true,
+        templateUrl: "app/layout/templates/main.html",
+        controller: 'MainCtrl as main'
+    });
 }
 
 angular
