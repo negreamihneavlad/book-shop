@@ -12,8 +12,6 @@ function AdminGuard($state, Authentication) {
             });
         }
     }
-
-
 }
 
 angular
