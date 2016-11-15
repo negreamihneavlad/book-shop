@@ -1,32 +1,32 @@
 <div>
     <h4 ng-value="addEdit.book.id ? addEdit.message='Update Book:' : addEdit.message='Add Book:'">{{addEdit.message}}</h4>
     <form name='addEdit.addBook' ng-submit="addEdit.submit()" novalidate>
-        <input type="text" placeholder="Name" ng-model="addEdit.book.name" name='uName' required />
+        <input class='inputd' type="text" placeholder="Name" ng-model="addEdit.book.name" name='uName' required />
         <span ng-show="addEdit.addBook.$submitted || addEdit.addBook.uName.$touched">
             <span ng-show="addEdit.addBook.uName.$error.required" style="font-size: 12px; color: red">Insert Book Name</span>
         </span>
         </br>
-        <input type="text" placeholder="Author" ng-model="addEdit.book.author" name='aName' required/>
+        <input class='inputd' type="text" placeholder="Author" ng-model="addEdit.book.author" name='aName' required/>
         <span ng-show="addEdit.addBook.$submitted || addEdit.addBook.aName.$touched">
             <span ng-show="addEdit.addBook.aName.$error.required" style="font-size: 12px; color: red">Insert Author Name</span>
         </span>
         </br>
-        <input type="text" placeholder="Category" ng-model="addEdit.book.category" name='cName' required/>
+        <input class='inputd' type="text" placeholder="Category" ng-model="addEdit.book.category" name='cName' required/>
         <span ng-show="addEdit.addBook.$submitted || addEdit.addBook.cName.$touched">
             <span ng-show="addEdit.addBook.cName.$error.required" style="font-size: 12px; color: red">Insert Category</span>
         </span>
         </br>
-        <input type="text" placeholder="Description" ng-model="addEdit.book.description" name='dName' required/>
+        <input class='inputd' type="text" placeholder="Description" ng-model="addEdit.book.description" name='dName' required/>
         <span ng-show="addEdit.addBook.$submitted || addEdit.addBook.dName.$touched">
             <span ng-show="addEdit.addBook.dName.$error.required" style="font-size: 12px; color: red">Insert Description</span>
         </span>
         </br>
-        <input type="text" placeholder="Price" ng-model="addEdit.book.price" name='pName' required/>
+        <input class='inputd' type="text" placeholder="Price" ng-model="addEdit.book.price" name='pName' required/>
         <span ng-show="addEdit.addBook.$submitted || addEdit.addBook.pName.$touched">
             <span ng-show="addEdit.addBook.pName.$error.required" style="font-size: 12px; color: red">Insert Price</span>
         </span>
         </br>
-        <input type="date" placeholder="Date" ng-model="addEdit.book.releaseDate" />
+        <input class='inputd' type="date" placeholder="Date" ng-model="addEdit.book.releaseDate" />
         </br>
         <input type="submit" ng-value="addEdit.book.id ? 'Save' : 'Create'" />
         <span ng-value="addEdit.book.id ? addEdit.editMessage = addEdit.updateMessage  : addEdit.editMessage = addEdit.createdMessage " style="font-size: 12px;">{{addEdit.editMessage}} </span>
