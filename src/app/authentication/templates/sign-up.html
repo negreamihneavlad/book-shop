@@ -1,0 +1,24 @@
+<div class="content">
+    <form name='sign.sign' ng-submit="sign.signUp()" novalidate>
+        Email:
+        </br>
+        <input class='inputd' type="email" name='input' placeholder='username@example.com' ng-model="sign.credentials.email" required />
+        <span ng-show="sign.sign.$submitted || sign.sign.input.$touched">
+        </br>
+            <span class='error' ng-show="sign.sign.input.$error.required" >Insert email</span>
+        <span class="error" ng-show="sign.sign.input.$error.email">Not valid email!</span>
+        </span>
+        </br>
+        </br>
+        Password:
+        </br>
+        <input class='inputd' type="password" name='password' placeholder="Password" ng-model="sign.credentials.password" required/>
+        <span ng-show="sign.sign.$submitted || sign.sign.password.$touched">
+        </br>
+            <span class='error' ng-show="sign.sign.password.$error.required" >Insert password</span>
+        </span>
+        </br>
+        </br>
+        <input type="submit" value="Sign up" />
+    </form>
+</div>
