@@ -1,10 +1,11 @@
-function Authentication($http, Session) {
+function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
     return {
         login: login,
         isAuthenticated: isAuthenticated,
         logout: logout,
-        isActive : isActive,
-        isAdmin : isAdmin
+        isActive: isActive,
+        isAdmin: isAdmin,
+        signUp: signUp
     };
 
     function login(email, password) {
@@ -14,9 +15,16 @@ function Authentication($http, Session) {
         });
 
         return promise.then(function(response) {
+            $rootScope.$emit(AUTH_EVENTS.loggedIn, response.data);
             Session.create(response.headers("Authorization"), response.data);
-            console.log(response.headers('Authorization'));
             return response;
+        });
+    }
+
+    function signUp(email, password) {
+        var promise = $http.post("http://localhost:3000/sign-up", {
+            email: email,
+            password: password
         });
     }
 
@@ -25,6 +33,7 @@ function Authentication($http, Session) {
     }
 
     function logout() {
+        $rootScope.$emit(AUTH_EVENTS.loggedOut, {});
         Session.destroy();
     }
 
