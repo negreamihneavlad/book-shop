@@ -1,15 +1,13 @@
 function LogoutCtrl($state, Authentication) {
     var vm = this;
 
-    vm.logout = logout;	
+    vm.logout = logout;
 
     function logout() {
         Authentication.logout();
-        $state.go("home",{},{reload: true});
-        
-
+        $state.go("home", {}, { reload: true });
     }
-    
+
 }
 
 angular
