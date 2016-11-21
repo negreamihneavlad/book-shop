@@ -3,10 +3,12 @@
  * @param getOneBook
  * @constructor
  */
-function BookDetailsCtrl(getOneBook) {
+function BookDetailsCtrl($anchorScroll, book) {
+
+    $anchorScroll();
 
     var vm = this;
-	vm.book = getOneBook;
+	vm.book = book;
 }
 angular
     .module("bookShop")
