@@ -2,17 +2,18 @@
  *
  * @param $timeout
  * @param Book
- * @param getBookList
+ * @param bookList
  * @constructor
  */
-function ListCtrl($timeout, Book, getBookList) {
+function ListCtrl($timeout, Book, bookList) {
     var vm = this;
 
-    vm.bookList = getBookList;
+    vm.bookList = bookList;
     vm.removeBook = removeBook;
     vm.removed = removed;
     vm.showMessage = false;
     /**
+     * Remove book from DB
      *
      * @param id
      */
@@ -31,6 +32,7 @@ function ListCtrl($timeout, Book, getBookList) {
     }
 
     /**
+     * Set message for 3 seconds if removed
      *
      * @param message
      */
