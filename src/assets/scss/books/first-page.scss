@@ -1,47 +1,53 @@
 .table-look {
-    margin-top: 30px;
+  margin-top: 30px;
+}
+
+.image {
+  width: 180px;
+  height: 250px;
 }
 
 .form-control {
-    width: 100%;
+  width: 100%;
 }
 
 .text-book {
-    color: black;
-    width: 150px;
-    margin: 0px;
+  color: black;
+  width: 150px;
+  margin: 0px;
+  text-align: center;
 }
 
 .border {
-    border: 1px solid #ccc!important
+  border: 1px solid #ccc !important
 }
 
 .round-large {
-    border-radius: 8px!important
+  border-radius: 8px !important
 }
 
 .wrap {
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .flex-container {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
 
 }
 
 .flex-item {
-    padding: 5px;
-    width: 220px;
-    height: 260px;
-    margin: 20px;
+  padding: 5px;
+  width: 180px;
+  height: 260px;
+  margin: 40px;
 }
