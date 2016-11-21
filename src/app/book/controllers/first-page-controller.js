@@ -3,10 +3,10 @@
  * @param getBookList
  * @constructor
  */
-function FirstPageCtrl(getBookList) {
+function FirstPageCtrl(bookList) {
 
     var vm = this;
-    vm.bookList = getBookList;
+    vm.bookList = bookList;
 }
 angular
     .module("bookShop")
