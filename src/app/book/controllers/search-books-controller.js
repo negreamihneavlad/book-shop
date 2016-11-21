@@ -3,10 +3,10 @@
  * @param getSearchedBooks
  * @constructor
  */
-function SearchCtrl(getSearchedBooks) {
+function SearchCtrl(searchedBooks) {
 
     var vm = this;
-    vm.searchedBooks = getSearchedBooks;
+    vm.searchedBooks = searchedBooks;
 }
 
 angular
