@@ -1,7 +1,6 @@
 function config($stateProvider) {
 
     $stateProvider
-
     // App state
         .state({
         name: "main",
