@@ -10,6 +10,7 @@ function AdminGuard($state, Authentication) {
         onStateChangeStart: onStateChangeStart
     };
     /**
+     * Checks if logged user is an Admin
      *
      * @param event
      * @param toState
