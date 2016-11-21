@@ -12,7 +12,7 @@
     <ul class='flex-container wrap'>
         <li class='flex-item' ng-repeat='book in firstPage.bookList'>
             <a ui-sref="details({id: book.id})">
-                <img class="table-look" ng-src="{{book.picture}}" alt="" />
+                <img class="table-look image" ng-src="{{book.picture}}" alt="" />
 
                 <p class="text-book">{{book.name}}</p>
                 <p class="text-book">by {{book.author}}</p>
