@@ -6,34 +6,28 @@
  * @param Authentication
  * @param Session
  * @param AUTH_EVENTS
+ * @param ACCOUNT_EVENTS
  * @constructor
  */
-function MainCtrl($rootScope, $scope, $state, Authentication, Session, AUTH_EVENTS) {
+function MainCtrl($rootScope, $scope, $state, Authentication, Session, AUTH_EVENTS, ACCOUNT_EVENTS) {
 
     var vm = this;
-    var unregisterLoggedInHandler;
 
     vm.logout = logout;
     vm.isLoggedIn = Authentication.isAuthenticated();
-    vm.email = Session.get('email');
-    console.log('here');
+    vm.user = Session.getData();
 
-    unregisterLoggedInHandler = $rootScope.$on(AUTH_EVENTS.loggedIn, function (event, data) {
-        vm.isLoggedIn = true;
-        vm.email = data.email;
-        console.log(data);
+    $rootScope.$on(ACCOUNT_EVENTS.update, function (event, data) {
+        vm.user.firstName = data.firstName;
+        vm.user.lastName = data.lastName;
     });
-
-    $scope.$on("$destroy", destroy);
 
     $rootScope.$on(AUTH_EVENTS.loggedOut, function (event, data) {
         vm.isLoggedIn = false;
     });
-
-    function destroy() {
-        unregisterLoggedInHandler();
-    }
-
+    /**
+     * User log out
+     */
     function logout() {
         Authentication.logout();
         $state.go("home", {}, {reload: true});
