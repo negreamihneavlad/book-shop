@@ -15,6 +15,7 @@ function BooksGoogle($http, Book) {
     var checkDate = checkDate;
 
     /**
+     * Request to get books from Google API
      *
      * @param toFind
      * @returns {Array}
@@ -22,11 +23,11 @@ function BooksGoogle($http, Book) {
     function getListGoogle(toFind) {
         var googleList = [];
         $http.get("https://www.googleapis.com/books/v1/volumes?q=" + toFind)
-            .then(function(response) {
-                _.forEach(response.data.items, function(element) {
-                    var price = Math.floor((Math.random() * 50) + 9);
+            .then(function (response) {
+                _.forEach(response.data.items, function (element) {
+                    var price = (Math.random() * 50 + 9).toFixed(2);
 
-                    if (isBook(element.volumeInfo.authors, element.volumeInfo.categories, element.volumeInfo.description, element.volumeInfo.publishedDate)) {
+                    if (isBook(element.volumeInfo.authors, element.volumeInfo.categories, element.volumeInfo.description, element.volumeInfo.publishedDate, element.volumeInfo.industryIdentifiers)) {
                         googleList.push({
                             name: element.volumeInfo.title,
                             author: element.volumeInfo.authors[0],
@@ -34,7 +35,10 @@ function BooksGoogle($http, Book) {
                             category: element.volumeInfo.categories[0],
                             picture: element.volumeInfo.imageLinks.smallThumbnail,
                             releaseDate: element.volumeInfo.publishedDate,
-                            price: price
+                            price: price,
+                            publisher: element.volumeInfo.publisher,
+                            isbn: element.volumeInfo.industryIdentifiers[1].type + ' '+ element.volumeInfo.industryIdentifiers[1].identifier,
+                            pages: element.volumeInfo.pageCount
                         });
                     }
                 });
@@ -43,6 +47,7 @@ function BooksGoogle($http, Book) {
     }
 
     /**
+     * Add book to DB
      *
      * @param bookData
      */
@@ -51,16 +56,18 @@ function BooksGoogle($http, Book) {
     }
 
     /**
+     * Add all books to DB
      *
      * @param googleList
      */
     function addAllBooks(googleList) {
-        _.forEach(googleList, function(element) {
+        _.forEach(googleList, function (element) {
             Book.create(element);
         });
     }
 
     /**
+     * Check if all informations about book exists
      *
      * @param authors
      * @param categories
@@ -68,14 +75,15 @@ function BooksGoogle($http, Book) {
      * @param date
      * @returns {boolean}
      */
-    function isBook(authors, categories, description, date) {
-        if (authors && categories && description && checkDate(date)) {
+    function isBook(authors, categories, description, date,isbn) {
+        if (authors && categories && description && checkDate(date) && isbn) {
             return true;
         }
         return false;
     }
 
     /**
+     * Check if date has requested format
      *
      * @param dateToCheck
      * @returns {boolean}
