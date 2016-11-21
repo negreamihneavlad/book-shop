@@ -16,8 +16,8 @@
             <li>
                 <div>
                     <span ng-if='main.isLoggedIn'>
-        
-                    <span> {{main.email}}</span>
+
+                    <span class="account"><a href="#" ui-sref="accountEdit({id:main.user.id})"> {{main.user.firstName+' '+main.user.lastName}}</a></span>
                     <a href="#" ng-click='main.logout()'>Logout</a>
                     </span>
                     <span ng-if='!main.isLoggedIn'>
@@ -26,7 +26,7 @@
         
                     </span>
                 </div>
-                <li><a ui-sref='sign' href="#">Sign up</a></li>
+            <li><a ui-sref='sign' href="#">Sign up</a></li>
         </ul>
     </div>
 </header>
@@ -58,12 +58,15 @@
         </div>
         <div>
             <i class="fa fa-envelope"></i>
-            <p><a href="mailto:support@company.com">support@bookshop.com</a></p>
+            <p><a href="mailto:negrea.vlad@yahoo.com">support@bookshop.com</a></p>
         </div>
     </div>
     <div class="footer-right">
         <p class="footer-company-about">
-            <span>About the company</span> Our aim at Bookshop is to have a good stock of reading material for all interests, and for all ages. The majority of the books are in English, but books in other languages are available and can be obtained through our services. Books are imported on a regular basis from around the world.
+            <span>About the company</span> Our aim at Bookshop is to have a good stock of reading material for all
+            interests, and for all ages. The majority of the books are in English, but books in other languages are
+            available and can be obtained through our services. Books are imported on a regular basis from around the
+            world.
         </p>
         <div class="footer-icons">
             <a href="#"><i class="fa fa-facebook"></i></a>
