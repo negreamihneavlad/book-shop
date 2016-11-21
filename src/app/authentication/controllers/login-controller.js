@@ -6,7 +6,7 @@
  * @param Session
  * @constructor
  */
-function LogInCtrl($state, Authentication, AuthGuard, Session) {
+function LogInCtrl($state, Authentication, AuthGuard) {
 
     var vm = this;
     vm.credentials = {};
@@ -15,23 +15,23 @@ function LogInCtrl($state, Authentication, AuthGuard, Session) {
     vm.ui = buildUI();
 
     function login() {
-        if (vm.log.$valid) {
+        if (vm.form.$valid) {
 
             vm.ui.isSubmitting = true;
             vm.ui.showLoginError = false;
 
             Authentication.login(vm.credentials.email, vm.credentials.password)
-                .then(function() {
+                .then(function () {
                     if (AuthGuard.hasBlockedTransition()) {
                         AuthGuard.allowBlockedTransition();
                     } else {
-                        $state.go("home", {}, { reload: true });
+                        $state.go("home", {}, {reload: true});
                     }
                 })
-                .catch(function() {
+                .catch(function () {
                     vm.ui.showLoginError = true;
                 })
-                .finally(function() {
+                .finally(function () {
                     vm.ui.isSubmitting = false;
                 });
         }
