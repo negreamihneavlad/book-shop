@@ -1,24 +1,64 @@
-<div class="content">
-    <form name='sign.sign' ng-submit="sign.signUp()" novalidate>
-        Email:
+<div class="content-child">
+    <h1 class="title">Create a new account</h1>
+
+    <form name='sign.form' ng-submit="sign.signUp()" novalidate>
+        First Name:
         </br>
-        <input class='inputd' type="email" name='input' placeholder='username@example.com' ng-model="sign.credentials.email" required />
-        <span ng-show="sign.sign.$submitted || sign.sign.input.$touched">
+        <input class='inputd' type="input" name='firstName' placeholder="First Name"
+               ng-model="sign.credentials.firstName" required/>
         </br>
-            <span class='error' ng-show="sign.sign.input.$error.required" >Insert email</span>
-        <span class="error" ng-show="sign.sign.input.$error.email">Not valid email!</span>
+        <span ng-show="sign.form.$submitted || sign.form.firstName.$touched">
+            <span class='error' ng-show="sign.form.firstName.$error.required">Insert First Name</span>
         </span>
         </br>
+        Last Name:
+        </br>
+        <input class='inputd' type="input" name='lastName' placeholder="Last Name"
+               ng-model="sign.credentials.lastName" required/>
+        </br>
+        <span ng-show="sign.form.$submitted || sign.form.lastName.$touched">
+            <span class='error' ng-show="sign.form.lastName.$error.required">Insert Last Name</span>
+        </span>
+        </br>
+        Email:
+        </br>
+        <input class='inputd' type="email" name='input' placeholder='username@example.com'
+               ng-model="sign.credentials.email" required/>
+        </br>
+        <span ng-show="sign.form.$submitted || sign.form.input.$touched">
+            <span class='error' ng-show="sign.form.input.$error.required">Insert email</span>
+        <span class="error" ng-show="sign.form.input.$error.email">Not valid email!</span>
+        </span>
         </br>
         Password:
         </br>
-        <input class='inputd' type="password" name='password' placeholder="Password" ng-model="sign.credentials.password" required/>
-        <span ng-show="sign.sign.$submitted || sign.sign.password.$touched">
+        <input class='inputd' type="password" name='password' placeholder="Password"
+               ng-model="sign.credentials.password" required/>
         </br>
-            <span class='error' ng-show="sign.sign.password.$error.required" >Insert password</span>
+        <span ng-show="sign.form.$submitted || sign.form.password.$touched">
+            <span class='error' ng-show="sign.form.password.$error.required">Insert password</span>
         </span>
         </br>
+        Confirm Password:
         </br>
-        <input type="submit" value="Sign up" />
+        <div ng-class="{'has-error':!sign.form.confirmPassword.$valid}">
+            <input class='inputd' type="password" name='confirmPassword' placeholder="Confirm Password"
+                   ng-model="sign.confirmPassword" required password-confirmation
+                   match-target="sign.credentials.password"/>
+            </br>
+            <div ng-show="sign.form.$submitted || sign.form.confirmPassword.$touched">
+                <div class="error" ng-show="sign.form.confirmPassword.$error.required">Insert confirmation password
+                </div>
+                <div class="error" ng-show="sign.form.confirmPassword.$error.match">Password confirmation must match
+                    password
+                </div>
+            </div>
+        </div>
+
+        </br>
+        <input type="submit" value="Sign up"/>
+        <div>
+            <span>{{sign.emailAlreadyRegistered}}</span>
+        </div>
     </form>
 </div>
