@@ -29,7 +29,7 @@
         <input class='inputd' type="date" placeholder="Date" ng-model="addEdit.book.releaseDate" />
         </br>
         <input type="submit" ng-value="addEdit.book.id ? 'Save' : 'Create'" />
-        <span ng-value="addEdit.book.id ? addEdit.editMessage = addEdit.updateMessage  : addEdit.editMessage = addEdit.createdMessage " style="font-size: 12px;">{{addEdit.editMessage}} </span>
+        <span ng-value="addEdit.book.id ? addEdit.editMessage = addEdit.updateMessage  : addEdit.editMessage = addEdit.createdMessage " style="font-size: 12px; color:red">{{addEdit.editMessage}} </span>
     </form>
 </div>
 
