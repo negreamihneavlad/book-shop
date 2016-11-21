@@ -9,9 +9,9 @@
 @import "authentication/login";
 @import "books/footer";
 @import "books/header";
-
+@import "books/book-details";
 
 
 // import ngProgress.css
 
-@import "../../../bower_components/angular-loading-bar/build/loading-bar.css"
+@import "../../../bower_components/angular-loading-bar/build/loading-bar.css";
