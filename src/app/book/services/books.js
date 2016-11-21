@@ -15,6 +15,7 @@ function Book($http, $filter) {
         getSearchList: getSearchList
     };
     /**
+     * Request for searched book
      *
      * @param toFind
      * @returns {*}
@@ -26,6 +27,7 @@ function Book($http, $filter) {
     }
 
     /**
+     * Request to get books
      *
      * @returns {*}
      */
@@ -36,6 +38,7 @@ function Book($http, $filter) {
     }
 
     /**
+     * Request to get one book
      *
      * @param bookId
      * @returns {*}
@@ -49,6 +52,7 @@ function Book($http, $filter) {
     }
 
     /**
+     * Request to create book
      *
      * @param bookData
      * @returns {*}
@@ -61,6 +65,7 @@ function Book($http, $filter) {
     }
 
     /**
+     * Request to edit book
      *
      * @param bookId
      * @param bookData
@@ -72,6 +77,7 @@ function Book($http, $filter) {
     }
 
     /**
+     * Request to delete book
      *
      * @param bookId
      * @returns {boolean|*}
