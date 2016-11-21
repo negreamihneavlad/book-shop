@@ -10,12 +10,15 @@ function FindCtrl(BooksGoogle) {
     vm.submit = submit;
     vm.addBook = addBook;
     vm.addAllBooks = addAllBooks;
-
+    /**
+     * Get the book list from google request
+     */
     function submit() {
         vm.googleList = BooksGoogle.getListGoogle(vm.toFind);
     }
 
     /**
+     * Add book to DB
      *
      * @param bookData
      */
@@ -24,6 +27,7 @@ function FindCtrl(BooksGoogle) {
     }
 
     /**
+     * Add all books to DB
      *
      * @param googleList
      */
