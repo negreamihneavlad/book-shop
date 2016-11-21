@@ -10,25 +10,32 @@ function SignUpCtrl($state, Authentication, AuthGuard) {
     vm.credentials = {};
 
     vm.signUp = signUp;
-
+    /**
+     * Create a user account
+     */
     function signUp() {
-        if (vm.sign.$valid) {
-            Authentication.signUp(vm.credentials.email, vm.credentials.password);
-            Authentication.login(vm.credentials.email, vm.credentials.password)
-                .then(function() {
-                    if (AuthGuard.hasBlockedTransition()) {
-                        AuthGuard.allowBlockedTransition();
-                    } else {
-                        $state.go("home", {}, { reload: true });
-                    }
+        if (vm.form.$valid) {
+            Authentication.signUp(vm.credentials.firstName, vm.credentials.lastName, vm.credentials.email, vm.credentials.password)
+                .then(function () {
+                    Authentication.login(vm.credentials.email, vm.credentials.password)
+                        .then(function () {
+                            if (AuthGuard.hasBlockedTransition()) {
+                                AuthGuard.allowBlockedTransition();
+                            } else {
+                                $state.go("home", {}, {reload: true});
+                            }
+                        })
+                        .catch(function () {
+                            vm.ui.showLoginError = true;
+                        })
+                        .finally(function () {
+                            vm.ui.isSubmitting = false;
+                        });
+                    $state.go("home", {}, {reload: true});
                 })
-                .catch(function() {
-                    vm.ui.showLoginError = true;
+                .catch(function(){
+                    vm.emailAlreadyRegistered = 'Email is already registered';
                 })
-                .finally(function() {
-                    vm.ui.isSubmitting = false;
-                });
-            $state.go("home", {}, { reload: true });
         }
     }
 
