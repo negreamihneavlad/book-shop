@@ -12,7 +12,7 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/book/templates/first-page.html',
             controller: 'FirstPageCtrl as firstPage',
             resolve: {
-                getBookList: getBookList
+                bookList: getBookList
             }
 
         })
@@ -22,7 +22,7 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/book/templates/list.html',
             controller: 'ListCtrl as listBooks',
             resolve: {
-                getBookList: getBookList
+                bookList: getBookList
             },
             adminGuard: true
 
@@ -33,7 +33,7 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/book/templates/add-edit.html',
             controller: 'AddEditCtrl as addEdit',
             resolve: {
-                getOneBook: getOneBook
+                book: getOneBook
             },
             adminGuard: true
 
@@ -52,7 +52,7 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/book/templates/book-details.html',
             controller: 'BookDetailsCtrl as details',
             resolve: {
-                getOneBook: getOneBook
+                book: getOneBook
             }
 
         })
@@ -62,13 +62,14 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/book/templates/search-result.html',
             controller: 'SearchCtrl as search',
             resolve: {
-                getSearchedBooks: getSearchedBooks
+                searchedBooks: getSearchedBooks
             }
 
 
         });
 }
 /**
+ * Get book list
  *
  * @param Book
  * @returns {*}
@@ -77,6 +78,7 @@ function getBookList(Book) {
     return Book.getList();
 }
 /**
+ * Get searched books
  *
  * @param $stateParams
  * @param Book
@@ -86,6 +88,7 @@ function getSearchedBooks($stateParams, Book) {
     return Book.getSearchList($stateParams.toFind);
 }
 /**
+ * Get one book
  *
  * @param $stateParams
  * @param Book
