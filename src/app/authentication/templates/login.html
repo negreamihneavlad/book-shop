@@ -1,24 +1,32 @@
-<div class="content">
-    <form name='login.log' ng-submit="login.login()" novalidate>
+<div class="content-child">
+    <h1 class="title">Sign in to your account</h1>
+    <form name='login.form' ng-submit="login.login()" novalidate>
         Email:
         </br>
-        <input class='inputd' type="email" name='input' placeholder='username@example.com' ng-model="login.credentials.email" required />
-        <span ng-show="login.log.$submitted || login.log.input.$touched">
+        <input class='inputd' type="email" name='input' placeholder='username@example.com'
+               ng-model="login.credentials.email" required/>
         </br>
-            <span class='error' ng-show="login.log.input.$error.required" >Insert email</span>
-        <span class="error" ng-show="login.log.input.$error.email">Not valid email!</span>
+        <span ng-show="login.form.$submitted || login.form.input.$touched">
+
+            <span class='error' ng-show="login.form.input.$error.required">Insert email</span>
+        <span class="error" ng-show="login.form.input.$error.email">Not valid email!</span>
         </span>
-        </br>
         </br>
         Password:
         </br>
-        <input class='inputd' type="password" name='password' placeholder="Password" ng-model="login.credentials.password" required/>
-        <span ng-show="login.log.$submitted || login.log.password.$touched">
+        <input class='inputd' type="password" name='password' placeholder="Password"
+               ng-model="login.credentials.password" required/>
         </br>
-            <span class='error' ng-show="login.log.password.$error.required" >Insert password</span>
+        <span ng-show="login.form.$submitted || login.form.password.$touched">
+
+            <span class='error' ng-show="login.form.password.$error.required">Insert password</span>
         </span>
         </br>
+        <input type="submit" value="Login"/>
         </br>
-        <input type="submit" value="Login" />
+        <span class="error" ng-if="login.ui.showLoginError">Invalid email or password.</span>
+        </br>
+        <a href='#' ui-sref="forgotPassword">Forgot password?</a>
+
     </form>
 </div>
