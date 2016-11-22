@@ -13,7 +13,9 @@ function LogInCtrl($state, Authentication, AuthGuard) {
 
     vm.login = login;
     vm.ui = buildUI();
-
+    /**
+     * Request login
+     */
     function login() {
         if (vm.form.$valid) {
 

@@ -7,10 +7,15 @@ function config($urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
 }
 
+function run(){
+    URLTo.apiBase("http://localhost:3000");
+}
+
 angular
     .module("app", [
         "bookShop",
         "auth",
         "layout"
     ])
-    .config(config);
+    .config(config)
+    .run(run);

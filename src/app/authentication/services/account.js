@@ -2,10 +2,11 @@
  * Account
  *
  * @param $http
+ * @param ACCOUNT_API_URLS
  * @returns {{updateUser: updateUser}}
  * @constructor
  */
-function Account($http, $rootScope, ACCOUNT_EVENTS) {
+function Account($http, $rootScope, ACCOUNT_EVENTS, ACCOUNT_API_URLS) {
     return {
         updateUser: updateUser,
         updatePassword: updatePassword,
@@ -19,7 +20,7 @@ function Account($http, $rootScope, ACCOUNT_EVENTS) {
      * @returns {*}
      */
     function requestPasswordResetToken(email) {
-        return $http.put("http://localhost:3000/account/forgot-password", {
+        return $http.put(URLTo.api(ACCOUNT_API_URLS.accountForgotPassword), {
             email: email
         });
     }
@@ -33,7 +34,7 @@ function Account($http, $rootScope, ACCOUNT_EVENTS) {
      * @returns {*}
      */
     function resetPassword(email, password, token) {
-        return $http.put("http://localhost:3000/account/reset-password", {
+        return $http.put(URLTo.api(ACCOUNT_API_URLS.accountResetPassword), {
             email: email,
             password: password,
             code: token
@@ -47,7 +48,7 @@ function Account($http, $rootScope, ACCOUNT_EVENTS) {
      * @returns {*}
      */
     function updateUser(userData) {
-        return $http.put("http://localhost:3000/account/edit", userData).then(function (response) {
+        return $http.put(URLTo.api(ACCOUNT_API_URLS.editAccount), userData).then(function (response) {
             $rootScope.$emit(ACCOUNT_EVENTS.update, response.data);
             return response.data;
 
@@ -59,11 +60,10 @@ function Account($http, $rootScope, ACCOUNT_EVENTS) {
      *
      * @param oldPassword
      * @param newPassword
-     * @param confirmPassword
      * @returns {*}
      */
     function updatePassword(oldPassword, newPassword) {
-        return $http.put("http://localhost:3000/account/edit/change-password", {
+        return $http.put(URLTo.api(ACCOUNT_API_URLS.accountEditChangePassword), {
             oldPassword: oldPassword,
             password: newPassword
         })

@@ -44,6 +44,7 @@ var CONFIG = {
                 "bower_components/selectize/dist/js/standalone/selectize.min.js",
                 "bower_components/cookies-js/dist/cookies.js",
                 "bower_components/angular-filter/dist/angular-filter.min.js",
+                "bower_components/url-to/url-to.js",
                 "bower_components/angular-loading-bar/build/loading-bar.js"
             ],
             compiled: "frameworks.js"
@@ -78,6 +79,9 @@ var CONFIG = {
                 "src/app/authentication/services/admin-guard.js",
                 "src/app/authentication/constants/auth-events.js",
                 "src/app/authentication/constants/account-events.js",
+                "src/app/authentication/constants/account-api-urls.js",
+                "src/app/book/constants/books-api-urls.js",
+                "src/app/authentication/constants/auth-api-urls.js",
                 "src/app/authentication/directives/show-only-for-admins.js",
                 "src/app/authentication/directives/password-confirmation.js",
                 "src/app/layout/layout.js",

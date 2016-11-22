@@ -4,10 +4,11 @@
  * @param $rootScope
  * @param Session
  * @param AUTH_EVENTS
+ * @param AUTH_API_URLS
  * @returns {{login: login, isAuthenticated: isAuthenticated, logout: logout, isActive: isActive, isAdmin: isAdmin, signUp: signUp}}
  * @constructor
  */
-function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
+function Authentication($http, $rootScope, Session, AUTH_EVENTS, AUTH_API_URLS) {
     return {
         login: login,
         isAuthenticated: isAuthenticated,
@@ -24,7 +25,7 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
      * @returns {*}
      */
     function login(email, password) {
-        var promise = $http.post("http://localhost:3000/login", {
+        var promise = $http.post(URLTo.api(AUTH_API_URLS.login), {
             email: email,
             password: password
         });
@@ -41,7 +42,7 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS) {
      * @param password
      */
     function signUp(firstName, lastName, email, password) {
-        var promise = $http.post("http://localhost:3000/sign-up", {
+        var promise = $http.post(URLTo.api(AUTH_API_URLS.signUp), {
             firstName: firstName,
             lastName: lastName,
             email: email,

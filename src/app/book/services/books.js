@@ -2,10 +2,11 @@
  *
  * @param $http
  * @param $filter
+ * @param BOOKS_API_URLS
  * @returns {{getList: getList, getOne: getOne, create: create, update: update, destroy: destroy, getSearchList: getSearchList}}
  * @constructor
  */
-function Book($http, $filter) {
+function Book($http, $filter, BOOKS_API_URLS) {
     return {
         getList: getList,
         getOne: getOne,
@@ -21,7 +22,7 @@ function Book($http, $filter) {
      * @returns {*}
      */
     function getSearchList(toFind) {
-        return $http.get("http://localhost:3000/search/" + toFind).then(function(response) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.search, toFind)).then(function(response) {
             return response.data;
         });
     }
@@ -32,7 +33,7 @@ function Book($http, $filter) {
      * @returns {*}
      */
     function getList() {
-        return $http.get("http://localhost:3000/books").then(function(response) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.books)).then(function(response) {
             return response.data;
         });
     }
@@ -44,7 +45,7 @@ function Book($http, $filter) {
      * @returns {*}
      */
     function getOne(bookId) {
-        return $http.get("http://localhost:3000/books/" + bookId).then(function(response) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.oneBook, bookId)).then(function(response) {
             var book = response.data;
             book.releaseDate = new Date(book.releaseDate);
             return book;
@@ -61,7 +62,7 @@ function Book($http, $filter) {
         bookData = _.assign({}, bookData, {
             releaseDate: $filter('date')(bookData.releaseDate, 'yyyy-MM-dd')
         });
-        return $http.post("http://localhost:3000/books", bookData);
+        return $http.post(URLTo.api(BOOKS_API_URLS.books), bookData);
     }
 
     /**
@@ -73,7 +74,7 @@ function Book($http, $filter) {
      */
     function update(bookId, bookData) {
         bookData.releaseDate = $filter('date')(bookData.releaseDate, 'yyyy-MM-dd');
-        return $http.put("http://localhost:3000/books/" + bookId, bookData);
+        return $http.put(URLTo.api(BOOKS_API_URLS.oneBook, bookId), bookData);
     }
 
     /**
@@ -83,7 +84,7 @@ function Book($http, $filter) {
      * @returns {boolean|*}
      */
     function destroy(bookId) {
-        return $http.delete("http://localhost:3000/books/" + bookId);
+        return $http.delete(URLTo.api(BOOKS_API_URLS.oneBook, bookId));
     }
 
 

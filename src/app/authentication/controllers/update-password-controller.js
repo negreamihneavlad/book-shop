@@ -23,8 +23,6 @@ function UpdatePassCtrl($state, Account) {
                 });
         }
     }
-
-
 }
 
 angular
