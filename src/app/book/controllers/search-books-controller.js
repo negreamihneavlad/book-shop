@@ -6,7 +6,7 @@
 function SearchCtrl(searchedBooks) {
 
     var vm = this;
-    vm.searchedBooks = searchedBooks;
+    vm.bookList = searchedBooks;
 }
 
 angular

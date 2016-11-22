@@ -22,7 +22,7 @@ function Book($http, $filter, BOOKS_API_URLS) {
      * @returns {*}
      */
     function getSearchList(toFind) {
-        return $http.get(URLTo.api(BOOKS_API_URLS.search, toFind)).then(function(response) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.search, [toFind])).then(function(response) {
             return response.data;
         });
     }
@@ -45,7 +45,7 @@ function Book($http, $filter, BOOKS_API_URLS) {
      * @returns {*}
      */
     function getOne(bookId) {
-        return $http.get(URLTo.api(BOOKS_API_URLS.oneBook, bookId)).then(function(response) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.oneBook, [bookId])).then(function(response) {
             var book = response.data;
             book.releaseDate = new Date(book.releaseDate);
             return book;
@@ -74,7 +74,7 @@ function Book($http, $filter, BOOKS_API_URLS) {
      */
     function update(bookId, bookData) {
         bookData.releaseDate = $filter('date')(bookData.releaseDate, 'yyyy-MM-dd');
-        return $http.put(URLTo.api(BOOKS_API_URLS.oneBook, bookId), bookData);
+        return $http.put(URLTo.api(BOOKS_API_URLS.oneBook, [bookId]), bookData);
     }
 
     /**
@@ -84,7 +84,7 @@ function Book($http, $filter, BOOKS_API_URLS) {
      * @returns {boolean|*}
      */
     function destroy(bookId) {
-        return $http.delete(URLTo.api(BOOKS_API_URLS.oneBook, bookId));
+        return $http.delete(URLTo.api(BOOKS_API_URLS.oneBook, [bookId]));
     }
 
 

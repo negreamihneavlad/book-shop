@@ -3,7 +3,7 @@
  *
  * @param $http
  * @param ACCOUNT_API_URLS
- * @returns {{updateUser: updateUser}}
+ * @returns {{updateUser: updateUser, updatePassword: updatePassword, requestPasswordResetToken: requestPasswordResetToken, resetPassword: resetPassword}}
  * @constructor
  */
 function Account($http, $rootScope, ACCOUNT_EVENTS, ACCOUNT_API_URLS) {
@@ -51,7 +51,6 @@ function Account($http, $rootScope, ACCOUNT_EVENTS, ACCOUNT_API_URLS) {
         return $http.put(URLTo.api(ACCOUNT_API_URLS.editAccount), userData).then(function (response) {
             $rootScope.$emit(ACCOUNT_EVENTS.update, response.data);
             return response.data;
-
         });
     }
 
