@@ -1,3 +1,8 @@
+/**
+ *
+ * @param $parse
+ * @returns {{restrict: string, scope: {matchTarget: string}, require: string, link: link}}
+ */
 function passwordConfirmation($parse){
     return {
         restrict: 'A',
