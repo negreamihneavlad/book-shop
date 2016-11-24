@@ -1,0 +1,28 @@
+.sidenav {
+  width: 160px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background-color: #c8dbeb;
+  overflow-x: hidden;
+  padding-left: 20px;
+  margin-top: 200px;
+  margin-right: 20px;
+  border-left: solid;
+  padding-bottom: 20px;
+}
+
+.title{
+  font: normal 20px Cookie, Arial, Helvetica, sans-serif;
+  padding-top: 5px;
+  margin: 0;
+}
+
+.filter-block{
+  font: normal 12px Cookie, Arial, Helvetica, sans-serif;
+}
+
+.filter-block span{
+  font-size: 16px;
+  color: #5383d3;
+}
