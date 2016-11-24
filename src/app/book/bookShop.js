@@ -1,20 +1,18 @@
 /**
  *
  * @param $stateProvider
- * @param $urlRouterProvider
  */
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider) {
 
     $stateProvider
         .state('home', {
-            url: '/',
+            url: '/?category&author&publisher',
             parent: 'main',
             templateUrl: 'app/book/templates/first-page.html',
             controller: 'FirstPageCtrl as firstPage',
             resolve: {
                 bookList: getBookList
             }
-
         })
         .state('list', {
             url: '/list',
@@ -25,7 +23,6 @@ function config($stateProvider, $urlRouterProvider) {
                 bookList: getBookList
             },
             adminGuard: true
-
         })
         .state('addEdit', {
             url: '/add-edit/:id',
@@ -36,7 +33,6 @@ function config($stateProvider, $urlRouterProvider) {
                 book: getOneBook
             },
             adminGuard: true
-
         })
         .state('findGoogle', {
             url: '/find-google',
@@ -44,7 +40,6 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/book/templates/find-google.html',
             controller: 'FindCtrl as findGoogle',
             adminGuard: true
-
         })
         .state('details', {
             url: '/details/:id',
@@ -54,7 +49,6 @@ function config($stateProvider, $urlRouterProvider) {
             resolve: {
                 book: getOneBook
             }
-
         })
         .state('searchBooks', {
             url: '/search/:toFind',
@@ -64,8 +58,6 @@ function config($stateProvider, $urlRouterProvider) {
             resolve: {
                 searchedBooks: getSearchedBooks
             }
-
-
         });
 }
 /**
@@ -74,7 +66,10 @@ function config($stateProvider, $urlRouterProvider) {
  * @param Book
  * @returns {*}
  */
-function getBookList(Book) {
+function getBookList($stateParams,Book) {
+    if ($stateParams.category || $stateParams.author || $stateParams.publisher){
+        return Book.getSearchListFilters($stateParams.category,$stateParams.author,$stateParams.publisher);
+    }
     return Book.getList();
 }
 /**
