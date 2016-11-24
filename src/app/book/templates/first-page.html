@@ -1,18 +1,19 @@
-<div class="table-look">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Book" ng-model='firstPage.toFind'>
-                <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="firstPage.searchBooks()" ui-sref='searchBooks({toFind: firstPage.toFind})'>Search</button>
+<div sidebar books="firstPage.bookList"></div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Book" ng-model='toFind'>
+            <span class="input-group-btn">
+        <button class="btn btn-default" type="button"  ui-sref='searchBooks({toFind: toFind})'>Search</button>
       </span>
-            </div>
         </div>
     </div>
+</div>
+<div class="table-look">
     <ul class='flex-container wrap'>
         <li class='flex-item' ng-repeat='book in firstPage.bookList'>
             <a ui-sref="details({id: book.id})">
-                <img class="table-look image" ng-src="{{book.picture}}" alt="" />
+                <img class="image" ng-src="{{book.picture}}" alt="" />
 
                 <p class="text-book">{{book.name}}</p>
                 <p class="text-book">by {{book.author}}</p>
