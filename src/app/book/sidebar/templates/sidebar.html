@@ -1,0 +1,29 @@
+<div class="sidenav">
+    <div class="title">Filters</div>
+    </br>
+    <div class="filter-block">
+        <span>Category:</span>
+        <div ng-repeat="element in sidebar.categories">
+            <input type="checkbox" ui-sref="home({category: element.category})">
+            {{element.category}}
+        </div>
+    </div>
+    </br>
+    <div class="filter-block">
+        <span>Author:</span>
+        <div ng-repeat="element in sidebar.authors">
+            <input type="checkbox" ui-sref="home({author: element.author})">
+            {{element.author}}
+        </div>
+    </div>
+    </br>
+    <div class="filter-block">
+        <span>Publisher:</span>
+        <div ng-repeat="element in sidebar.publishers" ng-if="element.publisher">
+            <input type="checkbox" ui-sref="home({publisher: element.publisher})">
+            {{element.publisher}}
+        </div>
+    </div>
+
+
+</div>
