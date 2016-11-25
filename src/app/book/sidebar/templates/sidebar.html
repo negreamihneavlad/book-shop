@@ -1,10 +1,15 @@
+<div class="active-filters">Applied filters:
+    <span ng-repeat="filter in sidebar.filters" ng-if="filter">
+        <a href="#" ng-click="sidebar.removeFilter(filter)">[x]</a>{{filter}}
+    </span>
+</div>
 <div class="sidenav">
     <div class="title">Filters</div>
     </br>
     <div class="filter-block">
         <span>Category:</span>
         <div ng-repeat="element in sidebar.categories">
-            <input type="checkbox" ui-sref="home({category: element.category})">
+            <input type="checkbox" ui-sref="{category: element.category}">
             {{element.category}}
         </div>
     </div>
@@ -12,7 +17,7 @@
     <div class="filter-block">
         <span>Author:</span>
         <div ng-repeat="element in sidebar.authors">
-            <input type="checkbox" ui-sref="home({author: element.author})">
+            <input type="checkbox" ui-sref="{author: element.author}">
             {{element.author}}
         </div>
     </div>
@@ -20,7 +25,7 @@
     <div class="filter-block">
         <span>Publisher:</span>
         <div ng-repeat="element in sidebar.publishers" ng-if="element.publisher">
-            <input type="checkbox" ui-sref="home({publisher: element.publisher})">
+            <input type="checkbox" ui-sref="{publisher: element.publisher}">
             {{element.publisher}}
         </div>
     </div>
