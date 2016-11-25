@@ -22,8 +22,8 @@ function Book($http, $filter, BOOKS_API_URLS) {
      * @param toFind
      * @returns {*}
      */
-    function getSearchList(toFind) {
-        return $http.get(URLTo.api(BOOKS_API_URLS.search, [toFind]))
+    function getSearchList(toFind, category, author, publisher) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.search + '?category=' + category + '&author=' + author + '&publisher=' + publisher, [toFind]))
             .then(function (response) {
                 return response.data;
             });
