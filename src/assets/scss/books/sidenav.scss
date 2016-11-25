@@ -26,3 +26,18 @@
   font-size: 16px;
   color: #5383d3;
 }
+.active-filters{
+  color: #5383d3;
+  position:absolute;
+  margin-top: 70px;
+}
+
+.active-filters span{
+  color: black;
+  margin: 5px;
+}
+
+.active-filters span a{
+  color:red;
+  font-size: 13px;
+}
