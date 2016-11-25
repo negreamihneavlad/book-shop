@@ -51,7 +51,7 @@ function config($stateProvider) {
             }
         })
         .state('searchBooks', {
-            url: '/search/:toFind',
+            url: '/search/:toFind?category&author&publisher',
             parent: 'main',
             templateUrl: 'app/book/templates/search-result.html',
             controller: 'SearchCtrl as search',
@@ -80,7 +80,7 @@ function getBookList($stateParams,Book) {
  * @returns {*}
  */
 function getSearchedBooks($stateParams, Book) {
-    return Book.getSearchList($stateParams.toFind);
+    return Book.getSearchList($stateParams.toFind,$stateParams.category,$stateParams.author,$stateParams.publisher);
 }
 /**
  * Get one book
