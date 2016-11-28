@@ -2,9 +2,12 @@
  * Account
  *
  * @param $http
+ * @param $rootScope
+ * @param ACCOUNT_EVENTS
  * @param ACCOUNT_API_URLS
  * @returns {{updateUser: updateUser, updatePassword: updatePassword, requestPasswordResetToken: requestPasswordResetToken, resetPassword: resetPassword}}
  * @constructor
+ * @ngInject
  */
 function Account($http, $rootScope, ACCOUNT_EVENTS, ACCOUNT_API_URLS) {
     return {
@@ -13,6 +16,9 @@ function Account($http, $rootScope, ACCOUNT_EVENTS, ACCOUNT_API_URLS) {
         requestPasswordResetToken: requestPasswordResetToken,
         resetPassword: resetPassword
     };
+
+    //////////////////////////////
+
     /**
      * Request password reset token
      *
@@ -72,6 +78,7 @@ function Account($http, $rootScope, ACCOUNT_EVENTS, ACCOUNT_API_URLS) {
             });
     }
 }
+
 angular
     .module("auth")
     .service("Account", Account);

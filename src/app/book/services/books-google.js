@@ -4,6 +4,7 @@
  * @param Book
  * @returns {{getListGoogle: getListGoogle, addBook: addBook, addAllBooks: addAllBooks}}
  * @constructor
+ * @ngInject
  */
 function BooksGoogle($http, Book) {
     return {
@@ -11,8 +12,9 @@ function BooksGoogle($http, Book) {
         addBook: addBook,
         addAllBooks: addAllBooks
 
-    }
-    var checkDate = checkDate;
+    };
+
+    //////////////////////////////
 
     /**
      * Request to get books from Google API
@@ -22,9 +24,9 @@ function BooksGoogle($http, Book) {
      */
     function getListGoogle(toFind) {
         var googleList = [];
-        $http.get("https://www.googleapis.com/books/v1/volumes?q=" + toFind)
+        return $http.get("https://www.googleapis.com/books/v1/volumes?q=" + toFind)
             .then(function (response) {
-                _.forEach(response.data.items, function (element) {
+                _.map(response.data.items, function (element) {
                     var price = (Math.random() * 50 + 9).toFixed(2);
 
                     if (isBook(element.volumeInfo.authors, element.volumeInfo.categories, element.volumeInfo.description, element.volumeInfo.publishedDate, element.volumeInfo.industryIdentifiers)) {
@@ -37,13 +39,13 @@ function BooksGoogle($http, Book) {
                             releaseDate: element.volumeInfo.publishedDate,
                             price: price,
                             publisher: element.volumeInfo.publisher,
-                            isbn: element.volumeInfo.industryIdentifiers[1].type + ' '+ element.volumeInfo.industryIdentifiers[1].identifier,
+                            isbn: element.volumeInfo.industryIdentifiers[1].type + ' ' + element.volumeInfo.industryIdentifiers[1].identifier,
                             pages: element.volumeInfo.pageCount
                         });
                     }
                 });
+                return googleList;
             });
-        return googleList;
     }
 
     /**
@@ -73,9 +75,10 @@ function BooksGoogle($http, Book) {
      * @param categories
      * @param description
      * @param date
+     * @param isbn
      * @returns {boolean}
      */
-    function isBook(authors, categories, description, date,isbn) {
+    function isBook(authors, categories, description, date, isbn) {
         if (authors && categories && description && checkDate(date) && isbn) {
             return true;
         }
@@ -93,6 +96,7 @@ function BooksGoogle($http, Book) {
         return dateToCheck.match(regEx) !== null;
     }
 }
+
 angular
     .module("bookShop")
     .factory("BooksGoogle", BooksGoogle);

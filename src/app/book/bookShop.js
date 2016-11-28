@@ -8,8 +8,8 @@ function config($stateProvider) {
         .state('home', {
             url: '/?category&author&publisher',
             parent: 'main',
-            templateUrl: 'app/book/templates/first-page.html',
-            controller: 'FirstPageCtrl as firstPage',
+            templateUrl: 'app/book/templates/book-list.html',
+            controller: 'BookListCtrl as bookList',
             resolve: {
                 bookList: getBookList
             }
@@ -18,7 +18,7 @@ function config($stateProvider) {
             url: '/list',
             parent: 'main',
             templateUrl: 'app/book/templates/list.html',
-            controller: 'ListCtrl as listBooks',
+            controller: 'ManageBooksCtrl as listBooks',
             resolve: {
                 bookList: getBookList
             },
@@ -63,14 +63,12 @@ function config($stateProvider) {
 /**
  * Get book list
  *
+ * @param $stateParams
  * @param Book
  * @returns {*}
  */
-function getBookList($stateParams,Book) {
-    if ($stateParams.category || $stateParams.author || $stateParams.publisher){
-        return Book.getSearchListFilters($stateParams.category,$stateParams.author,$stateParams.publisher);
-    }
-    return Book.getList();
+function getBookList($stateParams, Book) {
+    return Book.getList($stateParams);
 }
 /**
  * Get searched books
@@ -80,7 +78,7 @@ function getBookList($stateParams,Book) {
  * @returns {*}
  */
 function getSearchedBooks($stateParams, Book) {
-    return Book.getSearchList($stateParams.toFind,$stateParams.category,$stateParams.author,$stateParams.publisher);
+    return Book.getSearchList($stateParams);
 }
 /**
  * Get one book

@@ -1,5 +1,5 @@
 var ACCOUNT_EVENTS = {
-    update: "updated"
+    update: "updateAccount"
 };
 
 angular

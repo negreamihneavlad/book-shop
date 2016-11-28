@@ -1,6 +1,6 @@
 <div class="active-filters">Applied filters:
-    <span ng-repeat="filter in sidebar.filters" ng-if="filter">
-        <a href="#" ng-click="sidebar.removeFilter(filter)">[x]</a>{{filter}}
+    <span ng-repeat="(filterName,filterValue) in sidebar.filters" ng-if="filterValue">
+        <a href="#" ng-click="sidebar.removeFilter(filterName)">[x]</a>{{filterValue}}
     </span>
 </div>
 <div class="sidenav">

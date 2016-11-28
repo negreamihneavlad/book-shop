@@ -1,4 +1,6 @@
 /**
+ * Sidebar
+ *
  * $stateParams
  * $state
  * @constructor
@@ -11,17 +13,21 @@ function SidebarCtrl($stateParams, $state) {
     vm.publishers = _.uniqBy(vm.books, 'publisher');
     vm.authors = _.uniqBy(vm.books, 'author');
     vm.filters = $stateParams;
-
-    function removeFilter(filterr){
-        _.forEach($stateParams,function(value,key){
-            if (value == filterr){
-                $stateParams[key] = undefined;
-            }
+    /**
+     * Remove filter
+     *
+     * @param filterName
+     */
+    function removeFilter(filterName) {
+        console.log($stateParams);
+        $stateParams = _.omit($stateParams,[filterName]);
+        $state.go($state.current, $stateParams, {
+            inherit: false
         });
-        $state.go($state.current,$stateParams);
     }
 }
 /**
+ * Sidebar directive
  *
  * @returns {{scope: {books: string}, bindToController: boolean, controllerAs: string, controller: SidebarCtrl, templateUrl: string}}
  */

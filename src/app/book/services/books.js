@@ -1,10 +1,12 @@
 /**
+ * Books service
  *
  * @param $http
  * @param $filter
  * @param BOOKS_API_URLS
  * @returns {{getList: getList, getOne: getOne, create: create, update: update, destroy: destroy, getSearchList: getSearchList}}
  * @constructor
+ * @ngInject
  */
 function Book($http, $filter, BOOKS_API_URLS) {
     return {
@@ -13,31 +15,21 @@ function Book($http, $filter, BOOKS_API_URLS) {
         create: create,
         update: update,
         destroy: destroy,
-        getSearchList: getSearchList,
-        getSearchListFilters: getSearchListFilters
+        getSearchList: getSearchList
     };
+
+    //////////////////////////////
+
     /**
      * Request for searched book
      *
-     * @param toFind
+     * @param filters
      * @returns {*}
      */
-    function getSearchList(toFind, category, author, publisher) {
-        return $http.get(URLTo.api(BOOKS_API_URLS.search + '?category=' + category + '&author=' + author + '&publisher=' + publisher, [toFind]))
-            .then(function (response) {
-                return response.data;
-            });
-    }
-
-    /**
-     *
-     * @param category
-     * @param author
-     * @param publisher
-     * @returns {*}
-     */
-    function getSearchListFilters(category, author, publisher) {
-        return $http.get(URLTo.api(BOOKS_API_URLS.searchFilters + '?category=' + category + '&author=' + author + '&publisher=' + publisher))
+    function getSearchList(filters) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.search), {
+            params: filters
+        })
             .then(function (response) {
                 return response.data;
             });
@@ -46,10 +38,13 @@ function Book($http, $filter, BOOKS_API_URLS) {
     /**
      * Request to get books
      *
+     * @param filters
      * @returns {*}
      */
-    function getList() {
-        return $http.get(URLTo.api(BOOKS_API_URLS.books)).then(function (response) {
+    function getList(filters) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.books), {
+            params: filters
+        }).then(function (response) {
             return response.data;
         });
     }

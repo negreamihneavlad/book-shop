@@ -1,20 +1,26 @@
 /**
+ * Find Google controller
  *
  * @param BooksGoogle
  * @constructor
+ * @ngInject
  */
 function FindCtrl(BooksGoogle) {
-
     var vm = this;
-
     vm.submit = submit;
     vm.addBook = addBook;
     vm.addAllBooks = addAllBooks;
+
+    //////////////////////////////
+
     /**
      * Get the book list from google request
      */
     function submit() {
-        vm.googleList = BooksGoogle.getListGoogle(vm.toFind);
+        BooksGoogle.getListGoogle(vm.toFind)
+            .then(function (response) {
+                vm.googleList = response;
+            });
     }
 
     /**
@@ -35,6 +41,7 @@ function FindCtrl(BooksGoogle) {
         BooksGoogle.addAllBooks(googleList);
     }
 }
+
 angular
     .module("bookShop")
     .controller("FindCtrl", FindCtrl);

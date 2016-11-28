@@ -1,13 +1,17 @@
 /**
+ * Log out.
  *
  * @param $state
  * @param Authentication
  * @constructor
+ * @ngInject
  */
 function LogoutCtrl($state, Authentication) {
     var vm = this;
-
     vm.logout = logout;
+
+    //////////////////////////////
+
     /**
      * Log out user
      */
@@ -16,6 +20,7 @@ function LogoutCtrl($state, Authentication) {
         $state.go("home", {}, {reload: true});
     }
 }
+
 angular
     .module("auth")
     .controller("LogoutCtrl", LogoutCtrl);

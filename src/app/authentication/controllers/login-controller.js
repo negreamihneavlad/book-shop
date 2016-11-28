@@ -1,45 +1,51 @@
 /**
+ * Log in.
  *
  * @param $state
  * @param Authentication
  * @param AuthGuard
  * @param Session
  * @constructor
+ * @ngInject
  */
 function LogInCtrl($state, Authentication, AuthGuard) {
-
     var vm = this;
     vm.credentials = {};
-
     vm.login = login;
     vm.ui = buildUI();
+
+    //////////////////////////////
+
     /**
      * Request login
      */
     function login() {
-        if (vm.form.$valid) {
-
-            vm.ui.isSubmitting = true;
-            vm.ui.showLoginError = false;
-
-            Authentication.login(vm.credentials.email, vm.credentials.password)
-                .then(function () {
-                    if (AuthGuard.hasBlockedTransition()) {
-                        AuthGuard.allowBlockedTransition();
-                    } else {
-                        $state.go("home", {}, {reload: true});
-                    }
-                })
-                .catch(function () {
-                    vm.ui.showLoginError = true;
-                })
-                .finally(function () {
-                    vm.ui.isSubmitting = false;
-                });
+        if (vm.form.$invalid) {
+            return;
         }
+
+        vm.ui.isSubmitting = true;
+        vm.ui.showLoginError = false;
+
+        Authentication.login(vm.credentials.email, vm.credentials.password)
+            .then(function () {
+                if (AuthGuard.hasBlockedTransition()) {
+                    AuthGuard.allowBlockedTransition();
+                } else {
+                    $state.go("home", {}, {reload: true});
+                }
+            })
+            .catch(function () {
+                vm.ui.showLoginError = true;
+            })
+            .finally(function () {
+                vm.ui.isSubmitting = false;
+            });
+
     }
 
     /**
+     * Build UI.
      *
      * @returns {{isSubmitting: boolean, showLoginError: boolean}}
      */
@@ -50,6 +56,7 @@ function LogInCtrl($state, Authentication, AuthGuard) {
         };
     }
 }
+
 angular
     .module("auth")
     .controller("LogInCtrl", LogInCtrl);

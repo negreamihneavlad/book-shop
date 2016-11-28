@@ -1,14 +1,19 @@
 /**
+ * Admin guard.
  *
  * @param $state
  * @param Authentication
  * @returns {{onStateChangeStart: onStateChangeStart}}
  * @constructor
+ * @ngInject
  */
 function AdminGuard($state, Authentication) {
     return {
         onStateChangeStart: onStateChangeStart
     };
+
+    //////////////////////////////
+
     /**
      * Checks if logged user is an Admin
      *

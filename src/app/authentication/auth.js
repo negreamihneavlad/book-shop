@@ -44,7 +44,7 @@ function config($httpProvider, $stateProvider) {
             parent: 'main',
             templateUrl: "app/authentication/templates/reset-password.html",
             controller: "ResetPasswordCtrl as resetPassword"
-        })
+        });
 }
 angular
     .module("auth", ["ui.router", "templates"])

@@ -3,11 +3,15 @@
  *
  * @param Account
  * @constructor
+ * @ngInject
  */
 function ForgotPassCtrl(Account) {
     var vm = this;
     vm.credentials= {};
     vm.requestPasswordResetToken = requestPasswordResetToken;
+
+    //////////////////////////////
+
     /**
      * Request password token reset
      */
@@ -17,6 +21,7 @@ function ForgotPassCtrl(Account) {
         }
     }
 }
+
 angular
     .module("auth")
     .controller("ForgotPassCtrl", ForgotPassCtrl);

@@ -1,7 +1,9 @@
 /**
+ * Search controller
  *
- * @param getSearchedBooks
+ * @param searchedBooks
  * @constructor
+ * @ngInject
  */
 function SearchCtrl(searchedBooks) {
 

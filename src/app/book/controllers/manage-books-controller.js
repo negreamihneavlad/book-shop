@@ -1,17 +1,21 @@
 /**
+ * Manage books controller
  *
  * @param $timeout
  * @param Book
  * @param bookList
  * @constructor
+ * @ngInject
  */
-function ListCtrl($timeout, Book, bookList) {
+function ManageBooksCtrl($timeout, Book, bookList) {
     var vm = this;
-
     vm.bookList = bookList;
     vm.removeBook = removeBook;
     vm.removed = removed;
     vm.showMessage = false;
+
+    //////////////////////////////
+
     /**
      * Remove book from DB
      *
@@ -20,13 +24,13 @@ function ListCtrl($timeout, Book, bookList) {
     function removeBook(id) {
         console.log(vm.bookList);
         Book.destroy(id)
-            .then(function(response) {
+            .then(function (response) {
                 console.log('deleted:', response);
-                _.remove(vm.bookList, { id: id });
+                _.remove(vm.bookList, {id: id});
 
                 vm.removed('Book removed');
             })
-            .catch(function() {
+            .catch(function () {
                 vm.removed('Book not removed');
             });
     }
@@ -39,11 +43,12 @@ function ListCtrl($timeout, Book, bookList) {
     function removed(message) {
         vm.removedMessage = message;
         vm.showMessage = true;
-        $timeout(function() {
+        $timeout(function () {
             vm.showMessage = false;
         }, 3000);
     }
 }
+
 angular
     .module("bookShop")
-    .controller("ListCtrl", ListCtrl);
+    .controller("ManageBooksCtrl", ManageBooksCtrl);

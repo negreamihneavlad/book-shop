@@ -1,4 +1,5 @@
 /**
+ * Authentication
  *
  * @param $http
  * @param $rootScope
@@ -7,6 +8,7 @@
  * @param AUTH_API_URLS
  * @returns {{login: login, isAuthenticated: isAuthenticated, logout: logout, isActive: isActive, isAdmin: isAdmin, signUp: signUp}}
  * @constructor
+ * @ngInject
  */
 function Authentication($http, $rootScope, Session, AUTH_EVENTS, AUTH_API_URLS) {
     return {
@@ -17,6 +19,9 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS, AUTH_API_URLS) 
         isAdmin: isAdmin,
         signUp: signUp
     };
+
+    //////////////////////////////
+
     /**
      *Request to log in a user
      *
@@ -48,7 +53,7 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS, AUTH_API_URLS) 
             email: email,
             password: password
         });
-        return promise.then(function(response){
+        return promise.then(function (response) {
             return response;
         });
     }

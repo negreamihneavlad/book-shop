@@ -18,8 +18,7 @@ function Session() {
         destroy: destroy,
         set: set,
         get: get,
-        remove: remove,
-        updateData: updateData
+        remove: remove
     };
 
     //////////////////////////////
@@ -64,16 +63,6 @@ function Session() {
      * @param data
      */
     function setData(data) {
-        Cookies.set(cookieSessionDataKey, angular.toJson(data));
-    }
-
-    /**
-     * Updates the session data.
-     *
-     * @param data
-     */
-    function updateData(data) {
-        Cookies.expire(cookieSessionDataKey);
         Cookies.set(cookieSessionDataKey, angular.toJson(data));
     }
 

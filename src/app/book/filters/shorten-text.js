@@ -1,4 +1,5 @@
 /**
+ * Shorten text filter
  *
  * @returns {Function}
  */

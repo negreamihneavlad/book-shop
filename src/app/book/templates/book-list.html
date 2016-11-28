@@ -1,4 +1,4 @@
-<div sidebar books="firstPage.bookList"></div>
+<div sidebar books="bookList.bookList"></div>
 <div class="row">
     <div class="col-lg-12">
         <div class="input-group">
@@ -11,7 +11,7 @@
 </div>
 <div class="table-look">
     <ul class='flex-container wrap'>
-        <li class='flex-item' ng-repeat='book in firstPage.bookList'>
+        <li class='flex-item' ng-repeat='book in bookList.bookList'>
             <a ui-sref="details({id: book.id})">
                 <img class="image" ng-src="{{book.picture}}" alt="" />
 
