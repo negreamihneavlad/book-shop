@@ -23,7 +23,7 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS, AUTH_API_URLS) 
     //////////////////////////////
 
     /**
-     *Request to log in a user
+     * Request to log in a user
      *
      * @param email
      * @param password
@@ -43,6 +43,8 @@ function Authentication($http, $rootScope, Session, AUTH_EVENTS, AUTH_API_URLS) 
     /**
      * Request to sign up a user
      *
+     * @param firstName
+     * @param lastName
      * @param email
      * @param password
      */

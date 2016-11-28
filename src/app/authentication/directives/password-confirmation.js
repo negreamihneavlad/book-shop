@@ -3,7 +3,7 @@
  *
  * @returns {{restrict: string, scope: {matchTarget: string}, require: string, link: link}}
  */
-function passwordConfirmation(){
+function passwordConfirmation() {
     return {
         restrict: 'A',
         scope: {
@@ -20,7 +20,7 @@ function passwordConfirmation(){
             ctrl.$formatters.push(validator);
 
             // This is to force validator when the original password gets changed
-            scope.$watch('matchTarget', function(newval, oldval) {
+            scope.$watch('matchTarget', function (newval, oldval) {
                 validator(ctrl.$viewValue);
             });
         }
@@ -29,4 +29,4 @@ function passwordConfirmation(){
 
 angular
     .module("auth")
-    .directive("passwordConfirmation", ['$parse',passwordConfirmation]);
+    .directive("passwordConfirmation", ['$parse', passwordConfirmation]);

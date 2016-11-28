@@ -22,7 +22,7 @@ function SignUpCtrl($state, Authentication, AuthGuard) {
             return;
         }
         Authentication.signUp(vm.credentials.firstName, vm.credentials.lastName, vm.credentials.email, vm.credentials.password)
-            .then(loginAfterSingup)
+            .then(loginAfterSignup)
             .catch(function () {
                 vm.emailAlreadyRegistered = 'Email is already registered';
             });
@@ -31,7 +31,7 @@ function SignUpCtrl($state, Authentication, AuthGuard) {
          *
          * @returns {*}
          */
-        function loginAfterSingup() {
+        function loginAfterSignup() {
             return Authentication.login(vm.credentials.email, vm.credentials.password)
                 .then(function () {
                     if (AuthGuard.hasBlockedTransition()) {

@@ -12,7 +12,6 @@
 function MainCtrl($rootScope, $state, Authentication, Session, AUTH_EVENTS, ACCOUNT_EVENTS) {
 
     var vm = this;
-
     vm.logout = logout;
     vm.isLoggedIn = Authentication.isAuthenticated();
     vm.user = Session.getData();

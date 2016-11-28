@@ -11,7 +11,6 @@ function BooksGoogle($http, Book) {
         getListGoogle: getListGoogle,
         addBook: addBook,
         addAllBooks: addAllBooks
-
     };
 
     //////////////////////////////

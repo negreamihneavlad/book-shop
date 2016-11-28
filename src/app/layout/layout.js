@@ -1,7 +1,10 @@
+/**
+ *
+ * @param $stateProvider
+ */
 function config($stateProvider) {
 
     $stateProvider
-    // App state
         .state({
             name: "main",
             abstract: true,

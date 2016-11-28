@@ -97,8 +97,6 @@ function Book($http, $filter, BOOKS_API_URLS) {
     function destroy(bookId) {
         return $http.delete(URLTo.api(BOOKS_API_URLS.oneBook, [bookId]));
     }
-
-
 }
 angular
     .module("bookShop")

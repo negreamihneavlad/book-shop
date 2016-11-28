@@ -4,7 +4,6 @@
  * @param $state
  * @param Authentication
  * @param AuthGuard
- * @param Session
  * @constructor
  * @ngInject
  */
@@ -41,7 +40,6 @@ function LogInCtrl($state, Authentication, AuthGuard) {
             .finally(function () {
                 vm.ui.isSubmitting = false;
             });
-
     }
 
     /**
