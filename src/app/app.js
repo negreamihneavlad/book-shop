@@ -1,6 +1,7 @@
 /**
  *
  * @param $urlRouterProvider
+ * @ngInject
  */
 function config($urlRouterProvider) {
 

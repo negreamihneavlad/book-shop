@@ -55,12 +55,13 @@ var CONFIG = {
                 "src/app/app-controller.js",
                 "src/app/authentication/auth.js",
                 "src/app/book/bookShop.js",
-                "src/app/book/controllers/list-controller.js",
+                "src/app/book/controllers/manage-books-controller.js",
                 "src/app/book/controllers/add-edit-controller.js",
                 "src/app/book/controllers/find-google-controller.js",
-                "src/app/book/controllers/first-page-controller.js",
+                "src/app/book/controllers/manage-books-controller.js",
                 "src/app/book/controllers/book-details-controller.js",
                 "src/app/book/controllers/search-books-controller.js",
+                "src/app/book/controllers/book-list-controller.js",
                 "src/app/authentication/controllers/login-controller.js",
                 "src/app/authentication/controllers/update-password-controller.js",
                 "src/app/authentication/controllers/forgot-password-controller.js",
@@ -178,9 +179,7 @@ gulp.task("buildTemplatesJs", function() {
         base = slash(base);        
 
         var dirName = slash(__dirname);
-        var relativePath = path.replace(dirName + "/" + base + "/", "");        
-
-        return relativePath;
+        return path.replace(dirName + "/" + base + "/", "");
     }
 
     return gulp.src(CONFIG.js.templates.src, CONFIG.js.templates.options)
@@ -229,8 +228,6 @@ gulp.task("minifyAppJs", ["buildAppJs"], function() {
  */
 gulp.task("copyIndexHtml", function() {
     gulp.src("src/index.html")
-        .pipe(gulp.dest(BUILD_DIRECTORY));
-    gulp.src("src/Web.config")
         .pipe(gulp.dest(BUILD_DIRECTORY));
 });
 
