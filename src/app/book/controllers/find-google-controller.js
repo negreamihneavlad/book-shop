@@ -2,10 +2,12 @@
  * Find Google controller
  *
  * @param BooksGoogle
+ * @param Page
  * @constructor
  * @ngInject
  */
-function FindCtrl(BooksGoogle) {
+function FindCtrl(BooksGoogle, Page) {
+    Page.setTitle('Book Shop-Find on Google');
     var vm = this;
     vm.submit = submit;
     vm.addBook = addBook;

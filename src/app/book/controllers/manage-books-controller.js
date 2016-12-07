@@ -4,10 +4,12 @@
  * @param $timeout
  * @param Book
  * @param bookList
+ * @param Page
  * @constructor
  * @ngInject
  */
-function ManageBooksCtrl($timeout, Book, bookList) {
+function ManageBooksCtrl($timeout, Book, Page, bookList) {
+    Page.setTitle('Book Shop-Manage Books');
     var vm = this;
     vm.bookList = bookList;
     vm.removeBook = removeBook;
@@ -22,7 +24,6 @@ function ManageBooksCtrl($timeout, Book, bookList) {
      * @param id
      */
     function removeBook(id) {
-        console.log(vm.bookList);
         Book.destroy(id)
             .then(function (response) {
                 console.log('deleted:', response);
