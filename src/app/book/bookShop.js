@@ -108,7 +108,7 @@ function run($rootScope, AuthGuard, AdminGuard) {
 }
 
 angular
-    .module("bookShop", ["ui.router", "templates", 'angular-loading-bar'])
+    .module("bookShop", ["ui.router", "templates", 'angular-loading-bar','angularUtils.directives.dirPagination'])
     .config(config)
     .run(run);
 
