@@ -19,7 +19,6 @@ function SidebarCtrl($stateParams, $state) {
      * @param filterName
      */
     function removeFilter(filterName) {
-        console.log($stateParams);
         $stateParams = _.omit($stateParams,[filterName]);
         $state.go($state.current, $stateParams, {
             inherit: false
