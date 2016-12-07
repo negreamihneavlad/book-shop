@@ -4,11 +4,12 @@
  * @param $anchorScroll
  * @param Book
  * @param book
+ * @param Page
  * @constructor
  * @ngInject
  */
-function AddEditCtrl($anchorScroll, Book, book) {
-
+function AddEditCtrl($anchorScroll, Book, Page, book) {
+    Page.setTitle('Book Shop-Add or Edit Book');
     var vm = this;
     $anchorScroll();
     vm.book = book || {};
@@ -20,7 +21,6 @@ function AddEditCtrl($anchorScroll, Book, book) {
      * Creating a new book
      */
     function createBook() {
-        console.log(vm.book);
         Book.create(vm.book)
             .then(function () {
                 vm.createdMessage = 'Book added successfully!';

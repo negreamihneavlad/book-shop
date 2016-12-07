@@ -6,11 +6,11 @@
  * @constructor
  * @ngInject
  */
-function BookDetailsCtrl($anchorScroll, book) {
-
+function BookDetailsCtrl($anchorScroll, Page, book) {
+    Page.setTitle('Book Shop-'+book.name);
     $anchorScroll();
     var vm = this;
-	vm.book = book;
+    vm.book = book;
 }
 
 angular
