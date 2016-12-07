@@ -45,7 +45,8 @@ var CONFIG = {
                 "bower_components/cookies-js/dist/cookies.js",
                 "bower_components/angular-filter/dist/angular-filter.min.js",
                 "bower_components/url-to/url-to.js",
-                "bower_components/angular-loading-bar/build/loading-bar.js"
+                "bower_components/angular-loading-bar/build/loading-bar.js",
+                "bower_components/angularUtils-pagination/dirPagination.js"
             ],
             compiled: "frameworks.js"
         },
@@ -53,8 +54,10 @@ var CONFIG = {
             src: [
                 "src/app/app.js",
                 "src/app/app-controller.js",
+                "src/app/page-title.js",
                 "src/app/authentication/auth.js",
                 "src/app/book/bookShop.js",
+                "src/app/book/services/pager.js",
                 "src/app/book/controllers/manage-books-controller.js",
                 "src/app/book/controllers/add-edit-controller.js",
                 "src/app/book/controllers/find-google-controller.js",
