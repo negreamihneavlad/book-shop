@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" ng-controller="AppCtrl as app">
 
 <head>
-    <title>Book Shop</title>
+    <title ng-bind="app.Page.title()"></title>
     <link rel="icon" href="build/assets/img/icon.png" type="image/png" />
     <script src="build/assets/js/frameworks.js"></script>
     <script src="build/assets/js/templates.js"></script>
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <ui-view></ui-view>
+    <ui-view autoscroll="true"></ui-view>
 </body>
 
 </html>
