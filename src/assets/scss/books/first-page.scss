@@ -44,10 +44,27 @@
   display: flex;
 
 }
+a {
+  cursor: pointer;
+}
 
 .flex-item {
   padding: 5px;
   width: 100px;
   height: 200px;
   margin: 40px;
+}
+
+.pagination-tab{
+  margin-top:80px;
+  text-align:center;
+}
+
+.items-per-page{
+  text-align:center;
+}
+
+.items-per-page input{
+  width: 80px;
+  margin: 0 auto;
 }
