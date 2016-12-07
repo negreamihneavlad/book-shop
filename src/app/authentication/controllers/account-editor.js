@@ -3,10 +3,12 @@
  *
  * @param Session
  * @param Account
+ * @Page
  * @constructor
  * @ngInject
  */
-function AccountEditorCtrl(Session, Account) {
+function AccountEditorCtrl(Session, Account, Page) {
+    Page.setTitle('Book Shop-Edit Account');
     var vm = this;
     vm.data = Session.getData();
     vm.updateUser = updateUser;

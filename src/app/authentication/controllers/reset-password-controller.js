@@ -6,10 +6,12 @@
  * @param $stateParams
  * @param Account
  * @param Authentication
+ * @param Page
  * @constructor
  * @ngInject
  */
-function ResetPasswordCtrl($window, $state, $stateParams, Account, Authentication) {
+function ResetPasswordCtrl($window, $state, $stateParams, Account, Authentication, Page) {
+    Page.setTitle('Book Shop-Reset Password');
     var vm = this;
     vm.credentials = {};
     vm.resetPassword = resetPassword;

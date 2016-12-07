@@ -3,10 +3,12 @@
  *
  * @param $state
  * @param Account
+ * @param Page
  * @constructor
  * @ngInject
  */
-function UpdatePassCtrl($state, Account) {
+function UpdatePassCtrl($state, Account, Page) {
+    Page.setTitle('Book Shop-Edit Account-Update Password');
     var vm = this;
     vm.updatePassword = updatePassword;
 

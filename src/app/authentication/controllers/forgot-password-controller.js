@@ -2,13 +2,16 @@
  * Forgot password
  *
  * @param Account
+ * @param Page
  * @constructor
  * @ngInject
  */
-function ForgotPassCtrl(Account) {
+function ForgotPassCtrl(Account,Page) {
+    Page.setTitle('Book Shop-Forgot Password');
     var vm = this;
     vm.credentials= {};
     vm.requestPasswordResetToken = requestPasswordResetToken;
+
 
     //////////////////////////////
 

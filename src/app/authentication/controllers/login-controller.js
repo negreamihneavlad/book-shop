@@ -4,10 +4,12 @@
  * @param $state
  * @param Authentication
  * @param AuthGuard
+ * @param Page
  * @constructor
  * @ngInject
  */
-function LogInCtrl($state, Authentication, AuthGuard) {
+function LogInCtrl($state, Authentication, AuthGuard, Page) {
+    Page.setTitle('Book Shop-Log in');
     var vm = this;
     vm.credentials = {};
     vm.login = login;
