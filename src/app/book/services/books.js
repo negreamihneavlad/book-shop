@@ -11,6 +11,7 @@
 function Book($http, $filter, BOOKS_API_URLS) {
     return {
         getList: getList,
+        getLength: getLength,
         getOne: getOne,
         create: create,
         update: update,
@@ -47,6 +48,21 @@ function Book($http, $filter, BOOKS_API_URLS) {
         }).then(function (response) {
             return response.data;
         });
+    }
+
+    /**
+     * Request to get the number of books
+     *
+     * @param filters
+     * @returns {*}
+     */
+    function getLength(filters) {
+        return $http.get(URLTo.api(BOOKS_API_URLS.length), {
+            params: filters
+        })
+            .then(function (response) {
+                return response.data;
+            });
     }
 
     /**

@@ -1,17 +1,37 @@
 /**
- * Book list controller
+ * Book list controller.
  *
- * @param bookList
+ * @param $state
+ * @param $stateParams
  * @param Page
+ * @param bookList
+ * @param categories
+ * @param publishers
+ * @param authors
+ * @param length
  * @constructor
  * @ngInject
  */
-function BookListCtrl(Page, bookList) {
-    Page.setTitle('Book Shop');
+function BookListCtrl($state, $stateParams, Page, bookList, categories, publishers, authors, length) {
+    Page.setTitle('');
     var vm = this;
-    vm.currentPage = 1;
-    vm.pageSize = 10;
+    vm.pagination = buildPagination();
     vm.bookList = bookList;
+    vm.categories = categories;
+    vm.publishers = publishers;
+    vm.authors = authors;
+
+    //////////////////////////
+
+    function buildPagination(){
+        return {
+            totalResults : length,
+            currentPage: $stateParams.page ? $stateParams.page : 1,
+            limitPerPage: 10,
+            maxButtonNumber: 4,
+            state: $state.current.name
+        }
+    }
 }
 
 angular

@@ -1,0 +1,16 @@
+<ul class="pagination">
+    <li class="pagination-item">
+        <a class="pagination-anchor" ng-href="{{ pagination.generateHrefForPage(1) }}">«</a>
+    </li>
+
+    <li class="pagination-item"
+        ng-class="{'is-active': item === pagination.currentPage}"
+        ng-repeat="item in pagination.items">
+
+        <a class="pagination-anchor" ng-href="{{ pagination.generateHrefForPage(item) }}">{{ item }}</a>
+    </li>
+
+    <li class="pagination-item">
+        <a class="pagination-anchor" ng-href="{{ pagination.generateHrefForPage(pagination.totalPages) }}">»</a>
+    </li>
+</ul>
