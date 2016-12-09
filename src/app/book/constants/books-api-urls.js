@@ -1,7 +1,11 @@
 var BOOKS_API_URLS = {
     oneBook: "books/$1",
     books: "books",
-    search: "search"
+    search: "search",
+    categories: "categories",
+    publishers: "publishers",
+    authors: "authors",
+    length: "length"
 };
 
 angular
