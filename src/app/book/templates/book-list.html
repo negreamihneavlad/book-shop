@@ -1,4 +1,9 @@
-<div sidebar books="bookList.bookList"></div>
+<div sidebar
+     categories="bookList.categories"
+     publishers="bookList.publishers"
+     authors="bookList.authors">
+</div>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="input-group">
@@ -9,10 +14,10 @@
         </div>
     </div>
 </div>
+
 <div class="table-look">
     <ul class='flex-container wrap'>
-        <li class='flex-item' dir-paginate="book in bookList.bookList | filter:q | itemsPerPage: bookList.pageSize"
-            current-page="bookList.currentPage">
+        <li class='flex-item' ng-repeat="book in bookList.bookList">
             <a ui-sref="details({id: book.id})">
                 <img class="image" ng-src="{{book.picture}}" alt=""/>
 
@@ -24,13 +29,11 @@
 </div>
 
 <div class="pagination-tab">
-
-          
-    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"
-                             template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
-
-</div>
-<div class="items-per-page">
-    <label for="search">Items per page:</label>
-    <input type="number" min="1" max="100" class="form-control" ng-model="bookList.pageSize">
+    <div pagination
+         total-results="bookList.pagination.totalResults"
+         limit-per-page="bookList.pagination.limitPerPage"
+         current-page="bookList.pagination.currentPage"
+         max-button-number="bookList.pagination.maxButtonNumber"
+         state="bookList.pagination.state">
+    </div>
 </div>
