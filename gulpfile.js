@@ -89,6 +89,8 @@ var CONFIG = {
                 "src/app/authentication/directives/show-only-for-admins.js",
                 "src/app/authentication/directives/password-confirmation.js",
                 "src/app/layout/layout.js",
+                "src/app/book/sidebar/services/filters.js",
+                "src/app/book/pagination/directives/pagination.js",
                 "src/app/book/sidebar/directives/sidebar.js",
                 "src/app/layout/controllers/main-controller.js"
             ],
