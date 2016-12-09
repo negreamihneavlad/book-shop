@@ -7,7 +7,7 @@
  * @ngInject
  */
 function BookDetailsCtrl($anchorScroll, Page, book) {
-    Page.setTitle('Book Shop-'+book.name);
+    Page.setTitle('-'+book.name);
     $anchorScroll();
     var vm = this;
     vm.book = book;

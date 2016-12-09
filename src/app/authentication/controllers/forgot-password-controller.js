@@ -7,7 +7,7 @@
  * @ngInject
  */
 function ForgotPassCtrl(Account,Page) {
-    Page.setTitle('Book Shop-Forgot Password');
+    Page.setTitle('-Forgot Password');
     var vm = this;
     vm.credentials= {};
     vm.requestPasswordResetToken = requestPasswordResetToken;

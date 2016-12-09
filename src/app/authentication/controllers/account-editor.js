@@ -8,7 +8,7 @@
  * @ngInject
  */
 function AccountEditorCtrl(Session, Account, Page) {
-    Page.setTitle('Book Shop-Edit Account');
+    Page.setTitle('-Edit Account');
     var vm = this;
     vm.data = Session.getData();
     vm.updateUser = updateUser;
@@ -26,7 +26,6 @@ function AccountEditorCtrl(Session, Account, Page) {
             .then(function (response) {
                 Session.setData(response);
                 vm.updateMessage = 'User details updated successfully!';
-                console.log('updated:', response);
             })
             .catch(function () {
                 vm.updateMessage = 'Failed to update user details!';

@@ -9,7 +9,7 @@
  * @ngInject
  */
 function LogInCtrl($state, Authentication, AuthGuard, Page) {
-    Page.setTitle('Book Shop-Log in');
+    Page.setTitle('-Log in');
     var vm = this;
     vm.credentials = {};
     vm.login = login;

@@ -9,7 +9,7 @@
  * @ngInject
  */
 function AddEditCtrl($anchorScroll, Book, Page, book) {
-    Page.setTitle('Book Shop-Add or Edit Book');
+    Page.setTitle('-Add or Edit Book');
     var vm = this;
     $anchorScroll();
     vm.book = book || {};

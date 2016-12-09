@@ -8,7 +8,7 @@
  * @ngInject
  */
 function UpdatePassCtrl($state, Account, Page) {
-    Page.setTitle('Book Shop-Edit Account-Update Password');
+    Page.setTitle('-Edit Account-Update Password');
     var vm = this;
     vm.updatePassword = updatePassword;
 
@@ -25,7 +25,6 @@ function UpdatePassCtrl($state, Account, Page) {
             .then(function (response) {
                 vm.updateMessage = 'Password updated successfully!';
                 $state.go("home", {}, {reload: true});
-                console.log('updated:', response);
             })
             .catch(function () {
                 vm.updateMessage = 'Old password does not match!';

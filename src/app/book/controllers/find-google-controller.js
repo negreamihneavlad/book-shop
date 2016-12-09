@@ -7,7 +7,7 @@
  * @ngInject
  */
 function FindCtrl(BooksGoogle, Page) {
-    Page.setTitle('Book Shop-Find on Google');
+    Page.setTitle('-Find on Google');
     var vm = this;
     vm.submit = submit;
     vm.addBook = addBook;

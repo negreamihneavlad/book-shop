@@ -9,7 +9,7 @@
  * @ngInject
  */
 function SignUpCtrl($state, Authentication, AuthGuard, Page) {
-    Page.setTitle('Book Shop-Sign Up');
+    Page.setTitle('-Sign Up');
     var vm = this;
     vm.credentials = {};
     vm.signUp = signUp;
