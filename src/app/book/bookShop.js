@@ -7,12 +7,16 @@ function config($stateProvider) {
 
     $stateProvider
         .state('home', {
-            url: '/?category&author&publisher',
+            url: '/?category&author&publisher&page',
             parent: 'main',
             templateUrl: 'app/book/templates/book-list.html',
             controller: 'BookListCtrl as bookList',
             resolve: {
-                bookList: getBookList
+                bookList: getBookList,
+                categories: getCategories,
+                publishers: getPublishers,
+                authors: getAuthors,
+                length: getLength
             }
         })
         .state('list', {
@@ -57,7 +61,11 @@ function config($stateProvider) {
             templateUrl: 'app/book/templates/search-result.html',
             controller: 'SearchCtrl as search',
             resolve: {
-                searchedBooks: getSearchedBooks
+                searchedBooks: getSearchedBooks,
+                categories: getCategories,
+                publishers: getPublishers,
+                authors: getAuthors,
+                length: getLength
             }
         });
 }
@@ -69,7 +77,41 @@ function config($stateProvider) {
  * @returns {*}
  */
 function getBookList($stateParams, Book) {
+    if (!$stateParams.page){
+        $stateParams.page = 1;
+    }
     return Book.getList($stateParams);
+}
+/**
+ *
+ * @returns {*}
+ */
+function getCategories(Filters){
+    return Filters.getCategories();
+}
+/**
+ *
+ * @returns {*}
+ */
+function getPublishers(Filters){
+    return Filters.getPublishers();
+}
+/**
+ *
+ * @returns {*}
+ */
+function getAuthors(Filters){
+    return Filters.getAuthors();
+}
+/**
+ * Get nr of books (when filters)
+ *
+ * @param $stateParams
+ * @param Book
+ * @returns {*}
+ */
+function getLength($stateParams, Book){
+    return Book.getLength($stateParams);
 }
 /**
  * Get searched books
@@ -79,6 +121,9 @@ function getBookList($stateParams, Book) {
  * @returns {*}
  */
 function getSearchedBooks($stateParams, Book) {
+    if (!$stateParams.page){
+        $stateParams.page = 1;
+    }
     return Book.getSearchList($stateParams);
 }
 /**
