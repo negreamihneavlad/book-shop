@@ -5,13 +5,14 @@
  * @constructor
  */
 function Page() {
-    var title;
+    var title = 'Book Shop';
+    var newTitle;
     return {
-        setTitle: function (newTitle) {
-            title = newTitle;
+        setTitle: function (pageTitle) {
+            newTitle = pageTitle ;
         },
         title: function () {
-            return title;
+            return title + newTitle;
         }
     };
 }

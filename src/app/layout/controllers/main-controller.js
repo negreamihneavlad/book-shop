@@ -27,7 +27,6 @@ function MainCtrl($rootScope, $state, Authentication, Session, AUTH_EVENTS, ACCO
      */
     function activate() {
         $rootScope.$on(ACCOUNT_EVENTS.update, function (event, data) {
-            console.log(arguments);
             vm.user.firstName = data.firstName;
             vm.user.lastName = data.lastName;
         });

@@ -1,6 +1,7 @@
 /**
  *
  * @param $stateProvider
+ * @ngInject
  */
 function config($stateProvider) {
 
