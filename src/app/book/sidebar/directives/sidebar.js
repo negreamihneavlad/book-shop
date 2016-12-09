@@ -1,25 +1,24 @@
 /**
  * Sidebar
  *
- * $stateParams
- * $state
+ * @param $stateParams
+ * @param $state
  * @constructor
  */
 function SidebarCtrl($stateParams, $state) {
     var vm = this;
     vm.removeFilter = removeFilter;
-
-    vm.categories = _.uniqBy(vm.books, 'category');
-    vm.publishers = _.uniqBy(vm.books, 'publisher');
-    vm.authors = _.uniqBy(vm.books, 'author');
     vm.filters = $stateParams;
+
+    ////////////////////////////////
+
     /**
      * Remove filter
      *
      * @param filterName
      */
     function removeFilter(filterName) {
-        $stateParams = _.omit($stateParams,[filterName]);
+        $stateParams = _.omit($stateParams, [filterName]);
         $state.go($state.current, $stateParams, {
             inherit: false
         });
@@ -33,7 +32,9 @@ function SidebarCtrl($stateParams, $state) {
 function sidebar() {
     return {
         scope: {
-            books: "="
+            categories: "=",
+            publishers: "=",
+            authors: "="
         },
         bindToController: true,
         controllerAs: "sidebar",
@@ -43,5 +44,5 @@ function sidebar() {
 }
 
 angular
-    .module("layout")
+    .module("bookShop")
     .directive("sidebar", sidebar);

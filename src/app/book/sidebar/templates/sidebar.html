@@ -1,6 +1,8 @@
 <div class="active-filters">Applied filters:
     <span ng-repeat="(filterName,filterValue) in sidebar.filters" ng-if="filterValue">
+        <span ng-if="filterName == 'category' || filterName == 'publisher' || filterName == 'author'">
         <a href="#" ng-click="sidebar.removeFilter(filterName)">[x]</a>{{filterValue}}
+            </span>
     </span>
 </div>
 <div class="sidenav">
