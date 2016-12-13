@@ -20,12 +20,14 @@ function config($stateProvider) {
             }
         })
         .state('list', {
-            url: '/list',
+            url: '/list/:toFind?page',
             parent: 'main',
             templateUrl: 'app/book/templates/list.html',
             controller: 'ManageBooksCtrl as listBooks',
             resolve: {
-                bookList: getBookList
+                bookList: getBookList,
+                searchedBooks: getSearchedBooks,
+                length: getLength
             },
             adminGuard: true
         })
@@ -56,7 +58,7 @@ function config($stateProvider) {
             }
         })
         .state('searchBooks', {
-            url: '/search/:toFind?category&author&publisher',
+            url: '/search/:toFind?category&author&publisher&page',
             parent: 'main',
             templateUrl: 'app/book/templates/search-result.html',
             controller: 'SearchCtrl as search',
@@ -77,7 +79,7 @@ function config($stateProvider) {
  * @returns {*}
  */
 function getBookList($stateParams, Book) {
-    if (!$stateParams.page){
+    if (!$stateParams.page) {
         $stateParams.page = 1;
     }
     return Book.getList($stateParams);
@@ -86,21 +88,21 @@ function getBookList($stateParams, Book) {
  *
  * @returns {*}
  */
-function getCategories(Filters){
+function getCategories(Filters) {
     return Filters.getCategories();
 }
 /**
  *
  * @returns {*}
  */
-function getPublishers(Filters){
+function getPublishers(Filters) {
     return Filters.getPublishers();
 }
 /**
  *
  * @returns {*}
  */
-function getAuthors(Filters){
+function getAuthors(Filters) {
     return Filters.getAuthors();
 }
 /**
@@ -110,7 +112,7 @@ function getAuthors(Filters){
  * @param Book
  * @returns {*}
  */
-function getLength($stateParams, Book){
+function getLength($stateParams, Book) {
     return Book.getLength($stateParams);
 }
 /**
@@ -121,7 +123,7 @@ function getLength($stateParams, Book){
  * @returns {*}
  */
 function getSearchedBooks($stateParams, Book) {
-    if (!$stateParams.page){
+    if (!$stateParams.page) {
         $stateParams.page = 1;
     }
     return Book.getSearchList($stateParams);
@@ -153,7 +155,7 @@ function run($rootScope, AuthGuard, AdminGuard) {
 }
 
 angular
-    .module("bookShop", ["ui.router", "templates", 'angular-loading-bar','angularUtils.directives.dirPagination'])
+    .module("bookShop", ["ui.router", "templates", 'angular-loading-bar', 'angularUtils.directives.dirPagination'])
     .config(config)
     .run(run);
 

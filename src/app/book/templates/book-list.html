@@ -1,9 +1,3 @@
-<div sidebar
-     categories="bookList.categories"
-     publishers="bookList.publishers"
-     authors="bookList.authors">
-</div>
-
 <div class="row">
     <div class="col-lg-12">
         <div class="input-group">
@@ -15,18 +9,28 @@
     </div>
 </div>
 
-<div class="table-look">
-    <ul class='flex-container wrap'>
-        <li class='flex-item' ng-repeat="book in bookList.bookList">
-            <a ui-sref="details({id: book.id})">
-                <img class="image" ng-src="{{book.picture}}" alt=""/>
 
-                <p class="text-book">{{book.name}}</p>
-                <p class="text-book">by {{book.author}}</p>
-            </a>
-        </li>
-    </ul>
+<div class="row books-sidebar-container">
+    <div class="col-sm-3" sidebar
+         categories="bookList.categories"
+         publishers="bookList.publishers"
+         authors="bookList.authors">
+    </div>
+
+    <div class="col-sm-9">
+        <ul class='bookList'>
+            <li class='bookList-item' ng-repeat="book in bookList.bookList">
+                <a ui-sref="details({id: book.id})">
+                    <img class="bookList-item-image" ng-src="{{book.picture}}" alt=""/>
+
+                    <p class="bookList-item-author">{{book.name}}</p>
+                    <p class="bookList-item-title">by {{book.author}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
+
 
 <div class="pagination-tab">
     <div pagination

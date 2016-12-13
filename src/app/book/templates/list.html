@@ -1,31 +1,58 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Book" ng-model='toFind'>
+            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ui-sref='list({toFind: toFind, page: 1})'>Search</button>
+      </span>
+        </div>
+    </div>
+</div>
+
 <div>
-    <table>
-        <thead style="font-size: 20px">
-            <tr>
-                <th>Book---</th>
-                <th>Author---</th>
-                <th>Category---</th>
-                <th>Release Date---</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Release Date</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th class="table-button">Edit</th>
+            <th class="table-button">Remove</th>
+        </tr>
         </thead>
-        <tbody style="font-size: 14px">
-            <tr ng-repeat="element in listBooks.bookList">
-                <td>{{element.name}}</td>
-                <td>{{element.author}}</td>
-                <td>{{element.category}}</td>
-                <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
-                <td>{{element.description | shortenText }}</td>
-                <td>{{element.price}}$</td>
-                <td>
-                    <button ui-sref='addEdit({id: element.id})' ng-click=''>Edit</button>
-                </td>
-                <td>
-                    <button type="button" ng-click='listBooks.removeBook(element.id)'> Remove</button>
-                </td>
-            </tr>
-            <span ng-show="listBooks.showMessage " style="font-size: 14px; color: red">{{listBooks.removedMessage}}</span>
+        <tbody>
+        <tr ng-repeat="element in listBooks.bookList">
+            <td>{{element.name}}</td>
+            <td>{{element.author}}</td>
+            <td>{{element.category}}</td>
+            <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
+            <td>{{element.publisher}}</td>
+            <td>{{element.isbn}}</td>
+            <td>{{element.price}}$</td>
+            <td class="table-button">
+                <a href="#" ui-sref='addEdit({id: element.id})' ng-click=''><i class="fa fa-pencil fa-fw"></i></a>
+            </td>
+            <td class="table-button">
+                <a href="#" type="button" ng-click='listBooks.removeBook(element.id)'><i
+                        class="fa fa-trash-o fa-fw"></i> </a>
+            </td>
+        </tr>
+        <span class="error" ng-show="listBooks.showMessage ">{{listBooks.removedMessage}}</span>
         </tbody>
-        <table>
+    </table>
+</div>
+
+
+<div class="pagination-tab">
+    <div pagination
+         total-results="listBooks.pagination.totalResults"
+         limit-per-page="listBooks.pagination.limitPerPage"
+         current-page="listBooks.pagination.currentPage"
+         max-button-number="listBooks.pagination.maxButtonNumber"
+         state="listBooks.pagination.state">
+    </div>
 </div>

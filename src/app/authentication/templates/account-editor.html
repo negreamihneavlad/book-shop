@@ -4,7 +4,7 @@
     <form name='edit.form' ng-submit="edit.updateUser()" novalidate>
         First Name:
         </br>
-        <input class='inputd' type="input" name='firstName' placeholder="First Name"
+        <input class='input' type="input" name='firstName' placeholder="First Name"
                ng-model="edit.data.firstName" required/>
         </br>
         <span ng-show="edit.form.$submitted || edit.form.firstName.$touched">
@@ -13,7 +13,7 @@
         </br>
         Last Name:
         </br>
-        <input class='inputd' type="input" name='lastName' placeholder="Last Name"
+        <input class='input' type="input" name='lastName' placeholder="Last Name"
                ng-model="edit.data.lastName" required/>
         </br>
         <span ng-show="edit.form.$submitted || edit.form.lastName.$touched">
@@ -22,7 +22,7 @@
         </br>
         Email:
         </br>
-        <input class='inputd' type="email" name='input' placeholder='username@example.com'
+        <input class='input' type="email" name='input' placeholder='username@example.com'
                ng-model="edit.data.email" required/>
         </br>
         <span ng-show="edit.form.$submitted || edit.form.input.$touched">
@@ -31,8 +31,8 @@
         </span>
         </br>
         </br>
-        <input type="button" ui-sref='updatePassword' value="Change Password"/>
-        <input type="submit" value="Save"/>
+        <input class="btn btn-default" type="button" ui-sref='updatePassword' value="Change Password"/>
+        <input class="btn btn-default" type="submit" value="Save"/>
         <span style="font-size: 12px">{{edit.updateMessage}} </span>
     </form>
 </div>

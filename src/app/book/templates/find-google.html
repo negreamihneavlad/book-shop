@@ -1,35 +1,43 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Books" ng-model='findGoogle.toFind'>
+            <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="findGoogle.submit()">Search</button>
+      </span>
+        </div>
+    </div>
+</div>
+
 <div>
-    <form name='findGoogle.findBook' ng-submit="findGoogle.submit()">
-        <input class='inputd' type="search" name="find" placeholder="Keyword" ng-model='findGoogle.toFind' />
-        <input type="submit" value='Search'>
-    </form>
-    <table>
-        <thead style="font-size: 20px">
-            <tr>
-                <th>Book---</th>
-                <th>Author---</th>
-                <th>Category---</th>
-                <th>Release Date---</th>
-                <th>Description--</th>
-                <th>Price</th>
-            </tr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Book</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Release Date</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th class="table-button">Add Book</th>
+        </tr>
         </thead>
-        <tbody style="font-size: 14px">
-            <tr ng-repeat="element in findGoogle.googleList">
-                <button ng-show='findGoogle.googleList' ng-click='findGoogle.addAllBooks(findGoogle.googleList)'>ADD ALL BOOKS</button>
-                <td>{{element.name}}</td>
-                <td>{{element.author}}</td>
-                <td>{{element.category}}</td>
-                <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
-                <td>{{element.description | shortenText }}</td>
-                <td>{{element.price}}$</td>
-                <td>
-                    <button ng-click='findGoogle.addBook(element)'>ADD BOOK</button>
-                </td>
-                <td>
-                </td>
-            </tr>
-            <span ng-show="findGoogle.showMessage " style="font-size: 14px; color: red">{{findGoogle.addMessage}}</span>
+        <tbody>
+        <tr ng-repeat="element in findGoogle.googleList">
+            <button class="btn btn-default table-addAllButton" ng-show='findGoogle.googleList' ng-click='findGoogle.addAllBooks(findGoogle.googleList)'>Add All Books</button>
+            <td>{{element.name}}</td>
+            <td>{{element.author}}</td>
+            <td>{{element.category}}</td>
+            <td>{{element.releaseDate | date : 'yyyy-MM-dd'}}</td>
+            <td>{{element.publisher}}</td>
+            <td>{{element.isbn}}</td>
+            <td>{{element.price}}$</td>
+            <td class="table-button">
+                <a href="#" ng-click='findGoogle.addBook(element)'><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+            </td>
+        </tr>
+        <span class="error" ng-show="findGoogle.showMessage ">{{findGoogle.addMessage}}</span>
         </tbody>
-        <table>
+    </table>
 </div>

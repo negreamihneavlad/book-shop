@@ -1,37 +1,39 @@
-.book-name {
-  font: normal 35px Cookie, Arial, Helvetica, sans-serif;
-  line-height: 40px;
-  margin: 0;
-}
+.book {
+  margin-top: 20px;
 
-.book-author {
-  font: normal 20px Cookie, Arial, Helvetica, sans-serif;
-  line-height: 40px;
-  margin: 0;
-}
+  &-name {
+    font-size: 35px;
+    line-height: 40px;
+  }
 
-.font {
-  font: normal 14px Cookie, Arial, Helvetica, sans-serif;
-}
+  &-author {
+    font-size: 20px;
+    line-height: 40px;
+    margin: 0;
+  }
 
-.font span {
-  line-height: 22px;
-}
+  &-item {
+    font-size: 14px;
 
-.details {
-  color: #5383d3;
-  margin-right: 10px;
-  font-weight: bold;
-}
+    span {
+      line-height: 22px;
+    }
 
-.thumbnail {
+    &-details {
+      color: #5383d3;
+      margin-right: 10px;
+      font-weight: bold;
+    }
 
-  margin-top: 30px;
-  height: 300px;
-  width: 200px;
-}
+    &-thumbnail {
+      margin-top: 30px;
+      height: 300px;
+      width: 200px;
+    }
 
-.description {
-  display: block;
-  width: 500px;
+    &-description {
+      display: block;
+      max-width: 500px;
+    }
+  }
 }

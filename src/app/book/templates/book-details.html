@@ -1,24 +1,25 @@
-<div>
+<div class="book">
     <span class="book-name">{{details.book.name}}</span>
     </br>
     <span class="book-author">by {{details.book.author}}</span>
+    </br>
 
-    <img class="thumbnail" ng-src="{{details.book.picture}}" alt="" class="img-responsive"/>
-    <div  class="font">
+    <img class="book-item-thumbnail" ng-src="{{details.book.picture}}" alt="" class="img-responsive"/>
+    <div  class="book-item">
         </br>
-        <span><span class="details">Release Date:</span>{{details.book.releaseDate | date : 'yyyy-MM-dd'}}</span>
+        <span><span class="book-item-details">Release Date:</span>{{details.book.releaseDate | date : 'yyyy-MM-dd'}}</span>
         </br>
-        <span><span class="details">Genre: </span>{{details.book.category}}</span>
+        <span><span class="book-item-details">Genre: </span>{{details.book.category}}</span>
         </br>
-        <span><span class="details">Publisher: </span>{{details.book.publisher}}</span>
+        <span><span class="book-item-details">Publisher: </span>{{details.book.publisher}}</span>
         </br>
-        <span><span class="details">Pages: </span>{{details.book.pages}}</span>
+        <span><span class="book-item-details">Pages: </span>{{details.book.pages}}</span>
         </br>
-        <span><span class="details">ISBN: </span>{{details.book.isbn}}</span>
+        <span><span class="book-item-details">ISBN: </span>{{details.book.isbn}}</span>
         </br>
-        <span><span class="details">Price: </span>{{details.book.price}}$</span>
+        <span><span class="book-item-details">Price: </span>{{details.book.price}}$</span>
         </br>
-        <span class="description"><span class="details">Description: </span>{{details.book.description}}</span>
+        <span class="book-item-description"><span class="book-item-details">Description: </span>{{details.book.description}}</span>
     </div>
 
 </div>

@@ -1,0 +1,121 @@
+.header {
+  background-color: #292c2f;
+  box-shadow: 0 1px 1px #ccc;
+  padding: 20px 40px;
+  height: 80px;
+  color: #ffffff;
+  box-sizing: border-box;
+
+  &-limiter {
+    max-width: 1200px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  /* Logo */
+  &-logo {
+    float: left;
+    font-size: 28px;
+    line-height: 40px;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    &-highlight {
+      color: #5383d3;
+    }
+  }
+
+  /* Navigation bar */
+  &-navigation {
+    font-size: 16px;
+    line-height: 40px;
+    float: left;
+    margin: 0 0 0 60px;
+    padding: 0;
+
+    &-item {
+      font-size: 14px;
+      display: inline-block;
+      padding: 0 5px;
+      opacity: 0.9;
+      line-height: 1;
+
+      &:hover {
+        text-decoration: none;
+        opacity: 1;
+      }
+
+      &:active {
+        color: #608bd2;
+      }
+    }
+  }
+
+  /* Login/Sign up buttons */
+  &-account {
+    font-size: 14px;
+    list-style: none;
+    line-height: 40px;
+    float: right;
+
+    &-item {
+      display: inline-block;
+      text-decoration: none;
+      margin-left: 15px;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &-user {
+      margin-right: 30px;
+      color: #608bd2;
+    }
+
+    /* The sign up button */
+    &-signUp {
+      font-weight: bold;
+      background-color: #3a3c3e;
+      padding: 3px 15px;
+      border-radius: 3px;
+    }
+  }
+}
+
+/* Making the header responsive */
+
+@media all and (max-width: 850px) {
+  .header {
+    padding: 25px;
+    height: 130px;
+    text-align: center;
+
+    &-logo {
+      float: none;
+      margin: -8px 0 2px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    &-navigation {
+      margin-top: 10px;
+      float: none;
+    }
+
+    &-account {
+      margin-top: -8px;
+      float: none;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}

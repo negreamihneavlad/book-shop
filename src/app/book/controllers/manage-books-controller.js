@@ -1,23 +1,31 @@
 /**
  * Manage books controller
  *
+ * @param $stateParams
+ * @param $state
  * @param $timeout
  * @param Book
  * @param bookList
  * @param Page
+ * @param length
+ * @param searchedBooks
  * @constructor
  * @ngInject
  */
-function ManageBooksCtrl($timeout, Book, Page, bookList) {
+function ManageBooksCtrl($stateParams, $state, $timeout, Book, Page, bookList, length, searchedBooks) {
     Page.setTitle('-Manage Books');
     var vm = this;
     vm.bookList = bookList;
     vm.removeBook = removeBook;
     vm.removed = removed;
     vm.showMessage = false;
+    vm.pagination = buildPagination();
 
     //////////////////////////////
 
+    if (searchedBooks) {
+        vm.bookList = searchedBooks;
+    }
     /**
      * Remove book from DB
      *
@@ -45,6 +53,16 @@ function ManageBooksCtrl($timeout, Book, Page, bookList) {
         $timeout(function () {
             vm.showMessage = false;
         }, 3000);
+    }
+
+    function buildPagination() {
+        return {
+            totalResults: length,
+            currentPage: $stateParams.page ? $stateParams.page : 1,
+            limitPerPage: 10,
+            maxButtonNumber: 4,
+            state: $state.current.name
+        }
     }
 }
 

@@ -1,36 +1,35 @@
-<div class="active-filters">Applied filters:
-    <span ng-repeat="(filterName,filterValue) in sidebar.filters" ng-if="filterValue">
-        <span ng-if="filterName == 'category' || filterName == 'publisher' || filterName == 'author'">
-        <a href="#" ng-click="sidebar.removeFilter(filterName)">[x]</a>{{filterValue}}
-            </span>
-    </span>
-</div>
 <div class="sidenav">
-    <div class="title">Filters</div>
+    <div class="sidenav-title">Filters</div>
     </br>
-    <div class="filter-block">
-        <span>Category:</span>
+    <div class="sidenav-filterBlock">
+        <span class="sidenav-filterBlock-title">Category:</span>
         <div ng-repeat="element in sidebar.categories">
-            <input type="checkbox" ui-sref="{category: element.category}">
+            <input type="checkbox" ui-sref="{category: element.category, page: 1}">
             {{element.category}}
         </div>
     </div>
     </br>
-    <div class="filter-block">
-        <span>Author:</span>
+    <div class="sidenav-filterBlock">
+        <span class="sidenav-filterBlock-title">Author:</span>
         <div ng-repeat="element in sidebar.authors">
-            <input type="checkbox" ui-sref="{author: element.author}">
+            <input type="checkbox" ui-sref="{author: element.author, page: 1}">
             {{element.author}}
         </div>
     </div>
     </br>
-    <div class="filter-block">
-        <span>Publisher:</span>
+    <div class="sidenav-filterBlock">
+        <span class="sidenav-filterBlock-title">Publisher:</span>
         <div ng-repeat="element in sidebar.publishers" ng-if="element.publisher">
-            <input type="checkbox" ui-sref="{publisher: element.publisher}">
+            <input type="checkbox" ui-sref="{publisher: element.publisher, page: 1}">
             {{element.publisher}}
         </div>
     </div>
+</div>
 
-
+<div class="active-filters">Applied filters:
+    <span ng-repeat="(filterName,filterValue) in sidebar.filters" ng-if="filterValue">
+        <div class="active-filters-item" ng-if="filterName == 'category' || filterName == 'publisher' || filterName == 'author'">
+        <a class="active-filters-remove-button" href="#" ng-click="sidebar.removeFilter(filterName)">[x]</a>{{filterValue}}
+            </div>
+    </span>
 </div>
