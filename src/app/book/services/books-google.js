@@ -53,7 +53,7 @@ function BooksGoogle($http, Book) {
      * @param bookData
      */
     function addBook(bookData) {
-        Book.create(bookData);
+        return Book.create(bookData);
     }
 
     /**
