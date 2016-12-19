@@ -1,64 +1,68 @@
-<div class="content-child">
-    <h1 class="title">Create a new account</h1>
+<div>
+    <h1 class="content-title">Create a new account</h1>
 
-    <form name='sign.form' ng-submit="sign.signUp()" novalidate>
-        First Name:
-        </br>
-        <input class='input' type="input" name='firstName' placeholder="First Name"
-               ng-model="sign.credentials.firstName" required/>
-        </br>
-        <span ng-show="sign.form.$submitted || sign.form.firstName.$touched">
-            <span class='error' ng-show="sign.form.firstName.$error.required">Insert First Name</span>
-        </span>
-        </br>
-        Last Name:
-        </br>
-        <input class='input' type="input" name='lastName' placeholder="Last Name"
-               ng-model="sign.credentials.lastName" required/>
-        </br>
-        <span ng-show="sign.form.$submitted || sign.form.lastName.$touched">
-            <span class='error' ng-show="sign.form.lastName.$error.required">Insert Last Name</span>
-        </span>
-        </br>
-        Email:
-        </br>
-        <input class='input' type="email" name='input' placeholder='username@example.com'
-               ng-model="sign.credentials.email" required/>
-        </br>
-        <span ng-show="sign.form.$submitted || sign.form.input.$touched">
-            <span class='error' ng-show="sign.form.input.$error.required">Insert email</span>
-        <span class="error" ng-show="sign.form.input.$error.email">Not valid email!</span>
-        </span>
-        </br>
-        Password:
-        </br>
-        <input class='input' type="password" name='password' placeholder="Password"
-               ng-model="sign.credentials.password" required/>
-        </br>
-        <span ng-show="sign.form.$submitted || sign.form.password.$touched">
-            <span class='error' ng-show="sign.form.password.$error.required">Insert password</span>
-        </span>
-        </br>
-        Confirm Password:
-        </br>
-        <div ng-class="{'has-error':!sign.form.confirmPassword.$valid}">
-            <input class='input' type="password" name='confirmPassword' placeholder="Confirm Password"
-                   ng-model="sign.confirmPassword" required password-confirmation
-                   match-target="sign.credentials.password"/>
-            </br>
-            <div ng-show="sign.form.$submitted || sign.form.confirmPassword.$touched">
-                <div class="error" ng-show="sign.form.confirmPassword.$error.required">Insert confirmation password
-                </div>
-                <div class="error" ng-show="sign.form.confirmPassword.$error.match">Password confirmation must match
-                    password
+    <form name='signUp.form' ng-submit="signUp.signUp()" novalidate>
+
+        <div>
+            <div class="input-label">First Name:</div>
+            <input class='input' type="input" name='firstName' placeholder="First Name"
+                   ng-model="signUp.credentials.firstName" required/>
+            <div class='error' ng-if="signUp.form.$submitted && signUp.form.firstName.$invalid"
+                 ng-messages="signUp.form.firstName.$error">
+                <span ng-message when="required">Insert First Name</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Last Name:</div>
+            <input class='input' type="input" name='lastName' placeholder="Last Name"
+                   ng-model="signUp.credentials.lastName" required/>
+            <div class='error' ng-if="signUp.form.$submitted && signUp.form.lastName.$invalid"
+                 ng-messages="signUp.form.lastName.$error">
+                <span ng-message when="required">Insert Last Name</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Email:</div>
+            <input class='input' ng-class="existingEmail.spinner ? 'input-spinner' : null" type="email" name='input'
+                   placeholder="username@example.com" ng-model-options="{debounce: 500}"
+                   ng-model="signUp.credentials.email" existing-email required/>
+            <div class='error' ng-if="signUp.form.$submitted && signUp.form.input.$invalid"
+                 ng-messages="signUp.form.input.$error">
+                <span ng-message when="required">Insert email</span>
+                <span ng-message when="email">Not valid email!</span>
+                <span ng-message when="existingEmail">This email is already registered.</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Password:</div>
+            <input class='input' type="password" name='password' placeholder="Password"
+                   ng-model="signUp.credentials.password" required/>
+            <div class='error' ng-if="signUp.form.$submitted && signUp.form.password.$invalid"
+                 ng-messages="signUp.form.password.$error">
+                <span ng-message when="required">Insert password</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Confirm Password:</div>
+            <div ng-class="{'has-error':!signUp.form.confirmPassword.$valid}">
+                <input class='input' type="password" name='confirmPassword' placeholder="Confirm Password"
+                       ng-model="signUp.confirmPassword" required password-confirmation
+                       match-target="signUp.credentials.password"/>
+                <div class='error' ng-if="signUp.form.$submitted && signUp.form.confirmPassword.$invalid"
+                     ng-messages="signUp.form.confirmPassword.$error">
+                    <div ng-message when="required">Insert confirmation password</div>
+                    <div ng-message when="match">Password confirmation must match password</div>
                 </div>
             </div>
         </div>
 
-        </br>
-        <input class="btn btn-default" type="submit" value="Sign up"/>
+        <input class="btn btn-default btn-auth" type="submit" value="Sign up"/>
         <div>
-            <span>{{sign.emailAlreadyRegistered}}</span>
+            <span>{{signUp.emailAlreadyRegistered}}</span>
         </div>
     </form>
 </div>
