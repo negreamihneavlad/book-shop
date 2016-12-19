@@ -16,7 +16,8 @@ angular
     .module("app", [
         "bookShop",
         "auth",
-        "layout"
+        "layout",
+        "ngMessages"
     ])
     .config(config)
     .run(run);
