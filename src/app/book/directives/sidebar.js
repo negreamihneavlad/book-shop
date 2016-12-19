@@ -39,7 +39,7 @@ function sidebar() {
         bindToController: true,
         controllerAs: "sidebar",
         controller: SidebarCtrl,
-        templateUrl: "app/book/sidebar/templates/sidebar.html"
+        templateUrl: "app/book/templates/sidebar.html"
     };
 }
 
