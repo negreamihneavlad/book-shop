@@ -2,7 +2,8 @@ var ACCOUNT_API_URLS = {
     editAccount: "account/edit",
     accountResetPassword: "account/reset-password",
     accountForgotPassword: "account/forgot-password",
-    accountEditChangePassword: "account/edit/change-password"
+    accountEditChangePassword: "account/edit/change-password",
+    checkEmail: "checkEmail"
 };
 
 angular
