@@ -3,12 +3,10 @@
  *
  * @param $timeout
  * @param BooksGoogle
- * @param Page
  * @constructor
  * @ngInject
  */
-function FindCtrl($timeout, BooksGoogle, Page) {
-    Page.setTitle('-Find on Google');
+function FindCtrl($timeout, BooksGoogle) {
     var vm = this;
     vm.submit = submit;
     vm.addBook = addBook;

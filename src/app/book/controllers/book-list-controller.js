@@ -3,7 +3,6 @@
  *
  * @param $state
  * @param $stateParams
- * @param Page
  * @param bookList
  * @param categories
  * @param publishers
@@ -12,8 +11,7 @@
  * @constructor
  * @ngInject
  */
-function BookListCtrl($state, $stateParams, Page, bookList, categories, publishers, authors, length) {
-    Page.setTitle('');
+function BookListCtrl($state, $stateParams, bookList, categories, publishers, authors, length) {
     var vm = this;
     vm.pagination = buildPagination();
     vm.bookList = bookList;

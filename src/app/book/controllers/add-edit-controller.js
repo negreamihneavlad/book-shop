@@ -4,12 +4,10 @@
  * @param $anchorScroll
  * @param Book
  * @param book
- * @param Page
  * @constructor
  * @ngInject
  */
-function AddEditCtrl($anchorScroll, Book, Page, book) {
-    Page.setTitle('-Add or Edit Book');
+function AddEditCtrl($anchorScroll, Book, book) {
     var vm = this;
     $anchorScroll();
     vm.book = book || {};
@@ -47,7 +45,7 @@ function AddEditCtrl($anchorScroll, Book, Page, book) {
      * Check if update or create
      */
     function submit() {
-        if (vm.addBook.$invalid) {
+        if (vm.form.$invalid) {
             return;
         }
         if (book) {

@@ -6,14 +6,12 @@
  * @param $timeout
  * @param Book
  * @param bookList
- * @param Page
  * @param length
  * @param searchedBooks
  * @constructor
  * @ngInject
  */
-function ManageBooksCtrl($stateParams, $state, $timeout, Book, Page, bookList, length, searchedBooks) {
-    Page.setTitle('-Manage Books');
+function ManageBooksCtrl($stateParams, $state, $timeout, Book, bookList, length, searchedBooks) {
     var vm = this;
     vm.bookList = bookList;
     vm.removeBook = removeBook;

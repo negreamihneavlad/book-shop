@@ -2,7 +2,6 @@
  * Search controller
  *
  * @param searchedBooks
- * @param Page
  * @param categories
  * @param publishers
  * @param authors
@@ -12,8 +11,7 @@
  * @constructor
  * @ngInject
  */
-function SearchCtrl($state, $stateParams, Page, searchedBooks, categories, publishers, authors, length) {
-    Page.setTitle('-Search Books');
+function SearchCtrl($state, $stateParams, searchedBooks, categories, publishers, authors, length) {
     var vm = this;
     vm.pagination = buildPagination();
     vm.bookList = searchedBooks;
