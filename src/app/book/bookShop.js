@@ -11,6 +11,9 @@ function config($stateProvider) {
             parent: 'main',
             templateUrl: 'app/book/templates/book-list.html',
             controller: 'BookListCtrl as bookList',
+            data: {
+                pageTitle: 'Book Shop'
+            },
             resolve: {
                 bookList: getBookList,
                 categories: getCategories,
@@ -22,12 +25,15 @@ function config($stateProvider) {
         .state('list', {
             url: '/list/:toFind?page',
             parent: 'main',
-            templateUrl: 'app/book/templates/list.html',
+            templateUrl: 'app/book/templates/manage-books.html',
             controller: 'ManageBooksCtrl as listBooks',
             resolve: {
                 bookList: getBookList,
                 searchedBooks: getSearchedBooks,
                 length: getLength
+            },
+            data: {
+                pageTitle: 'Book Shop - Manage Books'
             },
             adminGuard: true
         })
@@ -36,6 +42,9 @@ function config($stateProvider) {
             parent: 'main',
             templateUrl: 'app/book/templates/add-edit.html',
             controller: 'AddEditCtrl as addEdit',
+            data: {
+                pageTitle: 'Book Shop - Add or Edit Books'
+            },
             resolve: {
                 book: getOneBook
             },
@@ -46,6 +55,9 @@ function config($stateProvider) {
             parent: 'main',
             templateUrl: 'app/book/templates/find-google.html',
             controller: 'FindCtrl as findGoogle',
+            data: {
+                pageTitle: 'Book Shop - Search on Google Books'
+            },
             adminGuard: true
         })
         .state('details', {
@@ -62,6 +74,9 @@ function config($stateProvider) {
             parent: 'main',
             templateUrl: 'app/book/templates/search-result.html',
             controller: 'SearchCtrl as search',
+            data: {
+                pageTitle: 'Book Shop - Search Books'
+            },
             resolve: {
                 searchedBooks: getSearchedBooks,
                 categories: getCategories,
