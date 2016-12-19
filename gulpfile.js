@@ -14,6 +14,8 @@ var ngAnnotate = require("gulp-ng-annotate");
 var uglify = require("gulp-uglify");
 var jshint = require("gulp-jshint");
 
+var  connect = require('gulp-connect');
+
 /**
  * Build directory.
  */
@@ -36,6 +38,7 @@ var CONFIG = {
             src: [
                 "bower_components/jquery/dist/jquery.js",
                 "bower_components/angular/angular.js",
+                "bower_components/angular-messages/angular-messages.js",
                 "bower_components/angular-ui-router/release/angular-ui-router.js",
                 "bower_components/lodash/dist/lodash.js",
                 "bower_components/sifter/sifter.min.js",
@@ -54,7 +57,7 @@ var CONFIG = {
             src: [
                 "src/app/app.js",
                 "src/app/app-controller.js",
-                "src/app/page-title.js",
+                "src/app/layout/directives/page-title.js",
                 "src/app/authentication/auth.js",
                 "src/app/book/bookShop.js",
                 "src/app/book/services/pager.js",
@@ -65,6 +68,8 @@ var CONFIG = {
                 "src/app/book/controllers/book-details-controller.js",
                 "src/app/book/controllers/search-books-controller.js",
                 "src/app/book/controllers/book-list-controller.js",
+                "src/app/authentication/directives/existing-email.js",
+                "src/app/authentication/services/existing-account.js",
                 "src/app/authentication/controllers/login-controller.js",
                 "src/app/authentication/controllers/update-password-controller.js",
                 "src/app/authentication/controllers/forgot-password-controller.js",
@@ -89,9 +94,9 @@ var CONFIG = {
                 "src/app/authentication/directives/show-only-for-admins.js",
                 "src/app/authentication/directives/password-confirmation.js",
                 "src/app/layout/layout.js",
-                "src/app/book/sidebar/services/filters.js",
-                "src/app/book/pagination/directives/pagination.js",
-                "src/app/book/sidebar/directives/sidebar.js",
+                "src/app/book/services/filters.js",
+                "src/app/components/pagination/directives/pagination.js",
+                "src/app/book/directives/sidebar.js",
                 "src/app/layout/controllers/main-controller.js"
             ],
             compiled: "app.js"
@@ -251,24 +256,16 @@ gulp.task("clean", function() {
     del(BUILD_DIRECTORY + "/**/*");
 });
 
-
 /**
- * Default.
+ * Setup the server.
  */
-gulp.task("default", ["buildAppCss", "buildFrameworksJs", "buildTemplatesJs", "buildAppJs", "copyIndexHtml", "copyAssets"]);
-
-/**
- * Build.
- */
-gulp.task("build", ["default", "minifyAppCss", "minifyFrameworksJs", "minifyTemplatesJs", "minifyAppJs"]);
-
-/**
- * Lint.
- */
-gulp.task("lint", function() {
-    return gulp.src(CONFIG.lint.src)
-        .pipe(jshint())
-        .pipe(jshint.reporter("default"));
+gulp.task('connect', function () {
+    connect.server({
+        name: 'Book Shop',
+        root: './',
+        port: 8080,
+        livereload: true
+    });
 });
 
 /**
@@ -281,3 +278,28 @@ gulp.task("watch", function() {
     gulp.watch(CONFIG.js.templates.src, ["buildTemplatesJs"]);
     gulp.watch(CONFIG.js.app.src, ["buildAppJs"]);
 });
+
+/**
+ * Default.
+ */
+gulp.task("default", ["buildAppCss", "buildFrameworksJs", "buildTemplatesJs", "buildAppJs", "copyIndexHtml", "copyAssets"]);
+
+/**
+ * Build.
+ */
+gulp.task("build", ["default", "minifyAppCss", "minifyFrameworksJs", "minifyTemplatesJs", "minifyAppJs"]);
+
+/**
+ * Server.
+ */
+gulp.task("server", ["connect", "watch"]);
+
+/**
+ * Lint.
+ */
+gulp.task("lint", function() {
+    return gulp.src(CONFIG.lint.src)
+        .pipe(jshint())
+        .pipe(jshint.reporter("default"));
+});
+
