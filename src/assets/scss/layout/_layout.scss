@@ -6,6 +6,18 @@
   padding-bottom: 40px;
   margin-left: 150px;
   margin-right: 150px;
+
+  &-title{
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+@media all and (max-width: 1030px) {
+  .content {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
 }
 
 

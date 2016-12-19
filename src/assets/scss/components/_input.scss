@@ -2,5 +2,14 @@
   width: 220px;
   padding: 5px 14px;
   margin: 8px 0;
-  box-sizing: border-box;
+
+  &-spinner{
+    background-image: url("../../../../build/assets/img/defaultgif.gif");
+    background-repeat:no-repeat;
+    background-position:190px 5px;
+  }
+
+  &-label{
+    margin-top: 20px;
+  }
 }

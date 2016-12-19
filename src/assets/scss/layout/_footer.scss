@@ -76,14 +76,14 @@
             vertical-align: middle;
             margin: 0;
 
-            span {
+            &-address {
                 display: block;
                 font-weight: normal;
                 font-size: 14px;
                 line-height: 2;
             }
 
-            p a {
+            a {
                 color: #5383d3;
                 text-decoration: none;
 
@@ -138,7 +138,8 @@
 
 @media (max-width: 880px) {
     .footer {
-        font: bold 14px sans-serif;
+        font-weight: bold;
+        font-size: 14px;
     }
     .footer .footer-left,
     .footer .footer-center,

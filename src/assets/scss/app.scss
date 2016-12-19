@@ -1,14 +1,18 @@
 @import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap.scss";
-@import "books/list";
+@import "components/_table";
 @import "layout/_layout";
-@import "books/book-list";
-@import "layout/footer";
-@import "layout/header";
-@import "books/book-details";
-@import "books/sidenav";
+@import "books/_book-list";
+@import "layout/_footer";
+@import "layout/_header";
+@import "books/_book-details";
+@import "books/_sidenav";
 @import "components/_button";
 @import "components/_input";
 @import "components/_error";
-@import "components/_title";
+@import "books/_book-sidebar";
+@import "core/_scaffolding";
+@import "components/_pagination";
+@import "components/_loader";
+@import "authentication/_messages";
 // import ngProgress.css
 @import "../../../bower_components/angular-loading-bar/build/loading-bar.css";
