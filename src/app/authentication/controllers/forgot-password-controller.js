@@ -2,12 +2,10 @@
  * Forgot password
  *
  * @param Account
- * @param Page
  * @constructor
  * @ngInject
  */
-function ForgotPassCtrl(Account,Page) {
-    Page.setTitle('-Forgot Password');
+function ForgotPassCtrl(Account) {
     var vm = this;
     vm.credentials= {};
     vm.requestPasswordResetToken = requestPasswordResetToken;
