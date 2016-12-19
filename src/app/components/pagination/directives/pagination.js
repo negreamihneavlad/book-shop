@@ -34,7 +34,7 @@ function PaginationCtrl($state) {
  */
 function pagination() {
     return {
-        templateUrl: "app/book/pagination/templates/pagination.html",
+        templateUrl: "app/components/pagination/templates/pagination.html",
         replace: true,
         scope: {
             totalResults: "=",
