@@ -1,0 +1,90 @@
+<div>
+    <h1 class="content-title">Shipping details</h1>
+
+    <form name='ship.form' ng-submit="ship.placeOrder()" novalidate>
+
+        <div>
+            <div class="input-label">First Name:</div>
+            <input class='input' type="input" name='firstName' placeholder="First Name"
+                   ng-model="ship.shippingDetails.firstName" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.firstName.$invalid"
+                 ng-messages="ship.form.firstName.$error">
+                <span ng-message when="required">Insert First Name</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Last Name:</div>
+            <input class='input' type="input" name='lastName' placeholder="Last Name"
+                   ng-model="ship.shippingDetails.lastName" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.lastName.$invalid"
+                 ng-messages="ship.form.lastName.$error">
+                <span ng-message when="required">Insert Last Name</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Email:</div>
+            <input class='input' type="email" name='input'
+                   placeholder="username@example.com" ng-model="ship.shippingDetails.email" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.input.$invalid"
+                 ng-messages="ship.form.input.$error">
+                <span ng-message when="required">Insert email</span>
+                <span ng-message when="email">Not valid email!</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Country:</div>
+            <input class='input' type="input" name='country' placeholder="Country"
+                   ng-model="ship.shippingDetails.country" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.country.$invalid"
+                 ng-messages="ship.form.country.$error">
+                <span ng-message when="required">Insert country</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Phone:</div>
+            <input class='input' type="input" name='phone' placeholder="Phone"
+                   ng-model="ship.shippingDetails.phone" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.phone.$invalid"
+                 ng-messages="ship.form.phone.$error">
+                <span ng-message when="required">Insert phone</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">City:</div>
+            <input class='input' type="input" name='city' placeholder="City"
+                   ng-model="ship.shippingDetails.city" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.city.$invalid"
+                 ng-messages="ship.form.city.$error">
+                <span ng-message when="required">Insert city</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Address:</div>
+            <input class='input' type="input" name='address' placeholder="Address"
+                   ng-model="ship.shippingDetails.address" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.address.$invalid"
+                 ng-messages="ship.form.address.$error">
+                <span ng-message when="required">Insert address</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="input-label">Zip Code:</div>
+            <input class='input' type="input" name='zipCode' placeholder="Zip Code"
+                   ng-model="ship.shippingDetails.zipCode" required/>
+            <div class='error' ng-if="ship.form.$submitted && ship.form.zipCode.$invalid"
+                 ng-messages="ship.form.zipCode.$error">
+                <span ng-message when="required">Insert Zip Code</span>
+            </div>
+        </div>
+
+        <input class="btn btn-default btn-auth" type="submit" value="Place order"/>
+
+    </form>
+</div>

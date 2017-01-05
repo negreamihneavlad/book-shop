@@ -1,0 +1,55 @@
+<div class="cart">
+    <span class="cart-title">Shopping Cart</span>
+
+    <table ng-if="cart.cartItems.length > 0" class="table table-size col-sm-6">
+        <thead>
+        <tr>
+            <th>Book</th>
+            <th class="cart-quantity-head">Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in cart.cartItems">
+            <td>
+                <span class="col-sm-2">
+                    <img class="cart-picture" ng-src="{{item.book.picture}}" alt=""/>
+                    <a class="cart-remove" ng-click="cart.removeItem($index)">Remove item</a>
+                </span>
+
+                <span class="cart-details col-sm-10">
+                    <span class="cart-details-title">{{item.book.name}}</span>
+                    <span class="cart-details-author">by {{item.book.author}}</span>
+                    <span class="cart-details-block">
+                    <span class="cart-details-informations"><span
+                            class="cart-details-informations-label">Publisher: </span>{{item.book.publisher}}</span>
+                    <span class="cart-details-informations"><span class="cart-details-informations-label">ISBN: </span>{{item.book.isbn}}</span>
+                    <span class="cart-details-informations"><span class="cart-details-informations-label">Price: </span>{{item.book.price * item.quantity}}$</span>
+                    </span>
+                </span>
+            </td>
+            <td>
+                <div class="cart-quantity">
+                    <i class="fa fa-minus-square-o cart-quantity-selectors" ng-click='cart.decreaseQuantity($index)'
+                       aria-hidden="true"></i>
+                    <input class="cart-quantity-input" ng-model='item.quantity' type="text">
+                    <i class="fa fa-plus-square-o cart-quantity-selectors" ng-click='cart.increaseQuantity($index)'
+                       aria-hidden="true"></i>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="checkOut col-sm-2">
+        <div class="checkOut-title">Order Details:</div>
+        <div ng-repeat='item in cart.cartItems'>
+            <div>{{item.quantity}} x {{item.book.name}}</div>
+        </div>
+        <div class="checkOut-total">Total:</div>
+        <div>{{cart.totalPrice()}}$</div>
+        <button type="button" class="btn btn-default btn-auth" ui-sref="shipping"><i class="fa fa-angle-double-right"
+                                                                  aria-hidden="true"></i>Check Out
+        </button>
+    </div>
+
+</div>
