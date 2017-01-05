@@ -1,14 +1,12 @@
 /**
  * App controller.
  *
- * @param Page
+ * @param Cart
  * @constructor
  * @ngInject
  */
-function AppCtrl(Page) {
-    var vm = this;
-
-    vm.Page = Page;
+function AppCtrl(Cart) {
+    Cart.load();
 }
 
 angular
