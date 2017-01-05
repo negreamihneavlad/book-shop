@@ -4,10 +4,12 @@
  * @param $state
  * @param Authentication
  * @param AuthGuard
+ * @param Cart
+ * @param Session
  * @constructor
  * @ngInject
  */
-function LogInCtrl($state, Authentication, AuthGuard) {
+function LogInCtrl($state, Authentication, AuthGuard, Cart, Session) {
     var vm = this;
     vm.credentials = {};
     vm.login = login;
@@ -31,6 +33,7 @@ function LogInCtrl($state, Authentication, AuthGuard) {
                 if (AuthGuard.hasBlockedTransition()) {
                     AuthGuard.allowBlockedTransition();
                 } else {
+                    Cart.load();
                     $state.go("home", {}, {reload: true});
                 }
             })

@@ -65,6 +65,7 @@ function config($httpProvider, $stateProvider) {
             }
         });
 }
+
 angular
     .module("auth", ["ui.router", "templates"])
     .config(config);
