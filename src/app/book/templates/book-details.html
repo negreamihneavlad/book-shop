@@ -1,4 +1,4 @@
-<div class="book">
+<div class="book col-sm-8">
     <span class="book-name">{{details.book.name}}</span>
     </br>
     <span class="book-author">by {{details.book.author}}</span>
@@ -20,5 +20,11 @@
         <span><span class="book-item-details">Price: </span>{{details.book.price}}$</span>
         </br>
         <span class="book-item-description"><span class="book-item-details">Description: </span>{{details.book.description}}</span>
+    </div>
+</div>
+
+<div class="col-sm-4">
+    <div class="fa-3x" add-to-cart book-id = 'details.book.id'>
+
     </div>
 </div>
