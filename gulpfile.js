@@ -60,6 +60,7 @@ var CONFIG = {
                 "src/app/layout/directives/page-title.js",
                 "src/app/authentication/auth.js",
                 "src/app/book/bookShop.js",
+                "src/app/order/order.js",
                 "src/app/book/services/pager.js",
                 "src/app/book/controllers/manage-books-controller.js",
                 "src/app/book/controllers/add-edit-controller.js",
@@ -97,7 +98,12 @@ var CONFIG = {
                 "src/app/book/services/filters.js",
                 "src/app/components/pagination/directives/pagination.js",
                 "src/app/book/directives/sidebar.js",
-                "src/app/layout/controllers/main-controller.js"
+                "src/app/layout/controllers/main-controller.js",
+                "src/app/order/constants/order-api-urls.js",
+                "src/app/order/services/cart.js",
+                "src/app/order/controllers/manage-cart-controller.js",
+                "src/app/order/directives/add-to-cart.js",
+                "src/app/order/controllers/shipping-controller.js"
             ],
             compiled: "app.js"
         },
