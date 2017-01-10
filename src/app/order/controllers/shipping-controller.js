@@ -3,13 +3,17 @@
  *
  * @param Session
  * @param Cart
+ * @param clientToken
  * @constructor
  */
-function ShippingCtrl(Session, Cart) {
+function ShippingCtrl(Session, Cart, clientToken) {
     var vm = this;
 
     vm.shippingDetails = Session.getData();
     vm.placeOrder = placeOrder;
+    vm.confirmPayment = confirmPayment;
+    vm.totalPrice = totalPrice;
+    vm.paymentTab = false;
 
     //////////////////////////////
 
@@ -18,11 +22,43 @@ function ShippingCtrl(Session, Cart) {
      *
      */
     function placeOrder() {
-        if (vm.form.$invalid) {
+        if (vm.detailsForm.$invalid) {
             return;
         }
-        Cart.placeOrder(vm.shippingDetails);
-        Cart.createShippingDetails(vm.shippingDetails);
+        vm.paymentTab = true;
+        //Cart.createShippingDetails(vm.shippingDetails);
+    }
+
+    /**
+     * Payment
+     *
+     */
+    function confirmPayment() {
+        if (vm.paymentForm.$invalid) {
+            return;
+        }
+
+        var client = new braintree.api.Client({clientToken: clientToken});
+        client.tokenizeCard({
+            number: vm.card.number,
+            cardholderName: vm.shippingDetails.firstName + ' ' + vm.shippingDetails.lastName,
+            // or expirationMonth and expirationYear
+            expirationMonth: vm.card.exp_month,
+            expirationYear: vm.card.exp_year,
+            // CVV if required
+            cvv: vm.card.cvc
+        }, function (err, nonce) {
+            Cart.confirmPayment(nonce, totalPrice());
+        });
+
+    }
+
+    function totalPrice(){
+        var total = 0;
+        _.map(Cart.items,function(item){
+            total += item.quantity * item.book.price;
+        });
+        return total;
     }
 }
 angular

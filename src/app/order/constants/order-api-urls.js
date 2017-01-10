@@ -3,7 +3,9 @@ var ORDER_API_URLS = {
     orderItem: 'orderItem',
     updateOrderItem: 'orderItem/$1',
     shipping: 'shipping',
-    checkOut: 'check-out'
+    checkOut: 'check-out',
+    clientToken: 'client-token',
+    confirmPayment: 'checkout'
 };
 
 angular

@@ -19,7 +19,10 @@ angular
         "order",
         "auth",
         "layout",
-        "ngMessages"
+        "ngMessages",
+        "ui.bootstrap.tabs",
+        "credit-cards"
+
     ])
     .config(config)
     .run(run);

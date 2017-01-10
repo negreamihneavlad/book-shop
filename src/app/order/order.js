@@ -19,7 +19,10 @@ function config($stateProvider) {
             url: '/shipping',
             parent: 'main',
             templateUrl: 'src/app/order/templates/shipping-details.html',
-            controller: 'ShippingCtrl as ship'
+            controller: 'ShippingCtrl as ship',
+            resolve: {
+                clientToken: getClientToken
+            }
         })
 }
 /**
@@ -30,6 +33,10 @@ function config($stateProvider) {
  */
 function getCartItems(Cart) {
     return Cart.items;
+}
+
+function getClientToken(Cart){
+    return Cart.clientToken();
 }
 
 angular

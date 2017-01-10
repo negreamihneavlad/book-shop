@@ -49,7 +49,9 @@ var CONFIG = {
                 "bower_components/angular-filter/dist/angular-filter.min.js",
                 "bower_components/url-to/url-to.js",
                 "bower_components/angular-loading-bar/build/loading-bar.js",
-                "bower_components/angularUtils-pagination/dirPagination.js"
+                "bower_components/angularUtils-pagination/dirPagination.js",
+                "bower_components/angular-ui-bootstrap/src/tabs/tabs.js",
+                "bower_components/angular-credit-cards/release/angular-credit-cards.js"
             ],
             compiled: "frameworks.js"
         },
@@ -111,6 +113,9 @@ var CONFIG = {
             src: "src/app/**/*.html",
             options: {
                 base: "src"
+            },
+            replacePaths: {
+                "app/components/tabs/templates": "template/tabs"
             },
             compiled: "templates.js"
         },
@@ -195,7 +200,16 @@ gulp.task("buildTemplatesJs", function() {
         base = slash(base);        
 
         var dirName = slash(__dirname);
-        return path.replace(dirName + "/" + base + "/", "");
+        var relativePath = path.replace(dirName + "/" + base + "/", "");
+        var replacePaths = CONFIG.js.templates.replacePaths;
+
+        for (var replacePath in replacePaths) {
+            if (path.indexOf(replacePath) > -1) {
+                return relativePath.replace(replacePath, replacePaths[replacePath]);
+            }
+        }
+
+        return relativePath;
     }
 
     return gulp.src(CONFIG.js.templates.src, CONFIG.js.templates.options)
