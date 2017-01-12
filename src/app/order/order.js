@@ -9,7 +9,7 @@ function config($stateProvider) {
         .state('cart', {
             url: '/cart',
             parent: 'main',
-            templateUrl: 'src/app/order/templates/cart.html',
+            templateUrl: 'app/order/templates/cart.html',
             controller: 'ManageCartCtrl as cart',
             resolve: {
                 cartItems: getCartItems
@@ -18,8 +18,11 @@ function config($stateProvider) {
         .state('shipping', {
             url: '/shipping',
             parent: 'main',
-            templateUrl: 'src/app/order/templates/shipping-details.html',
-            controller: 'ShippingCtrl as ship'
+            templateUrl: 'app/order/templates/shipping-details.html',
+            controller: 'ShippingCtrl as ship',
+            resolve: {
+                clientToken: getClientToken
+            }
         })
 }
 /**
@@ -30,6 +33,10 @@ function config($stateProvider) {
  */
 function getCartItems(Cart) {
     return Cart.items;
+}
+
+function getClientToken(Cart){
+    return Cart.clientToken();
 }
 
 angular

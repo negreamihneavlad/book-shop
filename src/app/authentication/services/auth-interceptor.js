@@ -25,7 +25,7 @@ function AuthInterceptor($rootScope, $q, Session, AUTH_EVENTS) {
      */
     function request(config) {
         var authToken = Session.getAuthToken();
-        if (authToken && config.url.substring(0, 22) == "http://localhost:3000/") {
+        if (authToken && config.url.substring(0, 27) != "https://www.googleapis.com/") {
             config.headers = config.headers || {};
             config.headers["Authorization"] = 'bearer ' + authToken;
         }

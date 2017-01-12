@@ -21,11 +21,12 @@
             <li class='bookList-item' ng-repeat="book in bookList.bookList">
                 <a ui-sref="details({id: book.id})">
                     <img class="bookList-item-image" ng-src="{{book.picture}}" alt=""/>
-
-                    <p class="bookList-item-author">{{book.name}}</p>
-                    <p class="bookList-item-title">by {{book.author}}</p>
+                    <div class="bookList-item-description">
+                        <p class="bookList-item-author">{{book.name}}</p>
+                        <p class="bookList-item-title">by {{book.author}}</p>
+                    </div>
                 </a>
-                <div add-to-cart book-id = 'book.id'></div>
+                <div add-to-cart book-id='book.id'></div>
             </li>
         </ul>
     </div>

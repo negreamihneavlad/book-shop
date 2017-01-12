@@ -14,11 +14,12 @@
   &-item {
     padding: 5px;
     width: 100px;
-    height: 200px;
+    height: 230px;
     margin: 40px;
 
     &-image {
       width: 120px;
+      height: 180px;
     }
 
     &-author {
@@ -38,6 +39,10 @@
       margin: 0px;
       text-align: left;
       cursor: pointer;
+    }
+
+    &-description {
+      height: 45px;
     }
   }
 }

@@ -9,11 +9,11 @@
 @import "components/_button";
 @import "components/_input";
 @import "components/_error";
+@import "components/_payment";
 @import "books/_book-sidebar";
 @import "core/_scaffolding";
 @import "components/_pagination";
 @import "components/_loader";
 @import "authentication/_messages";
 @import "cart/_cart.scss";
-// import ngProgress.css
-@import "../../../bower_components/angular-loading-bar/build/loading-bar.css";
+@import "components/loading-bar";

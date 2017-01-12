@@ -16,6 +16,8 @@
     "cookies-js": "^1.2.3",
     "angular-filter": "^0.5.11",
     "angular-loading-bar": "^0.9.0",
-    "angularUtils-pagination": "angular-utils-pagination#^0.11.1"
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.1",
+    "braintree-web": "^3.6.3",
+    "angular-credit-cards": "^3.1.6"
   }
 }
