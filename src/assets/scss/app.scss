@@ -16,5 +16,4 @@
 @import "components/_loader";
 @import "authentication/_messages";
 @import "cart/_cart.scss";
-// import ngProgress.css
-@import "../../../bower_components/angular-loading-bar/build/loading-bar.css";
+@import "components/loading-bar";

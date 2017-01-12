@@ -32,7 +32,12 @@ function Cart($http, ORDER_API_URLS) {
     function load() {
         return checkCart()
             .then(function (response) {
-                return getItems(response.id);
+                if (response){
+                    return getItems(response.id);
+                }
+                else {
+                    return $http.post(URLTo.api(ORDER_API_URLS.order));
+                }
             })
     }
 
@@ -148,6 +153,11 @@ function Cart($http, ORDER_API_URLS) {
         });
     }
 
+    /**
+     * Get client token
+     *
+     * @returns {*}
+     */
     function clientToken(){
         return $http.get(URLTo.api(ORDER_API_URLS.clientToken))
             .then(function(response){
@@ -155,6 +165,13 @@ function Cart($http, ORDER_API_URLS) {
             })
     }
 
+    /**
+     * Payment
+     *
+     * @param nonce
+     * @param totalPrice
+     * @returns {*}
+     */
     function confirmPayment(nonce, totalPrice){
         return $http.post(URLTo.api(ORDER_API_URLS.confirmPayment),{
             payment_method_nonce: nonce,

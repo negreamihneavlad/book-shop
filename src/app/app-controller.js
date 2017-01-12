@@ -2,11 +2,15 @@
  * App controller.
  *
  * @param Cart
+ * @oaram Authentication
  * @constructor
  * @ngInject
  */
-function AppCtrl(Cart) {
-    Cart.load();
+function AppCtrl(Cart, Authentication) {
+    if (Authentication.isAuthenticated()){
+        Cart.load();
+    }
+
 }
 
 angular

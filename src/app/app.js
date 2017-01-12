@@ -10,7 +10,13 @@ function config($urlRouterProvider) {
 }
 
 function run() {
-    URLTo.apiBase("http://localhost:3000");
+    if (location.host.indexOf('book-shop.online') > -1) {
+        URLTo.apiBase("https://api.book-shop.online");
+    }
+    else {
+        URLTo.apiBase("http://localhost:3000");
+    }
+
 }
 
 angular

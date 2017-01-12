@@ -282,7 +282,7 @@ gulp.task("clean", function() {
 gulp.task('connect', function () {
     connect.server({
         name: 'Book Shop',
-        root: './',
+        root: './build',
         port: 8080,
         livereload: true
     });
