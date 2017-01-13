@@ -37,6 +37,8 @@ function ShippingCtrl(Session, Cart, clientToken) {
         if (vm.paymentForm.$invalid) {
             return;
         }
+        Cart.createShippingDetails(vm.shippingDetails);
+        Cart.placeOrder(vm.shippingDetails);
 
         var client = new braintree.api.Client({clientToken: clientToken});
         client.tokenizeCard({
