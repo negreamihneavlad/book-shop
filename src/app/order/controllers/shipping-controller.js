@@ -37,15 +37,15 @@ function ShippingCtrl(Session, Cart, clientToken) {
         if (vm.paymentForm.$invalid) {
             return;
         }
+        Cart.createShippingDetails(vm.shippingDetails);
+        Cart.placeOrder(vm.shippingDetails);
 
         var client = new braintree.api.Client({clientToken: clientToken});
         client.tokenizeCard({
             number: vm.card.number,
             cardholderName: vm.shippingDetails.firstName + ' ' + vm.shippingDetails.lastName,
-            // or expirationMonth and expirationYear
             expirationMonth: vm.card.exp_month,
             expirationYear: vm.card.exp_year,
-            // CVV if required
             cvv: vm.card.cvc
         }, function (err, nonce) {
             Cart.confirmPayment(nonce, totalPrice());
@@ -53,6 +53,11 @@ function ShippingCtrl(Session, Cart, clientToken) {
 
     }
 
+    /**
+     * Calculate total price.
+     *
+     * @returns {number}
+     */
     function totalPrice(){
         var total = 0;
         _.map(Cart.items,function(item){

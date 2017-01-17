@@ -32,7 +32,7 @@ function config($stateProvider) {
  * @returns {*}
  */
 function getCartItems(Cart) {
-    return Cart.items;
+    return Cart.load();
 }
 
 function getClientToken(Cart){
