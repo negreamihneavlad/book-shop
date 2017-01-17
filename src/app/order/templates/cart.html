@@ -46,7 +46,7 @@
             <div>{{item.quantity}} x {{item.book.name}}</div>
         </div>
         <div class="checkOut-total">Total:</div>
-        <div>{{cart.totalPrice()}}$</div>
+        <div>{{cart.totalPrice() | number: 2}}$</div>
         <button type="button" class="btn btn-default btn-auth" ui-sref="shipping"><i class="fa fa-angle-double-right"
                                                                   aria-hidden="true"></i>Check Out
         </button>
