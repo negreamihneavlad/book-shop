@@ -1,47 +1,58 @@
 <div>
-    <h4 ng-value="addEdit.book.id ? addEdit.message='Update Book:' : addEdit.message='Add Book:'">{{addEdit.message}}</h4>
-    <form name='addEdit.form' ng-submit="addEdit.submit()" novalidate>
-        <div>
-        <input class='input' type="text" placeholder="Name" ng-model="addEdit.book.name" name='bookName' required />
-        <div class = "error" ng-if="addEdit.form.$submitted && addEdit.form.bookName.$invalid" ng-messages="addEdit.form.bookName.$error">
-            <span  ng-message when="required">Insert Book Name</span>
-        </div>
-        </div>
-        <div>
-        <input class='input' type="text" placeholder="Author" ng-model="addEdit.book.author" name='bookAuthor' required/>
-        <div class = "error" ng-if="addEdit.form.$submitted && addEdit.form.bookAuthor.$invalid" ng-messages="addEdit.form.bookAuthor.$error">
-            <span ng-message when="required">Insert Author Name</span>
-        </div>
-        </div>
-        <div>
-        <input class='input' type="text" placeholder="Category" ng-model="addEdit.book.category" name='bookCategory' required/>
-        <div class = "error" ng-if="addEdit.form.$submitted && addEdit.form.bookCategory.$invalid" ng-messages="addEdit.form.bookCategory.$error">
-            <span ng-message when="required">Insert Category</span>
-        </div>
-        </div>
-        <div>
-        <input class='input' type="text" placeholder="Publisher" ng-model="addEdit.book.publisher" name='bookPublisher' required/>
-        <div class = "error" ng-if="addEdit.form.$submitted && addEdit.form.bookPublisher.$invalid" ng-messages="addEdit.form.bookPublisher.$error">
-            <span ng-message when="required">Insert Publisher</span>
-        </div>
-        </div>
-        <div>
-        <input class='input' type="text" placeholder="ISBN" ng-model="addEdit.book.isbn" name='bookISBN' required/>
-        <div class = "error" ng-if="addEdit.form.$submitted && addEdit.form.bookISBN.$invalid" ng-messages="addEdit.form.bookISBN.$error">
-            <span ng-message when="required">Insert ISBN</span>
-        </div>
-        </div>
-        <div>
-        <input class='input' type="text" placeholder="Price" ng-model="addEdit.book.price" name='bookPrice' required/>
-        <div class = "error" ng-if="addEdit.form.$submitted && addEdit.form.bookPrice.$invalid" ng-messages="addEdit.form.bookPrice.$error">
-            <span ng-message when="required">Insert Price</span>
-        </div>
-        </div>
-        <div>
-        <input class='input' type="date" placeholder="Date" ng-model="addEdit.book.releaseDate" />
-        </div>
-        <input  class="btn btn-default btn-auth" type="submit" ng-value="addEdit.book.id ? 'Save' : 'Create'" />
-        <div class = "error" ng-value="addEdit.book.id ? addEdit.editMessage = addEdit.updateMessage  : addEdit.editMessage = addEdit.createdMessage ">{{addEdit.editMessage}} </div>
-    </form>
+  <h4 ng-value="addEdit.book.id ? addEdit.message='Update Book:' : addEdit.message='Add Book:'">{{addEdit.message}}</h4>
+  <form name='addEdit.form' ng-submit="addEdit.submit()" novalidate>
+    <div>
+      <input class='input' type="text" placeholder="Name" ng-model="addEdit.book.name" name='bookName' required/>
+      <div class="error" ng-if="addEdit.form.$submitted && addEdit.form.bookName.$invalid"
+           ng-messages="addEdit.form.bookName.$error">
+        <span ng-message when="required">Insert Book Name</span>
+      </div>
+    </div>
+    <div>
+      <input class='input' type="text" placeholder="Author" ng-model="addEdit.book.author" name='bookAuthor' required/>
+      <div class="error" ng-if="addEdit.form.$submitted && addEdit.form.bookAuthor.$invalid"
+           ng-messages="addEdit.form.bookAuthor.$error">
+        <span ng-message when="required">Insert Author Name</span>
+      </div>
+    </div>
+    <div>
+      <input class='input' type="text" placeholder="Category" ng-model="addEdit.book.category" name='bookCategory'
+             required/>
+      <div class="error" ng-if="addEdit.form.$submitted && addEdit.form.bookCategory.$invalid"
+           ng-messages="addEdit.form.bookCategory.$error">
+        <span ng-message when="required">Insert Category</span>
+      </div>
+    </div>
+    <div>
+      <input class='input' type="text" placeholder="Publisher" ng-model="addEdit.book.publisher" name='bookPublisher'
+             required/>
+      <div class="error" ng-if="addEdit.form.$submitted && addEdit.form.bookPublisher.$invalid"
+           ng-messages="addEdit.form.bookPublisher.$error">
+        <span ng-message when="required">Insert Publisher</span>
+      </div>
+    </div>
+    <div>
+      <input class='input' type="text" placeholder="ISBN" ng-model="addEdit.book.isbn" name='bookISBN' required/>
+      <div class="error" ng-if="addEdit.form.$submitted && addEdit.form.bookISBN.$invalid"
+           ng-messages="addEdit.form.bookISBN.$error">
+        <span ng-message when="required">Insert ISBN</span>
+      </div>
+    </div>
+    <div>
+      <input class='input' type="text" placeholder="Price" ng-model="addEdit.book.price" name='bookPrice' required/>
+      <div class="error" ng-if="addEdit.form.$submitted && addEdit.form.bookPrice.$invalid"
+           ng-messages="addEdit.form.bookPrice.$error">
+        <span ng-message when="required">Insert Price</span>
+      </div>
+    </div>
+    <div>
+      <input class='input' type="date" placeholder="Date" ng-model="addEdit.book.releaseDate"/>
+    </div>
+    <input class="btn btn-default btn-auth" type="submit" ng-value="addEdit.book.id ? 'Save' : 'Create'"/>
+    <div class="error"
+         ng-value="addEdit.book.id ? addEdit.editMessage = addEdit.updateMessage  : addEdit.editMessage = addEdit.createdMessage ">
+      {{addEdit.editMessage}}
+    </div>
+  </form>
 </div>
 

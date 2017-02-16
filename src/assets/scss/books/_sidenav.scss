@@ -1,30 +1,33 @@
 .sidenav {
   width: 100%;
-  max-width: 200px;
-  background-color: #c8dbeb;
+  max-width: 180px;
+  background-color: #F7F8F9;
   overflow-x: hidden;
   padding-left: 20px;
   margin-top: 40px;
-  border-left: solid;
   padding-bottom: 20px;
-
-  &-title {
-    font-size: 20px;
-    padding-top: 5px;
-    margin: 0;
-  }
-
+  float: left;
+  
   &-filterBlock {
     font-size: 12px;
-    margin-top: 15px;
-
+    margin-top: 20px;
+    
     &-title {
-      font-size: 16px;
-      color: #5383d3;
+      font-weight: 400;
+      font-size: 15px;
+      color: #1E1E1E;
     }
     &-components {
       max-height: 180px;
-      overflow: scroll;
+      overflow: hidden;
+      line-height: 20px;
+    }
+    &-item {
+      font-size: 12px;
+      cursor: pointer;
+    }
+    &-item:hover {
+      text-decoration: underline;
     }
   }
 }
@@ -32,12 +35,12 @@
 .active-filters {
   color: #5383d3;
   margin-top: 15px;
-
+  
   &-item {
     color: black;
     margin: 5px;
   }
-
+  
   &-remove-button {
     color: red;
     font-size: 13px;

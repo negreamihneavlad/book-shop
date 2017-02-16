@@ -3,20 +3,23 @@
  *
  * @param Cart
  * @param Session
+ * @param Book
  * @constructor
+ * @ngInject
  */
-function AddToCartCtrl(Cart, Session) {
-    var vm = this;
-    vm.user = Session.getData();
-    vm.addItemToCart = addItemToCart;
-
-    //////////////////////////////
-    /**
-     * Add item to cart
-     */
-    function addItemToCart() {
-        Cart.addItem(vm.user.id, vm.bookId, 1);
-    }
+function AddToCartCtrl(Cart, Session, Book) {
+  var vm = this;
+  vm.user = Session.getData();
+  vm.addItemToCart = addItemToCart;
+  
+  //////////////////////////////
+  /**
+   * Add item to cart
+   */
+  function addItemToCart() {
+    Cart.addItem(vm.user.id, vm.bookId, 1);
+    Book.update(vm.bookId, {quantity: vm.bookQuantity - 1});
+  }
 }
 /**
  * Add item directive
@@ -24,18 +27,19 @@ function AddToCartCtrl(Cart, Session) {
  * @returns {{templateUrl: string, replace: boolean, bindToController: boolean, scope: {bookId: string}, controller: AddToCartCtrl, controllerAs: string}}
  */
 function addToCart() {
-    return {
-        templateUrl: "app/order/templates/add-to-cart.html",
-        replace: true,
-        bindToController: true,
-        scope: {
-            bookId: '='
-        },
-        controller: AddToCartCtrl,
-        controllerAs: "addToCart"
-    };
+  return {
+    templateUrl: "app/order/templates/add-to-cart.html",
+    replace: true,
+    bindToController: true,
+    scope: {
+      bookId: '=',
+      bookQuantity: '='
+    },
+    controller: AddToCartCtrl,
+    controllerAs: "addToCart"
+  };
 }
 
 angular
-    .module("order")
-    .directive("addToCart", addToCart);
+  .module("order")
+  .directive("addToCart", addToCart);

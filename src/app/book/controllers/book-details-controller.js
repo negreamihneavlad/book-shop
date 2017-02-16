@@ -7,11 +7,11 @@
  * @ngInject
  */
 function BookDetailsCtrl($anchorScroll, book) {
-    $anchorScroll();
-    var vm = this;
-    vm.book = book;
+  $anchorScroll();
+  var vm = this;
+  vm.book = book;
 }
 
 angular
-    .module("bookShop")
-    .controller("BookDetailsCtrl", BookDetailsCtrl);
+  .module("bookShop")
+  .controller("BookDetailsCtrl", BookDetailsCtrl);

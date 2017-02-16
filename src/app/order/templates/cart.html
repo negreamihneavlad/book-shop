@@ -1,55 +1,96 @@
 <div class="cart">
-    <span class="cart-title">Shopping Cart</span>
-
-    <table ng-if="cart.cartItems.length > 0" class="table table-size col-sm-6">
-        <thead>
-        <tr>
-            <th>Book</th>
-            <th class="cart-quantity-head">Quantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in cart.cartItems">
-            <td>
-                <span class="col-sm-2">
-                    <img class="cart-picture" ng-src="{{item.book.picture}}" alt=""/>
-                    <a class="cart-remove" ng-click="cart.removeItem($index)">Remove item</a>
-                </span>
-
-                <span class="cart-details col-sm-10">
-                    <span class="cart-details-title">{{item.book.name}}</span>
-                    <span class="cart-details-author">by {{item.book.author}}</span>
-                    <span class="cart-details-block">
-                    <span class="cart-details-informations"><span
-                            class="cart-details-informations-label">Publisher: </span>{{item.book.publisher}}</span>
-                    <span class="cart-details-informations"><span class="cart-details-informations-label">ISBN: </span>{{item.book.isbn}}</span>
-                    <span class="cart-details-informations"><span class="cart-details-informations-label">Price: </span>{{item.book.price * item.quantity}}$</span>
-                    </span>
-                </span>
-            </td>
-            <td>
-                <div class="cart-quantity">
-                    <i class="fa fa-minus-square-o cart-quantity-selectors" ng-click='cart.decreaseQuantity($index)'
-                       aria-hidden="true"></i>
-                    <input class="cart-quantity-input" ng-model='item.quantity' type="text">
-                    <i class="fa fa-plus-square-o cart-quantity-selectors" ng-click='cart.increaseQuantity($index)'
-                       aria-hidden="true"></i>
-                </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <div class="checkOut col-sm-2">
-        <div class="checkOut-title">Order Details:</div>
-        <div ng-repeat='item in cart.cartItems'>
-            <div>{{item.quantity}} x {{item.book.name}}</div>
+  <span class="cart-title">SHOPPING CART ({{cart.cartItems.length}})</span>
+  
+  <div class="cart-checkoutTab">
+    <div class="cart-checkoutTab-info">ORDER TOTAL ${{cart.totalPrice() | number: 2}}</div>
+    <button type="button" ui-sref="shipping" class="cart-checkoutTab-button">CHECKOUT</button>
+  </div>
+  
+  <table ng-if="cart.cartItems.length > 0" class="cart-table">
+    <thead>
+    <tr>
+      <th>PRODUCT</th>
+      <th>PUBLISHER</th>
+      <th>UNIT PRICE</th>
+      <th class="cart-quantity-head">QUANTITY</th>
+      <th class="cart-total">TOTAL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in cart.cartItems">
+      <td>
+        <span class="col-sm-2 nopadding">
+          <img class="cart-picture" ng-src="{{item.book.picture}}" alt=""/>
+        </span>
+        
+        <span class="cart-details col-sm-10">
+          <span class="cart-details-title">{{item.book.name}}</span>
+          <span class="cart-details-author">by {{item.book.author}}</span>
+          <a class="cart-remove" ng-click="cart.removeItem($index)">Remove</a>
+        </span>
+      </td>
+      <td>{{item.book.publisher}}</td>
+      <td>${{item.book.price}}</td>
+      <td>
+        <div class="form-group">
+          <select class="form-control cart-quantity" id="exampleSelect1" ng-model="item.quantity"
+                  ng-change="cart.updateQuantity($index, item.quantity)" integer-select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </div>
-        <div class="checkOut-total">Total:</div>
-        <div>{{cart.totalPrice() | number: 2}}$</div>
-        <button type="button" class="btn btn-default btn-auth" ui-sref="shipping"><i class="fa fa-angle-double-right"
-                                                                  aria-hidden="true"></i>Check Out
-        </button>
+      </td>
+      <td class="cart-total">${{item.book.price * item.quantity | number: 2}}</td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <div class="cart-assistance">
+    <div class="cart-assistance-message">NEED ASISTANCE?</div>
+    <div class="cart-assistance-contact">
+      <span class="icon-telephone"></span><span class="cart-assistance-contact-number">+40 (0) 212044896</span>
+      <div class="cart-assistance-contact-schedule-days">Monday - Thursday</div>
+      <div class="cart-assistance-contact-schedule-hours">10:00 - 19:00</div>
+      <div class="cart-assistance-contact-schedule-days">Friday</div>
+      <div class="cart-assistance-contact-schedule-hours">10:00 - 15:00</div>
     </div>
+    <div class="cart-assistance-email">
+      <span class="icon-envelope"></span><span class="cart-assistance-email-text">sales@book-shop.ro</span>
+    </div>
+  </div>
+  
+  <div class="cart-summary">
+    <div class="cart-summary-title">ORDER SUMMARY</div>
+    <div class="cart-summary-subtotal">
+      <div class="cart-summary-subtotal-message">Item Subtotal</div>
+      <div class="cart-summary-subtotal-price">${{cart.totalPrice() | number: 2}}</div>
+      <div class="cart-summary-subtotal-shipping">* Shipping</div>
+      <div class="cart-summary-subtotal-type">FREE</div>
+      
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm dropdown-toggle cart-quantity cart-summary-subtotal-dropDown"
+                type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="cart-summary-subtotal-dropDown-message">Standard - FREE</span> <span
+          class="caret cart-summary-subtotal-dropDown-caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <a href="#">Action</a>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="cart-summary-total"> Order Total</div>
+    <div class="cart-summary-price"> ${{cart.totalPrice() | number: 2}}</div>
+    <div class="cart-summary-line"></div>
+    <div class="cart-summary-info">* Incl. VAT & Duties</div>
+    
+    <button type="button" ui-sref="shipping" class="cart-summary-checkoutButton">CHECKOUT</button>
+    <div class="cart-summary-payment"> or pay with</div>
+    <button type="button" ui-sref="shipping" class="cart-summary-payPalButton">PAYPAL</button>
+  
+  </div>
 
 </div>

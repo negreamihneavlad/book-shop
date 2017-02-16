@@ -1,44 +1,44 @@
 <div>
-    <h1 class="content-title">Edit your account</h1>
-
-    <form name='edit.form' ng-submit="edit.updateUser()" novalidate>
-
-        <div>
-            <div class="input-label">First Name:</div>
-            <input class='input' type="input" name='firstName' placeholder="First Name"
-                   ng-model="edit.data.firstName" required/>
-            <div class='error' ng-if="edit.form.$submitted && edit.form.firstName.$invalid"
-                 ng-messages="edit.form.firstName.$error">
-                <span ng-message when="required">Insert First Name</span>
-            </div>
-        </div>
-
-        <div>
-            <div class="input-label">Last Name:</div>
-            <input class='input' type="input" name='lastName' placeholder="Last Name"
-                   ng-model="edit.data.lastName" required/>
-            <div class='error' ng-if="edit.form.$submitted && edit.form.lastName.$invalid"
-                 ng-messages="edit.form.lastName.$error">
-                <span ng-message when="required">Insert Last Name</span>
-            </div>
-        </div>
-
-        <div>
-            <div class="input-label">Email:</div>
-            <input class='input' type="email" name='emailInput' placeholder='username@example.com'
-                   ng-model="edit.data.email" required/>
-            <div class="error" ng-if="edit.form.$submitted && edit.form.emailInput.$invalid"
-                 ng-messages="edit.form.emailInput.$error">
-                <span ng-message when="required">Insert email</span>
-                <span ng-message when="email">Not valid email!</span>
-            </div>
-        </div>
-
-        <div>
-            <input class="btn btn-default btn-auth" type="button" ui-sref='updatePassword' value="Change Password"/>
-            <input class="btn btn-default btn-auth" type="submit" value="Save"/>
-        </div>
-
-        <span class="updateMessage">{{edit.updateMessage}} </span>
-    </form>
+  <h1 class="content-title">Edit your account</h1>
+  
+  <form name='edit.form' ng-submit="edit.updateUser()" novalidate>
+    
+    <div>
+      <div class="input-label">First Name:</div>
+      <input class='input' type="input" name='firstName' placeholder="First Name"
+             ng-model="edit.data.firstName" required/>
+      <div class='error' ng-if="edit.form.$submitted && edit.form.firstName.$invalid"
+           ng-messages="edit.form.firstName.$error">
+        <span ng-message when="required">Insert First Name</span>
+      </div>
+    </div>
+    
+    <div>
+      <div class="input-label">Last Name:</div>
+      <input class='input' type="input" name='lastName' placeholder="Last Name"
+             ng-model="edit.data.lastName" required/>
+      <div class='error' ng-if="edit.form.$submitted && edit.form.lastName.$invalid"
+           ng-messages="edit.form.lastName.$error">
+        <span ng-message when="required">Insert Last Name</span>
+      </div>
+    </div>
+    
+    <div>
+      <div class="input-label">Email:</div>
+      <input class='input' type="email" name='emailInput' placeholder='username@example.com'
+             ng-model="edit.data.email" required/>
+      <div class="error" ng-if="edit.form.$submitted && edit.form.emailInput.$invalid"
+           ng-messages="edit.form.emailInput.$error">
+        <span ng-message when="required">Insert email</span>
+        <span ng-message when="email">Not valid email!</span>
+      </div>
+    </div>
+    
+    <div>
+      <input class="btn btn-default btn-auth" type="button" ui-sref='updatePassword' value="Change Password"/>
+      <input class="btn btn-default btn-auth" type="submit" value="Save"/>
+    </div>
+    
+    <span class="updateMessage">{{edit.updateMessage}} </span>
+  </form>
 </div>

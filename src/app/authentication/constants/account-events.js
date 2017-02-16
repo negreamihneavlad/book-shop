@@ -1,7 +1,7 @@
 var ACCOUNT_EVENTS = {
-    update: "updateAccount"
+  update: "updateAccount"
 };
 
 angular
-    .module("auth")
-    .constant("ACCOUNT_EVENTS", ACCOUNT_EVENTS);
+  .module("auth")
+  .constant("ACCOUNT_EVENTS", ACCOUNT_EVENTS);

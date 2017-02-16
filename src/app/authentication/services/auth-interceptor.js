@@ -10,47 +10,47 @@
  * @ngInject
  */
 function AuthInterceptor($rootScope, $q, Session, AUTH_EVENTS) {
-    return {
-        request: request,
-        responseError: responseError
-    };
-
-    //////////////////////////////
-
-    /**
-     * Request interceptor.
-     *
-     * @param config
-     * @returns {*}
-     */
-    function request(config) {
-        var authToken = Session.getAuthToken();
-        if (authToken && config.url.substring(0, 27) != "https://www.googleapis.com/") {
-            config.headers = config.headers || {};
-            config.headers["Authorization"] = 'bearer ' + authToken;
-        }
-
-        return config;
+  return {
+    request: request,
+    responseError: responseError
+  };
+  
+  //////////////////////////////
+  
+  /**
+   * Request interceptor.
+   *
+   * @param config
+   * @returns {*}
+   */
+  function request(config) {
+    var authToken = Session.getAuthToken();
+    if (authToken && config.url.substring(0, 27) != "https://www.googleapis.com/") {
+      config.headers = config.headers || {};
+      config.headers["Authorization"] = 'bearer ' + authToken;
     }
-
-    /**
-     * Response error interceptor.
-     *
-     * @param response
-     * @returns {Promise}
-     */
-    function responseError(response) {
-        if (response.status === 401) {
-            $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated, response);
-        }
-        if (response.status === 403) {
-            $rootScope.$broadcast(AUTH_EVENTS.notAuthorized, response);
-        }
-
-        return $q.reject(response);
+    
+    return config;
+  }
+  
+  /**
+   * Response error interceptor.
+   *
+   * @param response
+   * @returns {Promise}
+   */
+  function responseError(response) {
+    if (response.status === 401) {
+      $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated, response);
     }
+    if (response.status === 403) {
+      $rootScope.$broadcast(AUTH_EVENTS.notAuthorized, response);
+    }
+    
+    return $q.reject(response);
+  }
 }
 
 angular
-    .module("auth")
-    .factory("AuthInterceptor", AuthInterceptor);
+  .module("auth")
+  .factory("AuthInterceptor", AuthInterceptor);

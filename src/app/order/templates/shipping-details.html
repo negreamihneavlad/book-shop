@@ -1,170 +1,201 @@
-<h1 class="content-title">Check Out</h1>
-
-<tabset active="active">
-    <tab index="0" heading="Shipping details">
-        <form name='ship.detailsForm' ng-submit="ship.placeOrder()" novalidate>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div>
-                        <div class="input-label">First Name:</div>
-                        <input class='input' type="input" name='firstName' placeholder="First Name"
-                               ng-model="ship.shippingDetails.firstName" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.firstName.$invalid"
-                             ng-messages="ship.detailsForm.firstName.$error">
-                            <span ng-message when="required">Insert First Name</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="input-label">Last Name:</div>
-                        <input class='input' type="input" name='lastName' placeholder="Last Name"
-                               ng-model="ship.shippingDetails.lastName" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.lastName.$invalid"
-                             ng-messages="ship.detailsForm.lastName.$error">
-                            <span ng-message when="required">Insert Last Name</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="input-label">Email:</div>
-                        <input class='input' type="email" name='input'
-                               placeholder="username@example.com" ng-model="ship.shippingDetails.email" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.input.$invalid"
-                             ng-messages="ship.detailsForm.input.$error">
-                            <span ng-message when="required">Insert email</span>
-                            <span ng-message when="email">Not valid email!</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="input-label">Country:</div>
-                        <input class='input' type="input" name='country' placeholder="Country"
-                               ng-model="ship.shippingDetails.country" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.country.$invalid"
-                             ng-messages="ship.detailsForm.country.$error">
-                            <span ng-message when="required">Insert country</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div>
-                        <div class="input-label">Phone:</div>
-                        <input class='input' type="input" name='phone' placeholder="Phone"
-                               ng-model="ship.shippingDetails.phone" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.phone.$invalid"
-                             ng-messages="ship.detailsForm.phone.$error">
-                            <span ng-message when="required">Insert phone</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="input-label">City:</div>
-                        <input class='input' type="input" name='city' placeholder="City"
-                               ng-model="ship.shippingDetails.city" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.city.$invalid"
-                             ng-messages="ship.detailsForm.city.$error">
-                            <span ng-message when="required">Insert city</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="input-label">Address:</div>
-                        <input class='input' type="input" name='address' placeholder="Address"
-                               ng-model="ship.shippingDetails.address" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.address.$invalid"
-                             ng-messages="ship.detailsForm.address.$error">
-                            <span ng-message when="required">Insert address</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="input-label">Zip Code:</div>
-                        <input class='input' type="input" name='zipCode' placeholder="Zip Code"
-                               ng-model="ship.shippingDetails.zipCode" required/>
-                        <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.zipCode.$invalid"
-                             ng-messages="ship.detailsForm.zipCode.$error">
-                            <span ng-message when="required">Insert Zip Code</span>
-                        </div>
-                    </div>
-                </div>
+<div class="checkOut">
+  <h1 class="checkOut-title">CHECK OUT</h1>
+  
+  <tabset active="ship.active" class="col-sm-6">
+    <tab index="0" heading="1. SHIPPING DETAILS">
+      <form class='checkOut-form' name='ship.detailsForm' ng-submit="ship.placeOrder()" novalidate>
+        <div>
+          <div>
+            <div class="checkOut-form-label">Email:</div>
+            <input class='input checkOut-form-input' type="email" name='input'
+                   placeholder="username@example.com" ng-model="ship.shippingDetails.email" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.input.$invalid"
+                 ng-messages="ship.detailsForm.input.$error">
+              <span ng-message when="required">Insert email</span>
+              <span ng-message when="email">Not valid email!</span>
             </div>
-            <input class="btn btn-default btn-auth btn-ship row" type="submit" value="Next step"/>
-        </form>
-    </tab>
-    <tab index="1" heading="Payment" disabled="!ship.paymentTab" active="ship.paymentTab">
-
-        <div class="col-sm-4 payment">
-            <!-- CREDIT CARD FORM STARTS HERE -->
-            <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table">
-                    <div class="row display-tr">
-                        <h3 class="panel-title display-td">Payment Details</h3>
-                        <div class="display-td">
-                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <form  name='ship.paymentForm' role="form" id="payment-form" method="POST" ng-submit="ship.confirmPayment()">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label>CARD NUMBER</label>
-                                    <div class="input-group">
-                                        <input ng-class='{"error": ship.paymentForm.cardNumber.$invalid && ship.paymentForm.$submitted}' type="tel" class='form-control' ng-model="ship.card.number" name="cardNumber"  placeholder="Valid Card Number" cc-number cc-eager-type ng-required="true"/>
-                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-7 col-md-7">
-                                <div class="form-group">
-                                    <label>
-                                        EXPIRY DATE</label>
-                                    <div cc-exp>
-                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                            <input ng-class='{"error": ship.paymentForm.cardExpMonth.$invalid && ship.paymentForm.$submitted}' type="text" class="form-control" ng-model="ship.card.exp_month" name='cardExpMonth' placeholder="MM" cc-exp-month ng-required="true" />
-                                        </div>
-                                        <div class="col-xs-6 col-lg-6 pl-ziro">
-                                            <input ng-class='{"error": ship.paymentForm.cardExpYear.$invalid && ship.paymentForm.$submitted}' type="text" class="form-control" ng-model="ship.card.exp_year" name='cardExpYear' placeholder="YY" cc-exp-year ng-required="true" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-xs-5 col-md-5 pull-right">
-                                <div class="form-group">
-                                    <label>CV CODE</label>
-                                    <input ng-class='{"error": ship.paymentForm.cardCVC.$invalid && ship.paymentForm.$submitted}' type="tel" class="form-control" name='cardCVC' placeholder="CVC" ng-model="ship.card.cvc" cc-cvc ng-required="true" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li class="active"><a href="#"><span class="badge pull-right">${{ship.totalPrice()}}</span> Final Payment</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <input class="subscribe btn btn-success btn-lg btn-block" type="submit" value="Pay">
-                                </input>
-                            </div>
-                        </div>
-                        <div class="row" style="display:none;">
-                            <div class="col-xs-12">
-                                <p class="payment-errors"></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+          </div>
+          <div>
+            <div class="checkOut-form-label">First Name:</div>
+            <input class='input checkOut-form-input' type="input" name='firstName'
+                   ng-model="ship.shippingDetails.firstName" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.firstName.$invalid"
+                 ng-messages="ship.detailsForm.firstName.$error">
+              <span ng-message when="required">Insert First Name</span>
             </div>
-
+          </div>
+          
+          <div>
+            <div class="checkOut-form-label">Last Name:</div>
+            <input class='input checkOut-form-input' type="input" name='lastName'
+                   ng-model="ship.shippingDetails.lastName" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.lastName.$invalid"
+                 ng-messages="ship.detailsForm.lastName.$error">
+              <span ng-message when="required">Insert Last Name</span>
+            </div>
+          </div>
+          <div>
+            <div class="checkOut-form-label">Country:</div>
+            <input class='input checkOut-form-input' type="input" name='country'
+                   ng-model="ship.shippingDetails.country" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.country.$invalid"
+                 ng-messages="ship.detailsForm.country.$error">
+              <span ng-message when="required">Insert country</span>
+            </div>
+          </div>
+          <div>
+            <div class="checkOut-form-label">Phone:</div>
+            <input class='input checkOut-form-input' type="input" name='phone'
+                   ng-model="ship.shippingDetails.phone" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.phone.$invalid"
+                 ng-messages="ship.detailsForm.phone.$error">
+              <span ng-message when="required">Insert phone</span>
+            </div>
+          </div>
+          
+          <div>
+            <div class="checkOut-form-label">City:</div>
+            <input class='input checkOut-form-input' type="input" name='city'
+                   ng-model="ship.shippingDetails.city" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.city.$invalid"
+                 ng-messages="ship.detailsForm.city.$error">
+              <span ng-message when="required">Insert city</span>
+            </div>
+          </div>
+          
+          <div>
+            <div class="checkOut-form-label">Address:</div>
+            <input class='input checkOut-form-input' type="input" name='address'
+                   ng-model="ship.shippingDetails.address" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.address.$invalid"
+                 ng-messages="ship.detailsForm.address.$error">
+              <span ng-message when="required">Insert address</span>
+            </div>
+          </div>
+          
+          <div>
+            <div class="checkOut-form-label">Zip Code:</div>
+            <input class='input checkOut-form-input' type="input" name='zipCode'
+                   ng-model="ship.shippingDetails.zipCode" required/>
+            <div class='error' ng-if="ship.detailsForm.$submitted && ship.detailsForm.zipCode.$invalid"
+                 ng-messages="ship.detailsForm.zipCode.$error">
+              <span ng-message when="required">Insert Zip Code</span>
+            </div>
+          </div>
         </div>
+        <div class="checkOut-form-line"></div>
+        <button type="submit" class="cart-checkoutTab-button checkOut-form-button">CONTINUE TO PAYMENT</button>
+      </form>
     </tab>
-</tabset>
-
+    <tab index="1" heading="2. PAYMENT" disabled="ship.paymentTab" active="ship.paymentFollows">
+      <div class="payment">
+        <div class="payment-text">Please enter payment and billing information.</div>
+        <div class="payment-title">BILLING ADDRESS</div>
+        <div><input type="checkbox" aria-label="..."> <span class="payment-text">Use shipping  address</span></div>
+        <div class="payment-title">PAYMENT INFORMATION</div>
+        <img class='payment-image' src="../../../assets/img/Bitmap.png">
+        
+        
+        <form name='ship.paymentForm' role="form" id="payment-form" method="POST" ng-submit="ship.orderReview()"
+              novalidate>
+          <div class="payment-inputName">Card Number</div>
+          <input class='input checkOut-form-input'
+                 ng-class='{"error": ship.paymentForm.cardNumber.$invalid && ship.paymentForm.$submitted}'
+                 type="tel" ng-model="ship.card.number" name="cardNumber"
+                 cc-format cc-number ng-required="true"/>
+          <div cc-exp>
+            <div class="payment-inputName">CVV/CID</div>
+            <input ng-class='{"error": ship.paymentForm.cardCVC.$invalid && ship.paymentForm.$submitted}'
+                   type="tel" class="input payment-inputCVV" name='cardCVC' ng-model="ship.card.cvc"
+                   cc-cvc ng-required="true"/>
+            <div class="payment-inputName">Expiration Date</div>
+            <input ng-class='{"error": ship.paymentForm.cardExpMonth.$invalid && ship.paymentForm.$submitted}'
+                   type="text" class="input payment-inputDate" ng-model="ship.card.exp_month" name='cardExpMonth'
+                   placeholder="MM" cc-exp-month ng-required="true"/>
+            
+            <input ng-class='{"error": ship.paymentForm.cardExpYear.$invalid && ship.paymentForm.$submitted}'
+                   type="text" class="input payment-inputDate" ng-model="ship.card.exp_year" name='cardExpYear'
+                   placeholder="YY" cc-exp-year ng-required="true"/>
+          </div>
+          <button class="cart-checkoutTab-button checkOut-form-button" type="submit">CONTINUE TO ORDER REVIEW
+          </button>
+        </form>
+      </div>
+    </tab>
+    
+    <tab index="2" heading="3. ORDER REVIEW" disabled="ship.orderReviewTab" active="ship.orderFollows">
+      <div class="order-details">
+        <div class="order-details-title">1. SHIPPING</div>
+        <div class="order-details-address">
+          <div class="order-details-address-title">SHIPPING ADDRESS</div>
+          <div class="order-details-address-info">
+            <div>{{ship.shippingDetails.lastName}} {{ship.shippingDetails.firstName}}</div>
+            <div>{{ship.shippingDetails.address}}</div>
+            <div>{{ship.shippingDetails.country}}</div>
+            <div>{{ship.shippingDetails.zipCode}}</div>
+            <div>{{ship.shippingDetails.email}}</div>
+          </div>
+        </div>
+        <div class="order-details-method">
+          <div class="order-details-method-title">SHIPPING METHOD</div>
+          <div class="order-details-method-info">Standard - FREE</div>
+          <div class="order-details-method-info">(2-3 Days)</div>
+        </div>
+      </div>
+      
+      <div class="order-details">
+        <div class="order-details-title">2. PAYMENT</div>
+        <div class="order-details-address">
+          <div class="order-details-address-title">SHIPPING ADDRESS</div>
+          <div class="order-details-address-info">
+            <div>{{ship.shippingDetails.lastName}} {{ship.shippingDetails.firstName}}</div>
+            <div>{{ship.shippingDetails.address}}</div>
+            <div>{{ship.shippingDetails.country}}</div>
+            <div>{{ship.shippingDetails.zipCode}}</div>
+            <div>{{ship.shippingDetails.email}}</div>
+          </div>
+        </div>
+        <div class="order-details-method">
+          <div class="order-details-method-title">PAYMENT METHOD</div>
+          <div class="order-details-method-info">Credit Card</div>
+        </div>
+      </div>
+      
+      <div class="order-review">
+        <div class="order-review-title">3. ORDER REVIEW</div>
+        <div class="order-review-message">Please review all the information that you provided is accurate.</div>
+        <div class="order-review-message">Your order will not be placed until you click the "Place Order" button.</div>
+      </div>
+      
+      <button class="cart-checkoutTab-button order-review-button" ng-click="ship.confirmPayment()">PLACE ORDER
+      </button>
+    </tab>
+  </tabset>
+  
+  <div class="cart-summary checkOut-summaryTab">
+    <div class="cart-summary-title">ORDER SUMMARY</div>
+    <div class="cart-summary-subtotal">
+      <div class="cart-summary-subtotal-message">Item Subtotal</div>
+      <div class="cart-summary-subtotal-price">${{ship.totalPrice() | number: 2}}</div>
+      <div class="cart-summary-subtotal-shipping">* Shipping</div>
+      <div class="cart-summary-subtotal-type">FREE</div>
+      
+      <div class="btn-group">
+        <button class="btn btn-default btn-sm dropdown-toggle cart-quantity cart-summary-subtotal-dropDown"
+                type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="cart-summary-subtotal-dropDown-message">Standard - FREE</span> <span
+          class="caret cart-summary-subtotal-dropDown-caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <a href="#">Action</a>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="cart-summary-total"> Order Total</div>
+    <div class="cart-summary-price"> ${{ship.totalPrice() | number: 2}}</div>
+    <div class="cart-summary-line"></div>
+    <div class="cart-summary-info">* Incl. VAT & Duties</div>
+  
+  </div>
+</div>
