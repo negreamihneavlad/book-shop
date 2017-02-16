@@ -8,29 +8,29 @@
  * @ngInject
  */
 function AdminGuard($state, Authentication) {
-    return {
-        onStateChangeStart: onStateChangeStart
-    };
-
-    //////////////////////////////
-
-    /**
-     * Checks if logged user is an Admin
-     *
-     * @param event
-     * @param toState
-     */
-    function onStateChangeStart(event, toState) {
-        if (toState.adminGuard && !Authentication.isAdmin()) {
-            event.preventDefault();
-
-            $state.go("login", {}, {
-                reload: true
-            });
-        }
+  return {
+    onStateChangeStart: onStateChangeStart
+  };
+  
+  //////////////////////////////
+  
+  /**
+   * Checks if logged user is an Admin
+   *
+   * @param event
+   * @param toState
+   */
+  function onStateChangeStart(event, toState) {
+    if (toState.adminGuard && !Authentication.isAdmin()) {
+      event.preventDefault();
+      
+      $state.go("login", {}, {
+        reload: true
+      });
     }
+  }
 }
 
 angular
-    .module("auth")
-    .service("AdminGuard", AdminGuard);
+  .module("auth")
+  .service("AdminGuard", AdminGuard);

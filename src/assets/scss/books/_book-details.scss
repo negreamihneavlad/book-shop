@@ -1,36 +1,36 @@
 .book {
   margin-top: 20px;
-
+  
   &-name {
     font-size: 35px;
     line-height: 40px;
   }
-
+  
   &-author {
     font-size: 20px;
     line-height: 40px;
     margin: 0;
   }
-
+  
   &-item {
     font-size: 14px;
-
+    
     span {
       line-height: 22px;
     }
-
+    
     &-details {
       color: #5383d3;
       margin-right: 10px;
       font-weight: bold;
     }
-
+    
     &-thumbnail {
       margin-top: 30px;
       height: 300px;
       width: 200px;
     }
-
+    
     &-description {
       display: block;
       max-width: 500px;

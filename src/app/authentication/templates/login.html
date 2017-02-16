@@ -1,34 +1,36 @@
 <div>
-    <h1 class="content-title">Sign in to your account</h1>
-    </br>
-    <form name='login.form' ng-submit="login.login()" novalidate>
-        <div>
-            <div class="input-label">Email:</div>
-            <input class='input' type="email" name='input' placeholder='username@example.com'
-                   ng-model="login.credentials.email" required/>
-            <div class='error' ng-if="login.form.$submitted && login.form.input.$invalid"
-                 ng-messages="login.form.input.$error">
-                <span ng-message when="required">Insert email</span>
-                <span ng-message when="email">Not valid email!</span>
-            </div>
-        </div>
-
-        <div>
-            <div class="input-label">Password:</div>
-            <input class='input' type="password" name='password' placeholder="Password"
-                   ng-model="login.credentials.password" required/>
-            <div class='error' ng-if="login.form.$submitted && login.form.password.$invalid"
-                 ng-messages="login.form.password.$error">
-                <span ng-message when="required">Insert password</span>
-            </div>
-        </div>
-
-        <input class="btn btn-default btn-auth" type="submit" value="Login"/>
-
-        <div class="error" ng-if="login.ui.showLoginError">Invalid email or password.</div>
-
-        <div class="forgotPasswordMessage">
-            <a href='#' ui-sref="forgotPassword">Forgot password?</a>
-        </div>
-    </form>
+  <h1 class="content-title">Sign in to your account</h1>
+  </br>
+  <form name='login.form' ng-submit="login.login()" novalidate>
+    <div>
+      <div class="input-label">Email:</div>
+      <input class='input' type="email" name='input' placeholder='username@example.com'
+             ng-model="login.credentials.email" required/>
+      <div class='error' ng-if="login.form.$submitted && login.form.input.$invalid"
+           ng-messages="login.form.input.$error">
+        <span ng-message when="required">Insert email</span>
+        <span ng-message when="email">Not valid email!</span>
+      </div>
+    </div>
+    
+    <div>
+      <div class="input-label">Password:</div>
+      <input class='input' type="password" name='password' placeholder="Password"
+             ng-model="login.credentials.password" required/>
+      <div class='error' ng-if="login.form.$submitted && login.form.password.$invalid"
+           ng-messages="login.form.password.$error">
+        <span ng-message when="required">Insert password</span>
+      </div>
+    </div>
+    
+    <input class="btn btn-default btn-auth" type="submit" value="Login"/>
+    <div class="error" ng-if="login.ui.showLoginError">Invalid email or password.</div>
+  </form>
+  <div class="forgotPasswordMessage">
+    <a href='#' ui-sref="forgotPassword">Forgot password?</a>
+  </div>
+  
+  <div class="forgotPasswordMessage">
+    <a href='#' ui-sref="sign">Don't have an account?</a>
+  </div>
 </div>

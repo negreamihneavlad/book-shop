@@ -2,14 +2,19 @@
   width: 220px;
   padding: 5px 14px;
   margin: 8px 0;
-
-  &-spinner{
+  
+  &-spinner {
     background-image: url("../../../../build/assets/img/defaultgif.gif");
-    background-repeat:no-repeat;
-    background-position:190px 5px;
+    background-repeat: no-repeat;
+    background-position: 190px 5px;
   }
-
-  &-label{
+  
+  &-label {
     margin-top: 20px;
   }
+}
+
+::-webkit-input-placeholder {
+  opacity: 0.8;
+  padding-left: 5px;
 }

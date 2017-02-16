@@ -1,80 +1,110 @@
-<header class="header">
-    <div class="header-limiter">
-        <h1 class="header-logo"><a ui-sref="home" ui-sref-opts="{inherit: false}" href="#">Book<span
-                class="header-logo-highlight">Shop</span></a></h1>
-        <nav class="header-navigation">
-            <a class="header-navigation-item" ui-sref="home" ui-sref-opts="{inherit: false}" href="#">Home</a>
-            <span show-only-for-admins>
-                <a class="header-navigation-item" href='#' ui-sref='list'> Manage Books
-                </a>
-                <a class="header-navigation-item" href='#' ui-sref='addEdit'> Add Book
-                </a>
-                <a class="header-navigation-item" href='#' ui-sref='findGoogle'> Find Book(Google)
-                </a>
-            </span>
-        </nav>
-        <ul class="header-account">
-            <li class="header-account-item">
-                <div>
-                    <span ng-if='main.isLoggedIn'>
-
-                    <span class="header-account-user"><a href="#" ui-sref="accountEdit({id:main.user.id})"> {{main.user.firstName+' '+main.user.lastName}}</a></span>
-                    <a href="#" ng-click='main.logout()'>Logout</a>
-                    </span>
-                    <span ng-if='!main.isLoggedIn'>
-        
-                     <a href="#" ui-sref='login'>Login</a>
-        
-                    </span>
-                </div>
-            <li ng-if="!main.isLoggedIn" class="header-account-item header-account-signUp"><a  ui-sref='sign' href="#">Sign up</a></li>
-            <li ng-if="main.isLoggedIn" class="header-account-item header-account-cart"><i href='#' ui-sref='cart' class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i></li>
-        </ul>
+<header class="header u-clearfix">
+  <div class="header-toolBox u-clearfix">
+    <div show-only-for-admins class="header-toolBox--admin">
+      <div class="header-toolBox--admin-title">Admin:</div>
+      <div class="header-toolBox--admin-icon"><span class="icon-book-open"> </span></div>
+      <button class="header-toolBox--admin-action" ui-sref='list'>Manage Books</button>
+      <div class="header-toolBox--admin-icon"><span class="icon-plus-circled"> </span></div>
+      <button class="header-toolBox--admin-action" ui-sref='addEdit'>Add Book</button>
+      <div class="header-toolBox--admin-icon"><span class="icon-search"> </span></div>
+      <button class="header-toolBox--admin-action" ui-sref='findGoogle'>Search Books (Google)</button>
     </div>
+    <div class="header-toolBox--user">
+      <div class="header-toolBox--user-cart-box" ui-sref='cart'>
+        <div class="header-toolBox--user-mycart">MY CART ({{main.numberOfItems}})</div>
+      </div>
+      <div class="header-toolBox--user-log-box">
+        <div class="header-toolBox--user-log">
+          <span class="icon-user header-toolBox--user-log-icon"></span>
+          <span ng-if='main.isLoggedIn'>
+              <button ng-click='main.logout()' class="header-toolBox--user-log-message">LOGOUT</button>
+            </span>
+          <span ng-if='!main.isLoggedIn'>
+              <button ui-sref='login' class="header-toolBox--user-log-message">LOGIN</button>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-content">
+    <div class="header-logo" ui-sref="home" ui-sref-opts="{inherit: false}" href="#">BOOKSHOP</div>
+    <div class="header-info">
+      <p>FEATURED BESTSELLERS CATEGORIES TOP-AUTHORS</p>
+    </div>
+    
+    <form name='main.form' class="header-search" ng-submit="main.submitSearch()">
+      <input type="text" class="header-search-field" placeholder="Search book, author, etc" ng-model="main.toFind"/>
+      <label for="mySubmit"><i class="icon-search header-search-button"></i></label>
+      <input id="mySubmit" type="submit" value="Go" class="hidden"/>
+    </form>
+  </div>
+  
+  <div class="header-bar">
+    <div class="header-bar-message">Books</div>
+  </div>
 </header>
 
 <div class="content">
-    <ui-view></ui-view>
+  <ui-view></ui-view>
+</div>
+
+<div class="subscribe">
+  <div class="subscribe-form">
+    <div class="subscribe-message">
+      The Latest From BookShop
+    </div>
+    <form name="main.subscribe" ng-submit="main.subscribeEmail()">
+      <input class="subscribe-input" type="email" name='input' placeholder="Your email address"
+             ng-model="main.newsletterEmail" required/>
+      <span class='error' ng-if="main.subscribe.$submitted && main.subscribe.input.$invalid"
+            ng-messages="main.subscribe.input.$error">
+        <span ng-message when="required">Insert email</span>
+        <span ng-message when="email">Not valid email!</span>
+      </span>
+      <button type="submit" class="subscribe-input-button">JOIN NOW</button>
+    </form>
+  </div>
 </div>
 <footer class="footer">
-    <div class="footer-left">
-        <h3 class="footer-left-logo">Book<span class="footer-left-logo-style">Shop</span></h3>
-        <p class="footer-left-links">
-            <a href="#">Home</a> ·
-            <a href="#">Blog</a> ·
-            <a href="#">Pricing</a> ·
-            <a href="#">About</a> ·
-            <a href="#">Faq</a> ·
-            <a href="#">Contact</a>
-        </p>
-        <p class="footer-left-company-name">Book Shop &copy; 2016</p>
+  <div class="footer-block">
+    <div class="footer-block-title">COMPANY</div>
+    <div class="footer-block-info">
+      <div>About Us</div>
+      <div>Work Here</div>
+      <div>Team</div>
+      <div>Happenings</div>
+      <div>Store/Dealer Locator</div>
     </div>
-    <div class="footer-center">
-        <div>
-            <i class="fa fa-map-marker"></i>
-            <p class="footer-center-contact"><span class="footer-center-contact-address">21 Dorobantilor Street</span> Cluj-Napoca, Romania</p>
-        </div>
-        <div>
-            <i class="fa fa-phone"></i>
-            <p class="footer-center-contact">+40 747023876</p>
-        </div>
-        <div>
-            <i class="fa fa-envelope"></i>
-            <p class="footer-center-contact"><a href="mailto:negrea.vlad@yahoo.com">support@bookshop.com</a></p>
-        </div>
+  </div>
+  
+  <div class="footer-block">
+    <div class="footer-block-title">SERVICE</div>
+    <div class="footer-block-info">
+      <div>Contact Us</div>
+      <div>FAQs</div>
+      <div>Warranties</div>
+      <div>Repair Center</div>
     </div>
-    <div class="footer-right">
-        <p class="footer-right-company-about">
-            <span class="footer-right-company-about-title">About the company</span> Our aim at Bookshop is to have a good stock of reading material for all
-            interests, and for all ages. The majority of the books are in English, but books in other languages are
-            available and can be obtained through our services. Books are imported on a regular basis from around the
-            world.
-        </p>
-        <div class="footer-right-icons">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-github"></i></a>
-        </div>
+  </div>
+  
+  <div class="footer-block">
+    <div class="footer-block-title">ORDERS & RETURNS</div>
+    <div class="footer-block-info">
+      <div>Order Status</div>
+      <div>Shipping Policy</div>
+      <div>Return Policy</div>
+      <div>Payments</div>
     </div>
+  </div>
+  
+  <div class="footer-block">
+    <div class="footer-block-title">LEGAL</div>
+    <div class="footer-block-info">
+      <div>Privacy Policy</div>
+      <div>Terms and Conditions</div>
+      <div>Use of Cookies</div>
+      <div>Legal Notice</div>
+    </div>
+  </div>
+
 </footer>

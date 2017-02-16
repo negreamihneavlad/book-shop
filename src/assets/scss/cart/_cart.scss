@@ -1,56 +1,105 @@
 .cart {
-  margin-top: 30px;
-
+  padding-top: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 100px;
+  padding-right: 100px;
+  
   &-title {
-    font-size: 30px;
+    font-size: 28px;
     display: block;
+    font-weight: 600;
   }
-
-  &-quantity {
-    margin-top: 60px;
-    text-align: center;
-
-    &-head {
-      width: 50px;
+  
+  &-checkoutTab {
+    width: 100%;
+    height: 80px;
+    background-color: #F7F8F9;
+    margin-top: 30px;
+    padding-left: 30px;
+    margin-bottom: 30px;
+    padding-top: 25px;
+    
+    &-info {
+      font-size: 20px;
+      color: #1E1E1E;
+      float: left;
     }
-
-    &-selectors {
-      cursor: pointer;
-    }
-
-    &-input {
-      width: 30px;
+    &-button {
+      margin-top: -5px;
+      height: 40px;
+      width: 280px;
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      float: right;
+      margin-right: 30px;
+      @extend %button;
     }
   }
-
+  
+  .cart-table {
+    width: 100%;
+    
+    th {
+      color: rgba(#1E1E1E, 0.3);
+      font-size: 12px;
+    }
+    td {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  
   &-picture {
-    height: 160px;
+    height: 80px;
   }
-
+  
   &-remove {
-    margin-top: 5px;
-    font-size: 11px;
+    padding-top: 15px;
+    display: block;
+    font-size: 12px;
     cursor: pointer;
+    color: red;
   }
-
+  
+  &-total {
+    text-align: right;
+  }
+  
+  &-quantity {
+    width: 80px;
+    
+    &-number {
+      float: left;
+    }
+    
+    &-caret {
+      margin-top: 8px;
+      float: right;
+    }
+  }
+  
   &-details {
     display: block;
     text-align: left;
-
+    
     &-title {
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 400;
     }
-
+    
     &-block {
       margin-left: 10px;
     }
-
+    
     &-author {
-      font-size: 16px;
+      color: rgba(#1E1E1E, 0.3);
+      font-size: 12px;
       display: block;
-
+      
     }
-
+    
     &-informations {
       display: block;
       &-label {
@@ -60,29 +109,177 @@
       }
     }
   }
+  
+  &-assistance {
+    margin-top: 40px;
+    width: 620px;
+    background-color: #F7F8F9;
+    height: 161px;
+    float: left;
+    padding: 20px;
+    
+    &-message {
+      color: rgba(#1E1E1E, 0.4);
+      font-size: 14px;
+      float: left;
+    }
+    
+    &-contact {
+      margin-left: 40px;
+      font-size: 12px;
+      float: left;
+      
+      &-number {
+        padding-left: 18px;
+        font-weight: 600;
+      }
+      
+      &-schedule {
+        
+        &-days {
+          margin-left: 32px;
+          margin-top: 15px;
+          font-weight: 600;
+        }
+        
+        &-hours {
+          margin-left: 32px;
+          color: #777777;
+        }
+      }
+    }
+    
+    &-email {
+      float: left;
+      margin-left: 60px;
+      
+      &-text {
+        font-weight: 600;
+        font-size: 12px;
+        padding-left: 20px;
+      }
+    }
+  }
+  
+  &-summary {
+    margin-left: 30px;
+    margin-top: 40px;
+    width: 300px;
+    height: 465px;
+    background-color: #F7F8F9;
+    float: right;
+    padding: 20px;
+    
+    &-title {
+      color: rgba(#1E1E1E, 0.4);
+      font-size: 14px;
+      margin-left: 10px;
+      margin-bottom: 30px;
+    }
+    
+    &-subtotal {
+      padding: 10px;
+      height: 150px;
+      width: 250px;
+      margin: 0 auto;
+      background-color: #FFFFFF;
+      border: 0.5px solid #D1D4D6;
+      
+      &-message {
+        font-size: 14px;
+        margin-top: 10px;
+        float: left;
+      }
+      
+      &-price {
+        margin-top: 10px;
+        float: right;
+        font-size: 14px;
+      }
+      
+      &-shipping {
+        font-size: 14px;
+        margin-top: 20px;
+        float: left;
+        clear: both;
+      }
+      
+      &-type {
+        float: right;
+        font-size: 14px;
+        margin-top: 20px;
+      }
+      
+      &-dropDown {
+        margin-left: 3px !important;
+        margin-top: 20px;
+        width: 220px;
+        height: 36px;
+        
+        &-message {
+          font-size: 12px;
+          float: left;
+        }
+        &-caret {
+          margin-top: 8px;
+          float: right;
+        }
+      }
+    }
+    
+    &-total {
+      margin-top: 20px;
+      margin-left: 15px;
+      font-size: 14px;
+      float: left;
+    }
+    
+    &-price {
+      margin-top: 20px;
+      float: right;
+      font-size: 14px;
+      margin-right: 15px;
+    }
+    
+    &-line {
+      margin-top: 60px;
+      border-bottom: 0.5px solid #D1D4D6;
+    }
+    
+    &-info {
+      margin-top: 10px;
+      margin-left: 15px;
+      font-size: 12px;
+    }
+    
+    &-checkoutButton {
+      width: 260px;
+      margin-top: 30px;
+      height: 40px;
+      background-color: #2AD9C2;
+      font-size: 14px;
+      color: #FFFFFF;
+      @extend %button;
+    }
+    
+    &-payment {
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: rgba(#1E1E1E, 0.5);
+    }
+    
+    &-payPalButton {
+      width: 260px;
+      height: 40px;
+      background-color: #1E1E1E;
+      font-size: 14px;
+      color: #FFFFFF;
+      @extend %button;
+    }
+  }
 }
 
-.table-size {
-  max-width: 800px;
-}
-
-.checkOut {
-  margin-left: 50px;
-  margin-top: 20px;
-  border-radius: 25px;
-  background-color: #c8dbeb;
-  padding: 20px;
-  width: 200px;
-  min-height: 150px;
-
-  &-title {
-    margin-bottom: 10px;
-    font-size: 15px;
-  }
-
-  &-total {
-    margin-top: 10px;
-    margin-bottom: 4px;
-    font-size: 15px;
-  }
+.nopadding {
+  padding: 0 !important;
 }

@@ -1,42 +1,42 @@
 <div class="row">
-    <div class="col-lg-12">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Book" ng-model='toFind'>
-            <span class="input-group-btn">
+  <div class="col-lg-12">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search Book" ng-model='toFind'>
+      <span class="input-group-btn">
         <button class="btn btn-default" type="button" ui-sref='searchBooks({toFind: toFind})'>Search</button>
       </span>
-        </div>
     </div>
+  </div>
 </div>
 
 
 <div class="row books-sidebar-container">
-    <div class="col-sm-3" sidebar
-         categories="search.categories"
-         publishers="search.publishers"
-         authors="search.authors">
-    </div>
-
-    <div class="col-sm-9">
-        <ul class='bookList'>
-            <li class='bookList-item' ng-repeat="book in search.bookList">
-                <a ui-sref="details({id: book.id})">
-                    <img class="bookList-item-image" ng-src="{{book.picture}}" alt=""/>
-
-                    <p class="bookList-item-author">{{book.name}}</p>
-                    <p class="bookList-item-title">by {{book.author}}</p>
-                </a>
-            </li>
-        </ul>
-    </div>
+  <div class="col-sm-3" sidebar
+       categories="search.categories"
+       publishers="search.publishers"
+       authors="search.authors">
+  </div>
+  
+  <div class="col-sm-9">
+    <ul class='bookList'>
+      <li class='bookList-item' ng-repeat="book in search.bookList">
+        <a ui-sref="details({id: book.id})">
+          <img class="bookList-item-image" ng-src="{{book.picture}}" alt=""/>
+          
+          <p class="bookList-item-author">{{book.name}}</p>
+          <p class="bookList-item-title">by {{book.author}}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="pagination-tab">
-    <div pagination
-         total-results="search.pagination.totalResults"
-         limit-per-page="search.pagination.limitPerPage"
-         current-page="search.pagination.currentPage"
-         max-button-number="search.pagination.maxButtonNumber"
-         state="search.pagination.state">
-    </div>
+  <div pagination
+       total-results="search.pagination.totalResults"
+       limit-per-page="search.pagination.limitPerPage"
+       current-page="search.pagination.currentPage"
+       max-button-number="search.pagination.maxButtonNumber"
+       state="search.pagination.state">
+  </div>
 </div>

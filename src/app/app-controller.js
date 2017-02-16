@@ -7,12 +7,12 @@
  * @ngInject
  */
 function AppCtrl(Cart, Authentication) {
-    if (Authentication.isAuthenticated()){
-        Cart.load();
-    }
-
+  if (Authentication.isAuthenticated()) {
+    Cart.load();
+  }
+  
 }
 
 angular
-    .module("app")
-    .controller("AppCtrl", AppCtrl);
+  .module("app")
+  .controller("AppCtrl", AppCtrl);
