@@ -1,30 +1,18 @@
-<div class="row">
-  <div class="col-lg-12">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search Book" ng-model='toFind'>
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ui-sref='searchBooks({toFind: toFind})'>Search</button>
-      </span>
-    </div>
-  </div>
-</div>
-
-
 <div class="row books-sidebar-container">
-  <div class="col-sm-3" sidebar
+  <div sidebar
        categories="search.categories"
        publishers="search.publishers"
        authors="search.authors">
   </div>
-  
-  <div class="col-sm-9">
+  <div>
     <ul class='bookList'>
       <li class='bookList-item' ng-repeat="book in search.bookList">
         <a ui-sref="details({id: book.id})">
           <img class="bookList-item-image" ng-src="{{book.picture}}" alt=""/>
-          
-          <p class="bookList-item-author">{{book.name}}</p>
-          <p class="bookList-item-title">by {{book.author}}</p>
+          <div class="bookList-item-description">
+            <p class="bookList-item-title">{{book.name}}</p>
+            <p class="bookList-item-author">by {{book.author}}</p>
+          </div>
         </a>
       </li>
     </ul>

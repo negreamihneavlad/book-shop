@@ -34,11 +34,11 @@
       <td>{{element.isbn}}</td>
       <td>{{element.price}}$</td>
       <td class="table-button">
-        <a href="#" ui-sref='addEdit({id: element.id})' ng-click=''><i class="fa fa-pencil fa-fw fa-lg"></i></a>
+        <a href="#" ui-sref='addEdit({id: element.id})' ng-click=''><i class="table-button-color fa fa-pencil fa-fw fa-lg"></i></a>
       </td>
       <td class="table-button">
         <a href="#" type="button" ng-click='listBooks.removeBook(element.id)'><i
-          class="fa fa-trash-o fa-fw fa-lg"></i> </a>
+          class="table-button-color fa fa-trash-o fa-fw fa-lg"></i> </a>
       </td>
     </tr>
     <span class="error" ng-show="listBooks.showMessage ">{{listBooks.removedMessage}}</span>
